@@ -1,4 +1,4 @@
-package kr.hs.dgsw.treadmill_helper.custom.extension
+package kr.hs.dgsw.treadmill_helper.etc.extension
 
 import android.content.Intent
 import android.widget.Toast

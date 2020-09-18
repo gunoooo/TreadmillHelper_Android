@@ -1,8 +1,7 @@
 package kr.hs.dgsw.domain.repository
 
-import io.reactivex.Completable
-import kr.hs.dgsw.domain.callback.TimerCallback
+import io.reactivex.Observable
 
 interface TimerRepository {
-    fun schedule(scheduleIdx: Int, timerCallback: TimerCallback): Completable
+    fun countDownTime(partTime: Long): Observable<Int>
 }

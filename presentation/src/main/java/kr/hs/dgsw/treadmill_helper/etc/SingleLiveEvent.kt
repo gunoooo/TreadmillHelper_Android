@@ -1,4 +1,4 @@
-package kr.hs.dgsw.treadmill_helper.custom
+package kr.hs.dgsw.treadmill_helper.etc
 
 import android.util.Log
 import androidx.annotation.MainThread

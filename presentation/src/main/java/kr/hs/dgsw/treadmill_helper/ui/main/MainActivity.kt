@@ -1,7 +1,7 @@
 package kr.hs.dgsw.treadmill_helper.ui.main
 
 import kr.hs.dgsw.treadmill_helper.base.BaseActivity
-import kr.hs.dgsw.treadmill_helper.custom.extension.getViewModel
+import kr.hs.dgsw.treadmill_helper.etc.extension.getViewModel
 import kr.hs.dgsw.treadmill_helper.databinding.ActivityMainBinding
 import javax.inject.Inject
 

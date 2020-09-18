@@ -24,7 +24,7 @@ class MainViewModel(
                         Log.d("TIMER - ", "PART : ${part.time}")
                     }
 
-                    override fun call() {
+                    override fun onCall() {
                         Log.d("TIMER - ","END")
                     }
                 }

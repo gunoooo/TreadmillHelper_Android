@@ -10,6 +10,7 @@ object ScheduleMapper : BaseEntityMapper<Schedule, ScheduleEntity> {
         return Schedule(
             entity.schedule.idx,
             entity.schedule.title,
+            entity.schedule.scheduleType,
             entity.partList.map { PartMapper.mapToModel(it) }
         )
     }
@@ -18,13 +19,22 @@ object ScheduleMapper : BaseEntityMapper<Schedule, ScheduleEntity> {
         return Schedule(
             entity.idx,
             entity.title,
+            entity.scheduleType,
             ArrayList()
+        )
+    }
+
+    fun mapToWithPartEntity(model: Schedule): ScheduleWithPartEntity {
+        return ScheduleWithPartEntity(
+            mapToEntity(model),
+            model.partList.map { PartMapper.mapToEntity(it) }
         )
     }
 
     override fun mapToEntity(model: Schedule): ScheduleEntity {
         return ScheduleEntity(
-            model.title
+            model.title,
+            model.scheduleType
         )
     }
 }

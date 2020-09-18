@@ -6,15 +6,24 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.TypeConverters
 import kr.hs.dgsw.data.database.converter.ColorConverter
+import kr.hs.dgsw.data.database.converter.ScheduleTypeConverter
 import kr.hs.dgsw.data.database.dao.PartDao
 import kr.hs.dgsw.data.database.dao.ScheduleDao
 import kr.hs.dgsw.data.database.entity.PartEntity
 import kr.hs.dgsw.data.database.entity.ScheduleEntity
 
-@Database(entities = [ScheduleEntity::class, PartEntity::class],
-    version = 1, exportSchema = false
+@Database(
+    entities = [
+        ScheduleEntity::class,
+        PartEntity::class
+    ],
+    version = 1,
+    exportSchema = false
 )
-@TypeConverters(ColorConverter::class)
+@TypeConverters(
+    ColorConverter::class,
+    ScheduleTypeConverter::class
+)
 abstract class RoomDatabase : androidx.room.RoomDatabase() {
 
     abstract fun scheduleDao(): ScheduleDao

@@ -12,7 +12,7 @@ import io.reactivex.disposables.Disposable
 import io.reactivex.observers.DisposableCompletableObserver
 import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
-import kr.hs.dgsw.treadmill_helper.custom.SingleLiveEvent
+import kr.hs.dgsw.treadmill_helper.etc.SingleLiveEvent
 
 /**
  * @author gunwoo
