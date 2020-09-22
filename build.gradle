@@ -50,8 +50,8 @@ buildscript {
         junitVersion = '4.12'
         findBugVersion = '1.0.2'
         espressoVersion = '3.1.0-alpha4'
-        mockitoVersion = '2.23.0'
         mockitoKotlinVersion = '1.5.0'
+        robolectricVersion = '3.4.2'
     }
     repositories {
         google()

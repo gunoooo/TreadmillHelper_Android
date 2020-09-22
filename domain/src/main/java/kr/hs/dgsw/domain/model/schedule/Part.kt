@@ -8,6 +8,6 @@ data class Part(
     val title: String,
     val time: Int,
     val color: Color,
-    val speed: Int,
+    val speed: Double,
     val incline: Int
 )

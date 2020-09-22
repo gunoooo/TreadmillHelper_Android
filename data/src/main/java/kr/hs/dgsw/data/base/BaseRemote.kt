@@ -3,8 +3,8 @@ package kr.hs.dgsw.data.base
 import io.reactivex.functions.Function
 import org.json.JSONObject
 
-abstract class BaseRemote<SV> {
-    abstract val service: SV
+abstract class BaseRemote<V> {
+    abstract val api: V
 
     protected fun <T> getResponse(): Function<retrofit2.Response<T>, T> {
         return Function { response: retrofit2.Response<T> ->

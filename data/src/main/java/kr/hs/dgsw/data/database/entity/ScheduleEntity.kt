@@ -9,7 +9,11 @@ data class ScheduleEntity(
     val title: String,
     val scheduleType: ScheduleType
 ) {
-
     @PrimaryKey(autoGenerate = true)
     var idx: Int = 0
+
+    constructor(idx: Int, title: String, scheduleType: ScheduleType):
+            this(title, scheduleType) {
+        this.idx = idx
+    }
 }

@@ -24,12 +24,6 @@ android {
     }
 
     configurations {
-        all {
-            resolutionStrategy {
-                force 'net.bytebuddy:byte-buddy:1.8.22'
-                force 'net.bytebuddy:byte-buddy-agent:1.8.22'
-            }
-        }
         all*.exclude group: 'com.google.guava', module: 'listenablefuture'
     }
 
@@ -60,6 +54,7 @@ dependencies {
     testImplementation "junit:junit:$rootProject.junitVersion"
     testImplementation "org.jetbrains.kotlin:kotlin-test-junit:$rootProject.kotlinVersion"
     testImplementation "com.nhaarman:mockito-kotlin:$rootProject.mockitoKotlinVersion"
+    testImplementation "org.robolectric:robolectric:$rootProject.robolectricVersion"
     androidTestImplementation "androidx.test:runner:$rootProject.runnerVersion"
     androidTestImplementation "com.google.code.findbugs:jsr305:$rootProject.findBugVersion"
     androidTestImplementation "androidx.test.espresso:espresso-core:$rootProject.espressoVersion"
@@ -75,6 +70,7 @@ dependencies {
     implementation "androidx.room:room-runtime:$rootProject.roomVersion"
     implementation "androidx.room:room-rxjava2:$rootProject.roomVersion"
     implementation "androidx.room:room-guava:$rootProject.roomVersion"
+    implementation "androidx.room:room-ktx:$rootProject.roomVersion"
 
     implementation "com.google.code.gson:gson:$rootProject.gsonVersion"
     implementation "com.google.guava:guava:$rootProject.guavaVersion"

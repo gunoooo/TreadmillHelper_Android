@@ -9,7 +9,7 @@ import javax.inject.Inject
 class InsertScheduleUseCase @Inject constructor(
     private val scheduleRepository: ScheduleRepository
 ) : ParamsUseCase<InsertScheduleUseCase.Params, Completable>() {
-    override fun buildUseCaseObservable(params: InsertScheduleUseCase.Params): Completable {
+    override fun buildUseCaseObservable(params: Params): Completable {
         return scheduleRepository.insertSchedule(params.schedule)
     }
 

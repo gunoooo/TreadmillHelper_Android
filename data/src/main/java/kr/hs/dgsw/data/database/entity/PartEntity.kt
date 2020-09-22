@@ -12,10 +12,14 @@ data class PartEntity(
     val title: String,
     val time: Int,
     val color: Color,
-    val speed: Int,
+    val speed: Double,
     val incline: Int
 ) {
-
     @PrimaryKey(autoGenerate = true)
     var idx: Int = 0
+
+    constructor(idx: Int, scheduleIdx: Int, title: String, time: Int, color: Color, speed: Double, incline: Int):
+            this(scheduleIdx, title, time, color, speed, incline) {
+        this.idx = idx
+    }
 }

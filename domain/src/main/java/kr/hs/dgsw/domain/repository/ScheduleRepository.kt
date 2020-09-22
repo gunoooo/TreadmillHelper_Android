@@ -7,7 +7,10 @@ import kr.hs.dgsw.domain.model.schedule.Schedule
 
 interface ScheduleRepository {
     fun getPartList(scheduleIdx: Int): Single<List<Part>>
+
     fun getScheduleList(): Single<List<Schedule>>
+
     fun insertSchedule(schedule: Schedule): Completable
+
     fun updateSchedule(schedule: Schedule): Completable
 }
