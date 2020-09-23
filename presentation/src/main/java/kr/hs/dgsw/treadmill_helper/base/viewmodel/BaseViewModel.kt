@@ -19,6 +19,7 @@ import kr.hs.dgsw.treadmill_helper.etc.SingleLiveEvent
  *
  * BaseViewModel
  */
+@Suppress("UNCHECKED_CAST")
 open class BaseViewModel : ViewModel() {
     private val disposable: CompositeDisposable = CompositeDisposable()
 

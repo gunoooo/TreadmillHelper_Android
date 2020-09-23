@@ -2,8 +2,8 @@ package kr.hs.dgsw.domain.repository
 
 import io.reactivex.Completable
 import io.reactivex.Single
-import kr.hs.dgsw.domain.model.schedule.Part
-import kr.hs.dgsw.domain.model.schedule.Schedule
+import kr.hs.dgsw.domain.entity.Part
+import kr.hs.dgsw.domain.entity.Schedule
 
 interface ScheduleRepository {
     fun getPartList(scheduleIdx: Int): Single<List<Part>>

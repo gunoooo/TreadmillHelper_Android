@@ -2,45 +2,104 @@ package kr.hs.dgsw.data.mapper
 
 import kr.hs.dgsw.data.database.entity.ScheduleEntity
 import kr.hs.dgsw.data.database.entity.ScheduleWithPartEntity
-import kr.hs.dgsw.domain.model.schedule.Schedule
+import kr.hs.dgsw.data.entity.ScheduleData
+import kr.hs.dgsw.domain.entity.Schedule
 
-fun Schedule.toEntity(): ScheduleEntity {
+fun Schedule.toDataEntity(): ScheduleData {
+    return ScheduleData(
+        idx = idx,
+        title = title,
+        scheduleType = scheduleType,
+        partList = partList.map { it.toDataEntity() }
+    )
+}
+
+fun Schedule.toDbEntity(): ScheduleEntity {
     return ScheduleEntity(
-        this.idx,
-        this.title,
-        this.scheduleType
+        idx = idx,
+        title = title,
+        scheduleType = scheduleType
     )
 }
 
 fun Schedule.toScheduleWithPartEntity(): ScheduleWithPartEntity {
     return ScheduleWithPartEntity(
-        this.toEntity(),
-        this.partList.map { it.toEntity() }
+        schedule = toDbEntity(),
+        partList = partList.map { it.toDbEntity() }
     )
 }
 
-fun ScheduleEntity.toModel(): Schedule {
+fun ScheduleData.toEntity(): Schedule {
     return Schedule(
-        this.idx,
-        this.title,
-        this.scheduleType,
-        emptyList()
+        idx = idx,
+        title = title,
+        scheduleType = scheduleType,
+        partList = partList.map { it.toEntity() }
     )
 }
 
-fun ScheduleWithPartEntity.toModel(): Schedule {
-    return Schedule(
-        this.schedule.idx,
-        this.schedule.title,
-        this.schedule.scheduleType,
-        this.partList.map { it.toModel() }
-    )
-}
-
-fun ScheduleWithPartEntity.toEntity(): ScheduleEntity {
+fun ScheduleData.toDbEntity(): ScheduleEntity {
     return ScheduleEntity(
-        this.schedule.idx,
-        this.schedule.title,
-        this.schedule.scheduleType
+        idx = idx,
+        title = title,
+        scheduleType = scheduleType
+    )
+}
+
+fun ScheduleData.toScheduleWithPartEntity(): ScheduleWithPartEntity {
+    return ScheduleWithPartEntity(
+        schedule = this.toDbEntity(),
+        partList = partList.map { it.toDbEntity() }
+    )
+}
+
+fun ScheduleEntity.toEntity(): Schedule {
+    return Schedule(
+        idx = idx,
+        title = title,
+        scheduleType = scheduleType,
+        partList = emptyList()
+    )
+}
+
+fun ScheduleEntity.toDataEntity(): ScheduleData {
+    return ScheduleData(
+        idx = idx,
+        title = title,
+        scheduleType = scheduleType,
+        partList = emptyList()
+    )
+}
+
+fun ScheduleEntity.toScheduleWithPartEntity(): ScheduleWithPartEntity {
+    return ScheduleWithPartEntity(
+        schedule = this,
+        partList = emptyList()
+    )
+}
+
+fun ScheduleWithPartEntity.toEntity(): Schedule {
+    return Schedule(
+        idx = schedule.idx,
+        title = schedule.title,
+        scheduleType = schedule.scheduleType,
+        partList = partList.map { it.toEntity() }
+    )
+}
+
+fun ScheduleWithPartEntity.toDataEntity(): ScheduleData {
+    return ScheduleData(
+        idx = schedule.idx,
+        title = schedule.title,
+        scheduleType = schedule.scheduleType,
+        partList = partList.map { it.toDataEntity() }
+    )
+}
+
+fun ScheduleWithPartEntity.toDbEntity(): ScheduleEntity {
+    return ScheduleEntity(
+        idx = schedule.idx,
+        title = schedule.title,
+        scheduleType = schedule.scheduleType
     )
 }

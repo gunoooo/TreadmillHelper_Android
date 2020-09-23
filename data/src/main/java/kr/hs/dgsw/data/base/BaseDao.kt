@@ -5,7 +5,6 @@ import io.reactivex.Completable
 
 @Dao
 interface BaseDao<ET> {
-
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(entity: ET): Completable
 

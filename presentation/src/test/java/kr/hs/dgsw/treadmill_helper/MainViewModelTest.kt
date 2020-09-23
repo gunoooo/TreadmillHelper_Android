@@ -2,7 +2,6 @@ package kr.hs.dgsw.treadmill_helper
 
 import com.nhaarman.mockito_kotlin.mock
 import kr.hs.dgsw.domain.usecase.ScheduleUseCase
-import kr.hs.dgsw.treadmill_helper.ui.main.MainViewModel
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith

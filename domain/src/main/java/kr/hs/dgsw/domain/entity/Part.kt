@@ -1,6 +1,6 @@
-package kr.hs.dgsw.domain.model.schedule
+package kr.hs.dgsw.domain.entity
 
-import kr.hs.dgsw.domain.model.Color
+import kr.hs.dgsw.domain.entity.enum.Color
 
 data class Part(
     val idx: Int,

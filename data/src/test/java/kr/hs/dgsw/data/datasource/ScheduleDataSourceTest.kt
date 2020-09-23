@@ -7,12 +7,14 @@ import kr.hs.dgsw.data.database.cache.ScheduleCache
 import kr.hs.dgsw.data.database.entity.PartEntity
 import kr.hs.dgsw.data.database.entity.ScheduleEntity
 import kr.hs.dgsw.data.database.entity.ScheduleWithPartEntity
+import kr.hs.dgsw.data.entity.PartData
+import kr.hs.dgsw.data.entity.ScheduleData
 import kr.hs.dgsw.data.mapper.toScheduleWithPartEntity
 import kr.hs.dgsw.data.network.remote.ScheduleRemote
-import kr.hs.dgsw.domain.model.Color
-import kr.hs.dgsw.domain.model.schedule.Part
-import kr.hs.dgsw.domain.model.schedule.Schedule
-import kr.hs.dgsw.domain.model.schedule.ScheduleType
+import kr.hs.dgsw.domain.entity.enum.Color
+import kr.hs.dgsw.domain.entity.Part
+import kr.hs.dgsw.domain.entity.Schedule
+import kr.hs.dgsw.domain.entity.enum.ScheduleType
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -37,7 +39,7 @@ class ScheduleDataSourceTest {
     }
 
     @Test
-    fun getScheduleWithPartList_success() {
+    fun getScheduleWithPartList_cache_success() {
         val cacheReturnValue = listOf(
             ScheduleWithPartEntity(
                 schedule = ScheduleEntity(
@@ -59,12 +61,12 @@ class ScheduleDataSourceTest {
             )
         )
         val returnValue = listOf(
-            Schedule(
+            ScheduleData(
                 idx = 1,
                 title = "My Custom Schedule 1",
                 scheduleType = ScheduleType.CUSTOM,
                 partList = listOf(
-                    Part(
+                    PartData(
                         idx = 1,
                         scheduleIdx = 1,
                         title = "Warming up",
@@ -84,15 +86,15 @@ class ScheduleDataSourceTest {
     }
 
     @Test
-    fun getScheduleWithPartList_success_load() {
+    fun getScheduleWithPartList_remote_success() {
         val exception = Exception()
         val remoteReturnValue = listOf(
-            Schedule(
+            ScheduleData(
                 idx = 1,
                 title = "Easy",
                 scheduleType = ScheduleType.PRESET,
                 partList = listOf(
-                    Part(
+                    PartData(
                         idx = 1,
                         scheduleIdx = 1,
                         title = "Warming up",
@@ -108,12 +110,12 @@ class ScheduleDataSourceTest {
             it.toScheduleWithPartEntity()
         }
         val returnValue = listOf(
-            Schedule(
+            ScheduleData(
                 idx = 1,
                 title = "Easy",
                 scheduleType = ScheduleType.PRESET,
                 partList = listOf(
-                    Part(
+                    PartData(
                         idx = 1,
                         scheduleIdx = 1,
                         title = "Warming up",
@@ -148,7 +150,7 @@ class ScheduleDataSourceTest {
     }
 
     @Test
-    fun getScheduleList_success() {
+    fun getScheduleList_cache_success() {
         val cacheReturnValue = listOf(
             ScheduleEntity(
                 idx = 1,
@@ -157,7 +159,7 @@ class ScheduleDataSourceTest {
             )
         )
         val returnValue = listOf(
-            Schedule(
+            ScheduleData(
                 idx = 1,
                 title = "My Custom Schedule 1",
                 scheduleType = ScheduleType.CUSTOM
@@ -171,15 +173,15 @@ class ScheduleDataSourceTest {
     }
 
     @Test
-    fun getScheduleList_success_load() {
+    fun getScheduleList_remote_success() {
         val exception = Exception()
         val remoteReturnValue = listOf(
-            Schedule(
+            ScheduleData(
                 idx = 1,
                 title = "Easy",
                 scheduleType = ScheduleType.PRESET,
                 partList = listOf(
-                    Part(
+                    PartData(
                         idx = 1,
                         scheduleIdx = 1,
                         title = "Warming up",
@@ -195,7 +197,7 @@ class ScheduleDataSourceTest {
             it.toScheduleWithPartEntity()
         }
         val returnValue = listOf(
-            Schedule(
+            ScheduleData(
                 idx = 1,
                 title = "Easy",
                 scheduleType = ScheduleType.PRESET
@@ -224,7 +226,7 @@ class ScheduleDataSourceTest {
     }
 
     @Test
-    fun getPartList_success() {
+    fun getPartList_cache_success() {
         val scheduleIdx = 0
         val cacheReturnValue = listOf(
             PartEntity(
@@ -247,7 +249,7 @@ class ScheduleDataSourceTest {
             )
         )
         val returnValue = listOf(
-            Part(
+            PartData(
                 idx = 1,
                 scheduleIdx = 1,
                 title = "Run",
@@ -256,7 +258,7 @@ class ScheduleDataSourceTest {
                 speed = 10.5,
                 incline = 0
             ),
-            Part(
+            PartData(
                 idx = 2,
                 scheduleIdx = 1,
                 title = "Run",

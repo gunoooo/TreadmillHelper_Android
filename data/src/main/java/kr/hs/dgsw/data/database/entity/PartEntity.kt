@@ -2,9 +2,7 @@ package kr.hs.dgsw.data.database.entity
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import androidx.room.TypeConverters
-import kr.hs.dgsw.data.database.converter.ColorConverter
-import kr.hs.dgsw.domain.model.Color
+import kr.hs.dgsw.domain.entity.enum.Color
 
 @Entity(tableName = "part_table")
 data class PartEntity(

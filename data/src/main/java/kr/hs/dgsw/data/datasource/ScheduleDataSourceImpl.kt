@@ -4,19 +4,19 @@ import io.reactivex.Completable
 import io.reactivex.Single
 import kr.hs.dgsw.data.base.BaseDataSource
 import kr.hs.dgsw.data.database.cache.ScheduleCache
-import kr.hs.dgsw.data.mapper.toEntity
-import kr.hs.dgsw.data.mapper.toModel
-import kr.hs.dgsw.data.mapper.toScheduleWithPartEntity
+import kr.hs.dgsw.data.entity.PartData
+import kr.hs.dgsw.data.entity.ScheduleData
+import kr.hs.dgsw.data.mapper.*
 import kr.hs.dgsw.data.network.remote.ScheduleRemote
-import kr.hs.dgsw.domain.model.schedule.Part
-import kr.hs.dgsw.domain.model.schedule.Schedule
+import kr.hs.dgsw.domain.entity.Part
+import kr.hs.dgsw.domain.entity.Schedule
 import javax.inject.Inject
 
 class ScheduleDataSourceImpl @Inject constructor(
     override val remote: ScheduleRemote,
     override val cache: ScheduleCache
 ) : BaseDataSource<ScheduleRemote, ScheduleCache>(), ScheduleDataSource {
-    override fun getScheduleWithPartList(): Single<List<Schedule>> {
+    override fun getScheduleWithPartList(): Single<List<ScheduleData>> {
         return cache.getScheduleWithPartList()
             .onErrorResumeNext {
                 remote.getPresetScheduleList()
@@ -30,12 +30,12 @@ class ScheduleDataSourceImpl @Inject constructor(
             }
             .map { scheduleList ->
                 scheduleList.map {
-                    it.toModel()
+                    it.toDataEntity()
                 }
             }
     }
 
-    override fun getScheduleList(): Single<List<Schedule>> {
+    override fun getScheduleList(): Single<List<ScheduleData>> {
         return cache.getScheduleList()
             .onErrorResumeNext {
                 remote.getPresetScheduleList()
@@ -45,31 +45,31 @@ class ScheduleDataSourceImpl @Inject constructor(
                     .flatMap { scheduleEntityList ->
                         cache.insertScheduleWithPartList(scheduleEntityList)
                             .toSingleDefault(
-                                scheduleEntityList.map { it.toEntity() }
+                                scheduleEntityList.map { it.toDbEntity() }
                             )
                     }
             }
             .map { scheduleList ->
                 scheduleList.map {
-                    it.toModel()
+                    it.toDataEntity()
                 }
             }
     }
 
-    override fun getPartList(scheduleIdx: Int): Single<List<Part>> {
+    override fun getPartList(scheduleIdx: Int): Single<List<PartData>> {
         return cache.getPartList(scheduleIdx).map { partList ->
             partList.map {
-                it.toModel()
+                it.toDataEntity()
             }
         }
     }
 
-    override fun insertScheduleList(scheduleList: List<Schedule>): Completable {
-        return cache.insertScheduleList(scheduleList.map { it.toEntity() })
+    override fun insertScheduleList(scheduleDataList: List<ScheduleData>): Completable {
+        return cache.insertScheduleList(scheduleDataList.map { it.toDbEntity() })
     }
 
-    override fun insertSchedule(schedule: Schedule): Completable {
-        return cache.insertSchedule(schedule.toEntity())
+    override fun insertSchedule(scheduleData: ScheduleData): Completable {
+        return cache.insertSchedule(scheduleData.toDbEntity())
     }
 
     override fun deleteSchedule(scheduleIdx: Int): Completable {
@@ -80,10 +80,10 @@ class ScheduleDataSourceImpl @Inject constructor(
         return cache.deletePart(scheduleIdx)
     }
 
-    override fun updateSchedule(schedule: Schedule): Completable {
+    override fun updateSchedule(scheduleData: ScheduleData): Completable {
         return cache.updateSchedule(
-            schedule.toEntity(),
-            schedule.partList.map { it.toEntity() }
+            scheduleData.toDbEntity(),
+            scheduleData.partList.map { it.toDbEntity() }
         )
     }
 }

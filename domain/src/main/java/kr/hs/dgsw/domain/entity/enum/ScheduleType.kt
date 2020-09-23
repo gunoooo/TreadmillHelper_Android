@@ -1,4 +1,4 @@
-package kr.hs.dgsw.domain.model.schedule
+package kr.hs.dgsw.domain.entity.enum
 
 enum class ScheduleType {
     PRESET,

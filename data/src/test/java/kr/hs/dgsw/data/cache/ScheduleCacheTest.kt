@@ -5,8 +5,8 @@ import kr.hs.dgsw.data.database.entity.PartEntity
 import kr.hs.dgsw.data.database.entity.ScheduleEntity
 import kr.hs.dgsw.data.database.entity.ScheduleWithPartEntity
 import kr.hs.dgsw.data.exception.TableEmptyException
-import kr.hs.dgsw.domain.model.Color
-import kr.hs.dgsw.domain.model.schedule.ScheduleType
+import kr.hs.dgsw.domain.entity.enum.Color
+import kr.hs.dgsw.domain.entity.enum.ScheduleType
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
