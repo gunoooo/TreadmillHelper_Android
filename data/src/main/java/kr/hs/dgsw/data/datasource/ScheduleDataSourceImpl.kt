@@ -2,31 +2,23 @@ package kr.hs.dgsw.data.datasource
 
 import io.reactivex.Completable
 import io.reactivex.Single
-import kr.hs.dgsw.data.base.BaseDataSource
 import kr.hs.dgsw.data.database.cache.ScheduleCache
-import kr.hs.dgsw.data.entity.PartData
 import kr.hs.dgsw.data.entity.ScheduleData
-import kr.hs.dgsw.data.mapper.*
-import kr.hs.dgsw.data.network.remote.ScheduleRemote
-import kr.hs.dgsw.domain.entity.Part
-import kr.hs.dgsw.domain.entity.Schedule
+import kr.hs.dgsw.data.etc.Object
+import kr.hs.dgsw.data.mapper.toDataEntity
+import kr.hs.dgsw.data.mapper.toDbEntity
+import kr.hs.dgsw.data.mapper.toScheduleDetailEntity
 import javax.inject.Inject
 
 class ScheduleDataSourceImpl @Inject constructor(
-    override val remote: ScheduleRemote,
-    override val cache: ScheduleCache
-) : BaseDataSource<ScheduleRemote, ScheduleCache>(), ScheduleDataSource {
-    override fun getScheduleWithPartList(): Single<List<ScheduleData>> {
-        return cache.getScheduleWithPartList()
+    private val cache: ScheduleCache
+) : ScheduleDataSource {
+    override fun getScheduleDetailList(): Single<List<ScheduleData>> {
+        return cache.getScheduleDetailList()
             .onErrorResumeNext {
-                remote.getPresetScheduleList()
-                    .map { scheduleList ->
-                        scheduleList.map { it.toScheduleWithPartEntity() }
-                    }
-                    .flatMap { scheduleEntityList ->
-                        cache.insertScheduleWithPartList(scheduleEntityList)
-                            .toSingleDefault(scheduleEntityList)
-                    }
+                cache.insertScheduleDetailList(Object.presetScheduleList
+                    .map { it.toScheduleDetailEntity() })
+                    .andThen(cache.getScheduleDetailList())
             }
             .map { scheduleList ->
                 scheduleList.map {
@@ -38,16 +30,9 @@ class ScheduleDataSourceImpl @Inject constructor(
     override fun getScheduleList(): Single<List<ScheduleData>> {
         return cache.getScheduleList()
             .onErrorResumeNext {
-                remote.getPresetScheduleList()
-                    .map { scheduleList ->
-                        scheduleList.map { it.toScheduleWithPartEntity() }
-                    }
-                    .flatMap { scheduleEntityList ->
-                        cache.insertScheduleWithPartList(scheduleEntityList)
-                            .toSingleDefault(
-                                scheduleEntityList.map { it.toDbEntity() }
-                            )
-                    }
+                cache.insertScheduleDetailList(Object.presetScheduleList
+                    .map { it.toScheduleDetailEntity() })
+                    .andThen(cache.getScheduleList())
             }
             .map { scheduleList ->
                 scheduleList.map {
@@ -56,34 +41,25 @@ class ScheduleDataSourceImpl @Inject constructor(
             }
     }
 
-    override fun getPartList(scheduleIdx: Int): Single<List<PartData>> {
-        return cache.getPartList(scheduleIdx).map { partList ->
-            partList.map {
-                it.toDataEntity()
+    override fun getSchedule(scheduleIdx: Int): Single<ScheduleData> {
+        return cache.getScheduleDetail(scheduleIdx)
+            .onErrorResumeNext {
+                cache.insertScheduleDetailList(Object.presetScheduleList
+                    .map { it.toScheduleDetailEntity() })
+                    .andThen(Single.defer { cache.getScheduleDetail(scheduleIdx) })
             }
-        }
-    }
-
-    override fun insertScheduleList(scheduleDataList: List<ScheduleData>): Completable {
-        return cache.insertScheduleList(scheduleDataList.map { it.toDbEntity() })
+            .map { it.toDataEntity() }
     }
 
     override fun insertSchedule(scheduleData: ScheduleData): Completable {
-        return cache.insertSchedule(scheduleData.toDbEntity())
-    }
-
-    override fun deleteSchedule(scheduleIdx: Int): Completable {
-        return cache.deleteSchedule(scheduleIdx)
-    }
-
-    override fun deletePart(scheduleIdx: Int): Completable {
-        return cache.deletePart(scheduleIdx)
+        return cache.insertScheduleDetail(scheduleData.toScheduleDetailEntity())
     }
 
     override fun updateSchedule(scheduleData: ScheduleData): Completable {
         return cache.updateSchedule(
             scheduleData.toDbEntity(),
-            scheduleData.partList.map { it.toDbEntity() }
+            scheduleData.partList.map { it.toDbEntity(scheduleData.idx) },
+            scheduleData.relatedVideoList.map { it.toDbEntity(scheduleData.idx) }
         )
     }
 }

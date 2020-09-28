@@ -2,11 +2,13 @@ package kr.hs.dgsw.data.cache
 
 import kr.hs.dgsw.data.database.cache.ScheduleCacheImpl
 import kr.hs.dgsw.data.database.entity.PartEntity
+import kr.hs.dgsw.data.database.entity.ScheduleDetailEntity
 import kr.hs.dgsw.data.database.entity.ScheduleEntity
-import kr.hs.dgsw.data.database.entity.ScheduleWithPartEntity
+import kr.hs.dgsw.data.database.entity.VideoEntity
 import kr.hs.dgsw.data.exception.TableEmptyException
-import kr.hs.dgsw.domain.entity.enum.Color
-import kr.hs.dgsw.domain.entity.enum.ScheduleType
+import kr.hs.dgsw.domain.entity.Color
+import kr.hs.dgsw.domain.entity.ScheduleType
+import kr.hs.dgsw.domain.entity.VideoCategory
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
@@ -19,302 +21,470 @@ class ScheduleCacheTest {
     private val scheduleCache = ScheduleCacheImpl(RuntimeEnvironment.application)
 
     @Test
-    fun insertScheduleList_getScheduleList_success() {
-        insertScheduleList_success()
-        val returnScheduleEntityList = listOf(
-            ScheduleEntity(
-                1,
-                "My Custom Schedule",
-                ScheduleType.CUSTOM
-            ),
-            ScheduleEntity(
-                2,
-                "My Custom Schedule 2",
-                ScheduleType.CUSTOM
-            )
-        )
-        scheduleCache.getScheduleList().test()
-            .assertValue(returnScheduleEntityList)
-            .assertComplete()
-    }
-
-    @Test
-    fun getScheduleList_empty() {
-        scheduleCache.getScheduleList().test()
-            .assertError(TableEmptyException::class.java)
-    }
-
-    @Test
-    fun insertScheduleWithPartList_getScheduleWithPartList_success() {
-        insertScheduleWithPartList_success()
-        val returnScheduleWithPartEntityList = listOf(
-            ScheduleWithPartEntity(
-                ScheduleEntity(
-                    1,
-                    "My Custom Schedule",
-                    ScheduleType.CUSTOM
+    fun insertScheduleDetail_getScheduleDetailList_success() {
+        insertScheduleDetail_success()
+        val returnValue = listOf(
+            ScheduleDetailEntity(
+                schedule = ScheduleEntity(
+                    idx = 1,
+                    title = "My Custom Schedule",
+                    scheduleType = ScheduleType.CUSTOM
                 ),
-                listOf(
+                partList = listOf(
                     PartEntity(
-                        1,
-                        "Warming up",
-                        300,
-                        Color.BLACK,
-                        6.5,
-                        0
+                        idx = 1,
+                        scheduleIdx = 1,
+                        title = "Warming up",
+                        time = 300,
+                        color = Color.BLACK,
+                        speed = 6.5,
+                        incline = 0
                     ),
                     PartEntity(
-                        1,
-                        "Warming up",
-                        300,
-                        Color.BLACK,
-                        6.5,
-                        0
+                        idx = 1,
+                        scheduleIdx = 1,
+                        title = "Warming up",
+                        time = 300,
+                        color = Color.BLACK,
+                        speed = 6.5,
+                        incline = 0
+                    )
+                ),
+                relatedVideoList = listOf(
+                    VideoEntity(
+                        idx = 1,
+                        scheduleIdx = 1,
+                        title = "Run With Me",
+                        thumbnail = "",
+                        source = "",
+                        duration = 1000,
+                        category = VideoCategory.RUNNING
+                    ),
+                    VideoEntity(
+                        idx = 1,
+                        scheduleIdx = 1,
+                        title = "Run With Me",
+                        thumbnail = "",
+                        source = "",
+                        duration = 1000,
+                        category = VideoCategory.RUNNING
                     )
                 )
-            ),
-            ScheduleWithPartEntity(
-                ScheduleEntity(
-                    2,
-                    "My Custom Schedule 2",
-                    ScheduleType.CUSTOM
+            )
+        )
+        scheduleCache.getScheduleDetailList().test()
+            .assertValue(returnValue)
+            .assertComplete()
+    }
+
+    @Test
+    fun insertScheduleDetailList_getScheduleDetailList_success() {
+        insertScheduleDetailList_success()
+        val returnValue = listOf(
+            ScheduleDetailEntity(
+                schedule = ScheduleEntity(
+                    idx = 1,
+                    title = "My Custom Schedule",
+                    scheduleType = ScheduleType.CUSTOM
                 ),
-                listOf(
+                partList = listOf(
                     PartEntity(
-                        2,
-                        "Warming up",
-                        300,
-                        Color.BLACK,
-                        6.5,
-                        0
-                    )
-                )
-            )
-        )
-        scheduleCache.getScheduleWithPartList().test()
-            .assertValue(returnScheduleWithPartEntityList)
-            .assertComplete()
-    }
-
-    @Test
-    fun getScheduleWithPartList_empty() {
-        scheduleCache.getScheduleWithPartList().test()
-            .assertError(TableEmptyException::class.java)
-    }
-
-    @Test
-    fun insertScheduleWithPartList_getPartList_success() {
-        insertScheduleWithPartList_success()
-        val scheduleIdx = 1
-        val returnPartEntityList = listOf(
-            PartEntity(
-                scheduleIdx,
-                "Warming up",
-                300,
-                Color.BLACK,
-                6.5,
-                0
-            ),
-            PartEntity(
-                scheduleIdx,
-                "Warming up",
-                300,
-                Color.BLACK,
-                6.5,
-                0
-            )
-        )
-        scheduleCache.getPartList(scheduleIdx).test()
-            .assertValue(returnPartEntityList)
-            .assertComplete()
-    }
-
-    @Test
-    fun getPartList_empty() {
-        val scheduleIdx = 1
-        scheduleCache.getPartList(scheduleIdx).test()
-            .assertError(TableEmptyException::class.java)
-    }
-
-    @Test
-    fun insertScheduleList_success() {
-        val scheduleEntityList = listOf(
-            ScheduleEntity(
-                "My Custom Schedule",
-                ScheduleType.CUSTOM
-            ),
-            ScheduleEntity(
-                "My Custom Schedule 2",
-                ScheduleType.CUSTOM
-            )
-        )
-        scheduleCache.insertScheduleList(scheduleEntityList).test()
-            .assertComplete()
-    }
-
-    @Test
-    fun insertScheduleWithPartList_success() {
-        val scheduleWithPartEntityList = listOf(
-            ScheduleWithPartEntity(
-                ScheduleEntity(
-                    "My Custom Schedule",
-                    ScheduleType.CUSTOM
-                ),
-                listOf(
-                    PartEntity(
-                        1,
-                        "Warming up",
-                        300,
-                        Color.BLACK,
-                        6.5,
-                        0
+                        idx = 1,
+                        scheduleIdx = 1,
+                        title = "Warming up",
+                        time = 300,
+                        color = Color.BLACK,
+                        speed = 6.5,
+                        incline = 0
                     ),
                     PartEntity(
-                        1,
-                        "Warming up",
-                        300,
-                        Color.BLACK,
-                        6.5,
-                        0
+                        idx = 2,
+                        scheduleIdx = 1,
+                        title = "Warming up",
+                        time = 300,
+                        color = Color.BLACK,
+                        speed = 6.5,
+                        incline = 0
+                    )
+                ),
+                relatedVideoList = listOf(
+                    VideoEntity(
+                        idx = 1,
+                        scheduleIdx = 1,
+                        title = "Run With Me",
+                        thumbnail = "",
+                        source = "",
+                        duration = 1000,
+                        category = VideoCategory.RUNNING
+                    ),
+                    VideoEntity(
+                        idx = 2,
+                        scheduleIdx = 1,
+                        title = "Run With Me",
+                        thumbnail = "",
+                        source = "",
+                        duration = 1000,
+                        category = VideoCategory.RUNNING
                     )
                 )
             ),
-            ScheduleWithPartEntity(
-                ScheduleEntity(
-                    "My Custom Schedule 2",
-                    ScheduleType.CUSTOM
+            ScheduleDetailEntity(
+                schedule = ScheduleEntity(
+                    idx = 2,
+                    title = "My Custom Schedule",
+                    scheduleType = ScheduleType.CUSTOM
                 ),
-                listOf(
+                partList = listOf(
                     PartEntity(
-                        2,
-                        "Warming up",
-                        300,
-                        Color.BLACK,
-                        6.5,
-                        0
+                        idx = 3,
+                        scheduleIdx = 2,
+                        title = "Warming up",
+                        time = 300,
+                        color = Color.BLACK,
+                        speed = 6.5,
+                        incline = 0
+                    ),
+                    PartEntity(
+                        idx = 4,
+                        scheduleIdx = 2,
+                        title = "Warming up",
+                        time = 300,
+                        color = Color.BLACK,
+                        speed = 6.5,
+                        incline = 0
+                    )
+                ),
+                relatedVideoList = listOf(
+                    VideoEntity(
+                        idx = 3,
+                        scheduleIdx = 2,
+                        title = "Run With Me",
+                        thumbnail = "",
+                        source = "",
+                        duration = 1000,
+                        category = VideoCategory.RUNNING
+                    ),
+                    VideoEntity(
+                        idx = 4,
+                        scheduleIdx = 2,
+                        title = "Run With Me",
+                        thumbnail = "",
+                        source = "",
+                        duration = 1000,
+                        category = VideoCategory.RUNNING
                     )
                 )
             )
         )
-        scheduleCache.insertScheduleWithPartList(scheduleWithPartEntityList).test()
+        scheduleCache.getScheduleDetailList().test()
+            .assertValue(returnValue)
             .assertComplete()
     }
 
     @Test
-    fun insertSchedule_success() {
-        val scheduleEntity = ScheduleEntity(
-            "My Custom Schedule",
-            ScheduleType.CUSTOM
+    fun insertScheduleDetail_success() {
+        val scheduleDetailEntity = ScheduleDetailEntity(
+            schedule = ScheduleEntity(
+                title = "My Custom Schedule",
+                scheduleType = ScheduleType.CUSTOM
+            ),
+            partList = listOf(
+                PartEntity(
+                    title = "Warming up",
+                    time = 300,
+                    color = Color.BLACK,
+                    speed = 6.5,
+                    incline = 0
+                ),
+                PartEntity(
+                    title = "Warming up",
+                    time = 300,
+                    color = Color.BLACK,
+                    speed = 6.5,
+                    incline = 0
+                )
+            ),
+            relatedVideoList = listOf(
+                VideoEntity(
+                    title = "Run With Me",
+                    thumbnail = "",
+                    source = "",
+                    duration = 1000,
+                    category = VideoCategory.RUNNING
+                ),
+                VideoEntity(
+                    title = "Run With Me",
+                    thumbnail = "",
+                    source = "",
+                    duration = 1000,
+                    category = VideoCategory.RUNNING
+                )
+            )
         )
-        scheduleCache.insertSchedule(scheduleEntity).test()
+        scheduleCache.insertScheduleDetail(scheduleDetailEntity).test()
             .assertComplete()
+    }
+
+    @Test
+    fun insertScheduleDetailList_success() {
+        val scheduleDetailEntityList = listOf(
+            ScheduleDetailEntity(
+                schedule = ScheduleEntity(
+                    title = "My Custom Schedule",
+                    scheduleType = ScheduleType.CUSTOM
+                ),
+                partList = listOf(
+                    PartEntity(
+                        title = "Warming up",
+                        time = 300,
+                        color = Color.BLACK,
+                        speed = 6.5,
+                        incline = 0
+                    ),
+                    PartEntity(
+                        title = "Warming up",
+                        time = 300,
+                        color = Color.BLACK,
+                        speed = 6.5,
+                        incline = 0
+                    )
+                ),
+                relatedVideoList = listOf(
+                    VideoEntity(
+                        title = "Run With Me",
+                        thumbnail = "",
+                        source = "",
+                        duration = 1000,
+                        category = VideoCategory.RUNNING
+                    ),
+                    VideoEntity(
+                        title = "Run With Me",
+                        thumbnail = "",
+                        source = "",
+                        duration = 1000,
+                        category = VideoCategory.RUNNING
+                    )
+                )
+            ),
+            ScheduleDetailEntity(
+                schedule = ScheduleEntity(
+                    title = "My Custom Schedule",
+                    scheduleType = ScheduleType.CUSTOM
+                ),
+                partList = listOf(
+                    PartEntity(
+                        title = "Warming up",
+                        time = 300,
+                        color = Color.BLACK,
+                        speed = 6.5,
+                        incline = 0
+                    ),
+                    PartEntity(
+                        title = "Warming up",
+                        time = 300,
+                        color = Color.BLACK,
+                        speed = 6.5,
+                        incline = 0
+                    )
+                ),
+                relatedVideoList = listOf(
+                    VideoEntity(
+                        title = "Run With Me",
+                        thumbnail = "",
+                        source = "",
+                        duration = 1000,
+                        category = VideoCategory.RUNNING
+                    ),
+                    VideoEntity(
+                        title = "Run With Me",
+                        thumbnail = "",
+                        source = "",
+                        duration = 1000,
+                        category = VideoCategory.RUNNING
+                    )
+                )
+            )
+        )
+        scheduleCache.insertScheduleDetailList(scheduleDetailEntityList).test()
+            .assertComplete()
+    }
+
+    @Test
+    fun getScheduleDetail_fail() {
+        val scheduleIdx = 0
+        scheduleCache.getScheduleDetail(scheduleIdx).test()
+            .assertError(TableEmptyException::class.java)
     }
 
     @Test
     fun updateSchedule_success() {
-        insertScheduleWithPartList_success()
+        insertScheduleDetailList_success()
         val scheduleEntity = ScheduleEntity(
-            2,
-            "Special Schedule",
-            ScheduleType.CUSTOM
+            idx = 2,
+            title = "My Custom Schedule 2",
+            scheduleType = ScheduleType.CUSTOM
         )
         val partEntityList = listOf(
             PartEntity(
-                2,
-                "Run",
-                300,
-                Color.RED,
-                10.5,
-                0
+                scheduleIdx = 2,
+                title = "Warming up",
+                time = 300,
+                color = Color.BLACK,
+                speed = 6.5,
+                incline = 0
             )
         )
-        val returnScheduleWithPartEntityList = listOf(
-            ScheduleWithPartEntity(
-                ScheduleEntity(
-                    1,
-                    "My Custom Schedule",
-                    ScheduleType.CUSTOM
+        val videoEntityList = listOf(
+            VideoEntity(
+                scheduleIdx = 2,
+                title = "Run With Me",
+                thumbnail = "",
+                source = "",
+                duration = 1000,
+                category = VideoCategory.RUNNING
+            )
+        )
+        val returnValue = listOf(
+            ScheduleDetailEntity(
+                schedule = ScheduleEntity(
+                    idx = 1,
+                    title = "My Custom Schedule",
+                    scheduleType = ScheduleType.CUSTOM
                 ),
-                listOf(
+                partList = listOf(
                     PartEntity(
-                        1,
-                        "Warming up",
-                        300,
-                        Color.BLACK,
-                        6.5,
-                        0
+                        idx = 1,
+                        scheduleIdx = 1,
+                        title = "Warming up",
+                        time = 300,
+                        color = Color.BLACK,
+                        speed = 6.5,
+                        incline = 0
                     ),
                     PartEntity(
-                        1,
-                        "Warming up",
-                        300,
-                        Color.BLACK,
-                        6.5,
-                        0
+                        idx = 2,
+                        scheduleIdx = 1,
+                        title = "Warming up",
+                        time = 300,
+                        color = Color.BLACK,
+                        speed = 6.5,
+                        incline = 0
+                    )
+                ),
+                relatedVideoList = listOf(
+                    VideoEntity(
+                        idx = 1,
+                        scheduleIdx = 1,
+                        title = "Run With Me",
+                        thumbnail = "",
+                        source = "",
+                        duration = 1000,
+                        category = VideoCategory.RUNNING
+                    ),
+                    VideoEntity(
+                        idx = 2,
+                        scheduleIdx = 1,
+                        title = "Run With Me",
+                        thumbnail = "",
+                        source = "",
+                        duration = 1000,
+                        category = VideoCategory.RUNNING
                     )
                 )
             ),
-            ScheduleWithPartEntity(
-                ScheduleEntity(
-                    2,
-                    "Special Schedule",
-                    ScheduleType.CUSTOM
+            ScheduleDetailEntity(
+                schedule = ScheduleEntity(
+                    idx = 2,
+                    title = "My Custom Schedule 2",
+                    scheduleType = ScheduleType.CUSTOM
                 ),
-                listOf(
+                partList = listOf(
                     PartEntity(
-                        2,
-                        "Run",
-                        300,
-                        Color.RED,
-                        10.5,
-                        0
+                        idx = 3,
+                        scheduleIdx = 2,
+                        title = "Warming up",
+                        time = 300,
+                        color = Color.BLACK,
+                        speed = 6.5,
+                        incline = 0
+                    )
+                ),
+                relatedVideoList = listOf(
+                    VideoEntity(
+                        idx = 3,
+                        scheduleIdx = 2,
+                        title = "Run With Me",
+                        thumbnail = "",
+                        source = "",
+                        duration = 1000,
+                        category = VideoCategory.RUNNING
                     )
                 )
             )
         )
-        scheduleCache.updateSchedule(scheduleEntity, partEntityList).test()
+        scheduleCache.updateSchedule(scheduleEntity, partEntityList, videoEntityList).test()
             .assertComplete()
-        scheduleCache.getScheduleWithPartList().test()
-            .assertValue(returnScheduleWithPartEntityList)
+        scheduleCache.getScheduleDetailList().test()
+            .assertValue(returnValue)
             .assertComplete()
     }
 
     @Test
     fun deleteSchedule_success() {
-        insertScheduleWithPartList_success()
+        insertScheduleDetailList_success()
         val scheduleIdx = 1
-        val returnScheduleWithPartEntityList = listOf(
-            ScheduleWithPartEntity(
-                ScheduleEntity(
-                    2,
-                    "My Custom Schedule 2",
-                    ScheduleType.CUSTOM
+        val returnValue = listOf(
+            ScheduleDetailEntity(
+                schedule = ScheduleEntity(
+                    idx = 2,
+                    title = "My Custom Schedule",
+                    scheduleType = ScheduleType.CUSTOM
                 ),
-                listOf(
+                partList = listOf(
                     PartEntity(
-                        2,
-                        "Warming up",
-                        300,
-                        Color.BLACK,
-                        6.5,
-                        0
+                        idx = 3,
+                        scheduleIdx = 2,
+                        title = "Warming up",
+                        time = 300,
+                        color = Color.BLACK,
+                        speed = 6.5,
+                        incline = 0
+                    ),
+                    PartEntity(
+                        idx = 4,
+                        scheduleIdx = 2,
+                        title = "Warming up",
+                        time = 300,
+                        color = Color.BLACK,
+                        speed = 6.5,
+                        incline = 0
+                    )
+                ),
+                relatedVideoList = listOf(
+                    VideoEntity(
+                        idx = 3,
+                        scheduleIdx = 2,
+                        title = "Run With Me",
+                        thumbnail = "",
+                        source = "",
+                        duration = 1000,
+                        category = VideoCategory.RUNNING
+                    ),
+                    VideoEntity(
+                        idx = 4,
+                        scheduleIdx = 2,
+                        title = "Run With Me",
+                        thumbnail = "",
+                        source = "",
+                        duration = 1000,
+                        category = VideoCategory.RUNNING
                     )
                 )
             )
         )
         scheduleCache.deleteSchedule(scheduleIdx).test()
             .assertComplete()
-        scheduleCache.getScheduleWithPartList().test()
-            .assertValue(returnScheduleWithPartEntityList)
-    }
-
-    @Test
-    fun deletePart_success() {
-        insertScheduleWithPartList_success()
-        val scheduleIdx = 1
-        scheduleCache.deletePart(scheduleIdx).test()
-            .assertComplete()
-        scheduleCache.getPartList(scheduleIdx).test()
-            .assertError(TableEmptyException::class.java)
+        scheduleCache.getScheduleDetailList().test()
+            .assertValue(returnValue)
     }
 }

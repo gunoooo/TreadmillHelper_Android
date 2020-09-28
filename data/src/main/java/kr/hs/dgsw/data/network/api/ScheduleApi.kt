@@ -2,7 +2,6 @@ package kr.hs.dgsw.data.network.api
 
 import io.reactivex.Single
 import kr.hs.dgsw.data.dto.response.ScheduleResponse
-import kr.hs.dgsw.domain.entity.Schedule
 import retrofit2.Response
 import retrofit2.http.GET
 

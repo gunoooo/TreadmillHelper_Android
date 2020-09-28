@@ -4,27 +4,25 @@ import io.reactivex.Completable
 import io.reactivex.Single
 import kr.hs.dgsw.data.database.entity.PartEntity
 import kr.hs.dgsw.data.database.entity.ScheduleEntity
-import kr.hs.dgsw.data.database.entity.ScheduleWithPartEntity
+import kr.hs.dgsw.data.database.entity.ScheduleDetailEntity
+import kr.hs.dgsw.data.database.entity.VideoEntity
 
 interface ScheduleCache {
     fun getScheduleList(): Single<List<ScheduleEntity>>
 
-    fun getScheduleWithPartList(): Single<List<ScheduleWithPartEntity>>
+    fun getScheduleDetailList(): Single<List<ScheduleDetailEntity>>
 
-    fun getPartList(scheduleIdx: Int): Single<List<PartEntity>>
+    fun getScheduleDetail(scheduleIdx: Int): Single<ScheduleDetailEntity>
 
-    fun insertScheduleList(scheduleEntityList: List<ScheduleEntity>): Completable
+    fun insertScheduleDetailList(scheduleDetailEntityList: List<ScheduleDetailEntity>): Completable
 
-    fun insertScheduleWithPartList(scheduleWithPartEntityList: List<ScheduleWithPartEntity>): Completable
-
-    fun insertSchedule(scheduleEntity: ScheduleEntity): Completable
+    fun insertScheduleDetail(scheduleDetailEntity: ScheduleDetailEntity): Completable
 
     fun deleteSchedule(scheduleIdx: Int): Completable
 
-    fun deletePart(scheduleIdx: Int): Completable
-
     fun updateSchedule(
         scheduleEntity: ScheduleEntity,
-        partEntityList: List<PartEntity> = emptyList()
+        partEntityList: List<PartEntity> = emptyList(),
+        videoEntityList: List<VideoEntity> = emptyList()
     ): Completable
 }

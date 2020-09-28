@@ -70,7 +70,6 @@ dependencies {
     implementation "androidx.room:room-runtime:$rootProject.roomVersion"
     implementation "androidx.room:room-rxjava2:$rootProject.roomVersion"
     implementation "androidx.room:room-guava:$rootProject.roomVersion"
-    implementation "androidx.room:room-ktx:$rootProject.roomVersion"
 
     implementation "com.google.code.gson:gson:$rootProject.gsonVersion"
     implementation "com.google.guava:guava:$rootProject.guavaVersion"

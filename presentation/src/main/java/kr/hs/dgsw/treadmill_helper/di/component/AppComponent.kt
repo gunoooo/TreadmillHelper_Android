@@ -6,15 +6,20 @@ import dagger.Component
 import dagger.android.AndroidInjectionModule
 import dagger.android.AndroidInjector
 import kr.hs.dgsw.treadmill_helper.TreadmillHelperApplication
-import kr.hs.dgsw.treadmill_helper.di.module.AppModule
-import kr.hs.dgsw.treadmill_helper.di.module.RepositoryModule
+import kr.hs.dgsw.treadmill_helper.di.module.*
 import javax.inject.Singleton
 
 @Singleton
 @Component(
     modules = [
         AppModule::class,
+        NetWorkModule::class,
+        ApiModule::class,
+        CacheModule::class,
+        RemoteModule::class,
+        DataSourceModule::class,
         RepositoryModule::class,
+        ActivityBindingModule::class,
         AndroidInjectionModule::class
     ]
 )

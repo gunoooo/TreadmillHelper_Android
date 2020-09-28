@@ -11,16 +11,33 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/colorBackground"
         tools:context=".ui.main.MainActivity">
+        <kr.hs.dgsw.treadmill_helper.widget.TimerProgressBar
+            android:id="@+id/timer_progress_bar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:indeterminate="false"
+            android:rotation="270"
+            android:max="3000"
+            android:progressDrawable="@drawable/progress"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:onClick="@{() -> viewModel.onClickTimer()}" />
 
         <TextView
+            android:id="@+id/time_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Hello World!"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
+            android:textSize="70sp"
+            android:textColor="@color/colorText"
+            app:layout_constraintBottom_toBottomOf="@+id/timer_progress_bar"
+            app:layout_constraintEnd_toEndOf="@+id/timer_progress_bar"
+            app:layout_constraintStart_toStartOf="@+id/timer_progress_bar"
+            app:layout_constraintTop_toTopOf="@+id/timer_progress_bar"
+            tools:text="15:30"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

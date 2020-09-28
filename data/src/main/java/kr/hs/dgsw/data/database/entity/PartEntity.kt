@@ -2,11 +2,11 @@ package kr.hs.dgsw.data.database.entity
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import kr.hs.dgsw.domain.entity.enum.Color
+import kr.hs.dgsw.domain.entity.Color
 
 @Entity(tableName = "part_table")
 data class PartEntity(
-    val scheduleIdx: Int,
+    var scheduleIdx: Int,
     val title: String,
     val time: Int,
     val color: Color,
@@ -20,4 +20,7 @@ data class PartEntity(
             this(scheduleIdx, title, time, color, speed, incline) {
         this.idx = idx
     }
+
+    constructor(title: String, time: Int, color: Color, speed: Double, incline: Int):
+            this(0, title, time, color, speed, incline)
 }

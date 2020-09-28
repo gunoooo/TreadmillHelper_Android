@@ -2,7 +2,7 @@ package kr.hs.dgsw.data.database.entity
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import kr.hs.dgsw.domain.entity.enum.ScheduleType
+import kr.hs.dgsw.domain.entity.ScheduleType
 
 @Entity(tableName = "schedule_table")
 data class ScheduleEntity(

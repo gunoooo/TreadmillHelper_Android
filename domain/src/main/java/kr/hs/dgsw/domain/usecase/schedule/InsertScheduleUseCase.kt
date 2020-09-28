@@ -2,7 +2,7 @@ package kr.hs.dgsw.domain.usecase.schedule
 
 import io.reactivex.Completable
 import kr.hs.dgsw.domain.base.ParamsUseCase
-import kr.hs.dgsw.domain.entity.Schedule
+import kr.hs.dgsw.domain.entity.schedule.Schedule
 import kr.hs.dgsw.domain.repository.ScheduleRepository
 import javax.inject.Inject
 

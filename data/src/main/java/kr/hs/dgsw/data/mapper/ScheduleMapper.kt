@@ -1,31 +1,31 @@
 package kr.hs.dgsw.data.mapper
 
+import kr.hs.dgsw.data.database.entity.ScheduleDetailEntity
 import kr.hs.dgsw.data.database.entity.ScheduleEntity
-import kr.hs.dgsw.data.database.entity.ScheduleWithPartEntity
 import kr.hs.dgsw.data.entity.ScheduleData
-import kr.hs.dgsw.domain.entity.Schedule
+import kr.hs.dgsw.domain.entity.schedule.Schedule
 
 fun Schedule.toDataEntity(): ScheduleData {
     return ScheduleData(
-        idx = idx,
         title = title,
         scheduleType = scheduleType,
-        partList = partList.map { it.toDataEntity() }
+        partList = partList.map { it.toDataEntity() },
+        relatedVideoList = relatedVideoList.map { it.toDataEntity() }
     )
 }
 
 fun Schedule.toDbEntity(): ScheduleEntity {
     return ScheduleEntity(
-        idx = idx,
         title = title,
         scheduleType = scheduleType
     )
 }
 
-fun Schedule.toScheduleWithPartEntity(): ScheduleWithPartEntity {
-    return ScheduleWithPartEntity(
+fun Schedule.toScheduleDetailEntity(): ScheduleDetailEntity {
+    return ScheduleDetailEntity(
         schedule = toDbEntity(),
-        partList = partList.map { it.toDbEntity() }
+        partList = partList.map { it.toDbEntity(idx) },
+        relatedVideoList = relatedVideoList.map { it.toDbEntity(idx) }
     )
 }
 
@@ -40,16 +40,16 @@ fun ScheduleData.toEntity(): Schedule {
 
 fun ScheduleData.toDbEntity(): ScheduleEntity {
     return ScheduleEntity(
-        idx = idx,
         title = title,
         scheduleType = scheduleType
     )
 }
 
-fun ScheduleData.toScheduleWithPartEntity(): ScheduleWithPartEntity {
-    return ScheduleWithPartEntity(
-        schedule = this.toDbEntity(),
-        partList = partList.map { it.toDbEntity() }
+fun ScheduleData.toScheduleDetailEntity(): ScheduleDetailEntity {
+    return ScheduleDetailEntity(
+        schedule = toDbEntity(),
+        partList = partList.map { it.toDbEntity(idx) },
+        relatedVideoList = relatedVideoList.map { it.toDbEntity(idx) }
     )
 }
 
@@ -67,18 +67,20 @@ fun ScheduleEntity.toDataEntity(): ScheduleData {
         idx = idx,
         title = title,
         scheduleType = scheduleType,
-        partList = emptyList()
+        partList = emptyList(),
+        relatedVideoList = emptyList()
     )
 }
 
-fun ScheduleEntity.toScheduleWithPartEntity(): ScheduleWithPartEntity {
-    return ScheduleWithPartEntity(
+fun ScheduleEntity.toScheduleDetailEntity(): ScheduleDetailEntity {
+    return ScheduleDetailEntity(
         schedule = this,
-        partList = emptyList()
+        partList = emptyList(),
+        relatedVideoList = emptyList()
     )
 }
 
-fun ScheduleWithPartEntity.toEntity(): Schedule {
+fun ScheduleDetailEntity.toEntity(): Schedule {
     return Schedule(
         idx = schedule.idx,
         title = schedule.title,
@@ -87,16 +89,17 @@ fun ScheduleWithPartEntity.toEntity(): Schedule {
     )
 }
 
-fun ScheduleWithPartEntity.toDataEntity(): ScheduleData {
+fun ScheduleDetailEntity.toDataEntity(): ScheduleData {
     return ScheduleData(
         idx = schedule.idx,
         title = schedule.title,
         scheduleType = schedule.scheduleType,
-        partList = partList.map { it.toDataEntity() }
+        partList = partList.map { it.toDataEntity() },
+        relatedVideoList = relatedVideoList.map { it.toDataEntity() }
     )
 }
 
-fun ScheduleWithPartEntity.toDbEntity(): ScheduleEntity {
+fun ScheduleDetailEntity.toDbEntity(): ScheduleEntity {
     return ScheduleEntity(
         idx = schedule.idx,
         title = schedule.title,

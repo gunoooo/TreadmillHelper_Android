@@ -1,7 +1,7 @@
 package kr.hs.dgsw.data.database.converter
 
 import androidx.room.TypeConverter
-import kr.hs.dgsw.domain.entity.enum.ScheduleType
+import kr.hs.dgsw.domain.entity.ScheduleType
 
 class ScheduleTypeConverter {
     @TypeConverter

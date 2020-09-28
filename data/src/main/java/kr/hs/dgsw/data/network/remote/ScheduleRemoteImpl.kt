@@ -5,9 +5,9 @@ import kr.hs.dgsw.data.base.BaseRemote
 import kr.hs.dgsw.data.dto.response.ScheduleResponse
 import kr.hs.dgsw.data.entity.ScheduleData
 import kr.hs.dgsw.data.network.api.ScheduleApi
-import kr.hs.dgsw.domain.entity.Schedule
+import javax.inject.Inject
 
-class ScheduleRemoteImpl(
+class ScheduleRemoteImpl @Inject constructor(
     override val api: ScheduleApi
 ) : BaseRemote<ScheduleApi>(), ScheduleRemote {
     override fun getPresetScheduleList(): Single<List<ScheduleData>> =

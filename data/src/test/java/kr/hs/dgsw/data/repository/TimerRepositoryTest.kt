@@ -16,8 +16,8 @@ class TimerRepositoryTest {
     }
 
     @Test
-    fun countTime_success() {
-        val partTime = 5L
+    fun countDownTime_success() {
+        val partTime = 5
         val testObserver = timerRepository.countDownTime(partTime).test()
         testObserver.awaitTerminalEvent()
         testObserver
