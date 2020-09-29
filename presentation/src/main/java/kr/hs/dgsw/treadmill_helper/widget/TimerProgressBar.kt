@@ -3,6 +3,7 @@ package kr.hs.dgsw.treadmill_helper.widget
 import android.content.Context
 import android.util.AttributeSet
 import android.widget.ProgressBar
+import kr.hs.dgsw.treadmill_helper.R
 
 class TimerProgressBar : ProgressBar {
     private var mContext: Context? = null
@@ -25,6 +26,10 @@ class TimerProgressBar : ProgressBar {
         this.mContext = context
         this.attrs = attrs
         this.styleAttr = defStyleAttr
+
+        rotation = 270F
+        progressDrawable = context.getDrawable(R.drawable.progress)
+        isIndeterminate = false
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {

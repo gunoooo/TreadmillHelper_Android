@@ -8,36 +8,87 @@
             name="viewModel"
             type="kr.hs.dgsw.treadmill_helper.ui.main.MainViewModel" />
     </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/colorBackground"
         tools:context=".ui.main.MainActivity">
-        <kr.hs.dgsw.treadmill_helper.widget.TimerProgressBar
-            android:id="@+id/timer_progress_bar"
-            style="?android:attr/progressBarStyleHorizontal"
+        <kr.hs.dgsw.treadmill_helper.widget.TimerView
+            android:id="@+id/timer_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
-            android:indeterminate="false"
-            android:rotation="270"
-            android:max="3000"
-            android:progressDrawable="@drawable/progress"
+            android:layout_marginHorizontal="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:onClick="@{() -> viewModel.onClickTimer()}" />
 
-        <TextView
-            android:id="@+id/time_text_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="70sp"
-            android:textColor="@color/colorText"
-            app:layout_constraintBottom_toBottomOf="@+id/timer_progress_bar"
-            app:layout_constraintEnd_toEndOf="@+id/timer_progress_bar"
-            app:layout_constraintStart_toStartOf="@+id/timer_progress_bar"
-            app:layout_constraintTop_toTopOf="@+id/timer_progress_bar"
-            tools:text="15:30"/>
+<!--        <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--            android:id="@+id/top_image_container"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="320dp"-->
+<!--            android:background="?android:attr/windowBackground"-->
+<!--            app:layout_constrainedWidth="true"-->
+<!--            app:layout_constraintTop_toTopOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent" />-->
+
+<!--        <ImageView-->
+<!--            android:id="@+id/top_image"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="0dp"-->
+<!--            android:scaleType="centerCrop"-->
+<!--            android:src="@drawable/cat_1"-->
+<!--            app:layout_constraintTop_toTopOf="@id/top_image_container"-->
+<!--            app:layout_constraintBottom_toBottomOf="@id/top_image_container"-->
+<!--            app:layout_constraintStart_toStartOf="@id/top_image_container"-->
+<!--            app:layout_constraintEnd_toEndOf="@id/top_image_container"-->
+<!--            />-->
+
+<!--        <ImageView-->
+<!--            android:id="@+id/image_play"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginEnd="16dp"-->
+<!--            android:src="@drawable/ic_play_arrow_gray_32dp"-->
+<!--            android:alpha="0"-->
+<!--            app:layout_constraintEnd_toStartOf="@id/image_clear"-->
+<!--            app:layout_constraintTop_toTopOf="@id/top_image_container"-->
+<!--            app:layout_constraintBottom_toBottomOf="@id/top_image_container"-->
+<!--            />-->
+
+<!--        <ImageView-->
+<!--            android:id="@+id/image_clear"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginEnd="16dp"-->
+<!--            android:src="@drawable/ic_clear_gray_32dp"-->
+<!--            android:alpha="0"-->
+<!--            app:layout_constraintEnd_toEndOf="@id/top_image_container"-->
+<!--            app:layout_constraintBottom_toBottomOf="@id/top_image_container"-->
+<!--            app:layout_constraintTop_toTopOf="@id/top_image_container"-->
+<!--            />-->
+
+<!--        <FrameLayout-->
+<!--            android:id="@+id/recyclerview_container"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="0dp"-->
+<!--            android:background="?android:attr/windowBackground"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/top_image_container"-->
+<!--            />-->
+
+<!--        <androidx.recyclerview.widget.RecyclerView-->
+<!--            android:id="@+id/recyclerview_front"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="0dp"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/top_image_container" />-->
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

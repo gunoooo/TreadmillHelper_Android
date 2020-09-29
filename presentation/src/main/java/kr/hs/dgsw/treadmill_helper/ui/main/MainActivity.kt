@@ -26,16 +26,23 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
     override fun observerViewModel() {
         with(mViewModel) {
             partData.observe(this@MainActivity, Observer {
-                val drawable = ((ContextCompat.getDrawable(this@MainActivity, R.drawable.progress) as LayerDrawable)
-                    .findDrawableByLayerId(R.id.progress) as GradientDrawable)
-                drawable.setColor(Color.parseColor(it.color.toRGB()))
-                timer_progress_bar.progressDrawable = drawable
-                timer_progress_bar.max = it.time * 1000
+                timer_view.updatePart(it, partIndex)
             })
 
             remainingTimeData.observe(this@MainActivity, Observer {
-                timer_progress_bar.progress = it - 1000
-                time_text_view.text = "${(it / 1000 / 60).format(2)} : ${(it / 1000 % 60).format(2)}"
+                timer_view.updateProgress(it)
+            })
+
+            scheduleData.observe(this@MainActivity, Observer {
+                timer_view.initSchedule(it)
+            })
+
+            timerPauseEvent.observe(this@MainActivity, Observer {
+                timer_view.pause()
+            })
+
+            timerPlayEvent.observe(this@MainActivity, Observer {
+                timer_view.play()
             })
         }
     }

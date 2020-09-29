@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#4B79FF</color>
-    <color name="colorPrimaryDark">#5683D6</color>
+    <color name="colorPrimaryDark">#3252AF</color>
     <color name="colorAccent">#FA3953</color>
-    <color name="colorBackground">#2D2D33</color>
+
+    <color name="colorBackground">#222230</color>
     <color name="colorText">#FFFFFF</color>
+
+    <color name="colorTimer">#1E1E2B</color>
+    <color name="colorTimerState">#81303043</color>
 </resources>
