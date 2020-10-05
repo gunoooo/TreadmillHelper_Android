@@ -25,6 +25,17 @@
             app:layout_constraintTop_toTopOf="parent"
             android:onClick="@{() -> viewModel.onClickTimer()}" />
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/part_recyclerview"
+            android:layout_width="0dp"
+            android:layout_height="130dp"
+            android:layout_marginTop="20dp"
+            app:adapter="@{viewModel.partListAdapter}"
+            tools:listitem="@layout/item_part"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/timer_view" />
+
 <!--        <androidx.constraintlayout.widget.ConstraintLayout-->
 <!--            android:id="@+id/top_image_container"-->
 <!--            android:layout_width="match_parent"-->

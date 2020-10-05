@@ -1,5 +1,11 @@
 package kr.hs.dgsw.treadmill_helper.etc.extension
 
+import android.content.res.Resources
+import android.util.TypedValue
+
+
+
+
 fun Int.format(digits: Int) = "%0${digits}d".format(this)
 
 fun Int.toMilliseconds() = this * 1000
@@ -14,6 +20,13 @@ fun Int.secToTimeFormat(): String {
         "$minutes : $seconds"
 }
 
-fun Int.milliToMin() = (this / 1000 / 60 % 12).format(2)
+fun Int.milliToMin() = (this / 1000 / 60).format(2)
 
 fun Int.milliToSec() = (this / 1000 % 60).format(2)
+
+fun Int.dpToPx() =
+    TypedValue.applyDimension(
+        TypedValue.COMPLEX_UNIT_DIP,
+        this.toFloat(),
+        Resources.getSystem().displayMetrics
+    ).toInt()

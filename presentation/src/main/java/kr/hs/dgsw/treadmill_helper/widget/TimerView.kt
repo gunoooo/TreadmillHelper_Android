@@ -82,10 +82,11 @@ class TimerView : FrameLayout {
         drawable.setColor(Color.parseColor(this.part.color.toRGB()))
         timer_progress_bar.progressDrawable = drawable
         timer_progress_bar.max = this.part.time.toMilliseconds()
-        part_text_view.text = "${this.partIndex + 1} / ${this.schedule.partList.size}"
+        if (::schedule.isInitialized)
+            part_text_view.text = "${this.partIndex + 1} / ${this.schedule.partList.size}"
     }
 
-    fun play() = this.state_image_view.setImageResource(R.drawable.ic_pause)
+    fun play() = this.state_image_view.setImageDrawable(null)
 
     fun pause() = this.state_image_view.setImageResource(R.drawable.ic_play)
 

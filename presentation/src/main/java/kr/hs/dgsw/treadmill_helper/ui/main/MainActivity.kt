@@ -1,19 +1,22 @@
 package kr.hs.dgsw.treadmill_helper.ui.main
 
 import android.annotation.SuppressLint
-import android.graphics.Color
-import android.graphics.drawable.GradientDrawable
-import android.graphics.drawable.LayerDrawable
+import android.content.res.Resources
 import android.os.Bundle
-import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.PagerSnapHelper
+import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.SnapHelper
 import kotlinx.android.synthetic.main.activity_main.*
-import kr.hs.dgsw.treadmill_helper.R
 import kr.hs.dgsw.treadmill_helper.base.BaseActivity
 import kr.hs.dgsw.treadmill_helper.databinding.ActivityMainBinding
-import kr.hs.dgsw.treadmill_helper.etc.extension.format
 import kr.hs.dgsw.treadmill_helper.etc.extension.getViewModel
+import kr.hs.dgsw.treadmill_helper.etc.extension.toMilliseconds
+import kr.hs.dgsw.treadmill_helper.etc.listener.SnapPagerScrollListener
+import kr.hs.dgsw.treadmill_helper.etc.listener.SnapPagerScrollListener.ON_SETTLED
 import javax.inject.Inject
+
 
 class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
     @Inject
@@ -27,6 +30,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
         with(mViewModel) {
             partData.observe(this@MainActivity, Observer {
                 timer_view.updatePart(it, partIndex)
+                part_recyclerview.smoothScrollToPosition(partIndex)
             })
 
             remainingTimeData.observe(this@MainActivity, Observer {
@@ -50,5 +54,23 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mViewModel.setSchedule(1)
+        initRecyclerView()
+    }
+
+    private fun initRecyclerView() {
+        val pagerSnapHelper = PagerSnapHelper()
+        part_recyclerview.layoutManager =
+            LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        part_recyclerview.setHasFixedSize(true)
+        part_recyclerview.addOnScrollListener(
+            SnapPagerScrollListener(
+                pagerSnapHelper,
+                ON_SETTLED,
+                true
+            ) { position ->
+                mViewModel.setPart(position)
+            }
+        )
+        PagerSnapHelper().attachToRecyclerView(part_recyclerview)
     }
 }

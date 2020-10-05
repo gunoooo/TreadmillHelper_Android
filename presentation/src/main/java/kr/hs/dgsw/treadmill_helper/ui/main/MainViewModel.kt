@@ -5,6 +5,7 @@ import androidx.room.EmptyResultSetException
 import io.reactivex.disposables.Disposable
 import io.reactivex.observers.DisposableObserver
 import io.reactivex.observers.DisposableSingleObserver
+import kr.hs.dgsw.data.etc.extension.refreshAll
 import kr.hs.dgsw.domain.entity.schedule.Part
 import kr.hs.dgsw.domain.entity.schedule.Schedule
 import kr.hs.dgsw.domain.usecase.schedule.GetScheduleUseCase
@@ -12,6 +13,7 @@ import kr.hs.dgsw.domain.usecase.timer.CountDownTimeUseCase
 import kr.hs.dgsw.treadmill_helper.base.viewmodel.BaseViewModel
 import kr.hs.dgsw.treadmill_helper.etc.SingleLiveEvent
 import kr.hs.dgsw.treadmill_helper.etc.extension.toMilliseconds
+import kr.hs.dgsw.treadmill_helper.widget.recyclerview.part.PartListAdapter
 
 class MainViewModel(
     private val getScheduleUseCase: GetScheduleUseCase,
@@ -19,6 +21,9 @@ class MainViewModel(
 ) : BaseViewModel() {
     var partIndex: Int = 0
     private lateinit var timer: Disposable
+    private val partList = ArrayList<Part>()
+
+    val partListAdapter = PartListAdapter(partList)
 
     val scheduleData = MutableLiveData<Schedule>()
     val partData = MutableLiveData<Part>()
@@ -32,8 +37,9 @@ class MainViewModel(
             object : DisposableSingleObserver<Schedule>() {
                 override fun onSuccess(t: Schedule) {
                     scheduleData.value = t
-                    partData.value = scheduleData.value!!.partList[partIndex]
-                    startTimer(partData.value!!.time.toMilliseconds())
+                    setPart()
+                    partList.refreshAll(scheduleData.value!!.partList)
+                    partListAdapter.notifyDataSetChanged()
                 }
 
                 override fun onError(e: Throwable) {
@@ -42,7 +48,7 @@ class MainViewModel(
             })
     }
 
-    fun startTimer(partTime: Int) {
+    private fun startTimer(partTime: Int) {
         timer = addDisposable(
             countDownTimeUseCase.buildUseCaseObservable(
                 CountDownTimeUseCase.Params(partTime)
@@ -60,13 +66,23 @@ class MainViewModel(
                     if (++partIndex == scheduleData.value!!.partList.size) {
 
                     } else {
-                        partData.value = scheduleData.value!!.partList[partIndex]
-                        remainingTimeData.value = partData.value!!.time.toMilliseconds()
-                        startTimer(remainingTimeData.value!!)
+                        setPart()
                     }
                 }
             }
         )
+    }
+
+    fun setPart(position: Int) {
+        partIndex = position
+        timer.dispose()
+        setPart()
+        timerPlayEvent.call()
+    }
+
+    private fun setPart() {
+        partData.value = scheduleData.value!!.partList[partIndex]
+        startTimer(partData.value!!.time.toMilliseconds())
     }
 
     fun onClickTimer() {

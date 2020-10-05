@@ -26,6 +26,27 @@ object Object {
                     color = Color.GREEN,
                     speed = 7.5,
                     incline = 0
+                ),
+                PartData(
+                    title = "Running",
+                    time = 120,
+                    color = Color.RED,
+                    speed = 10.5,
+                    incline = 0
+                ),
+                PartData(
+                    title = "Hiking",
+                    time = 180,
+                    color = Color.ORANGE,
+                    speed = 5.0,
+                    incline = 5
+                ),
+                PartData(
+                    title = "Cool down",
+                    time = 300,
+                    color = Color.BLUE,
+                    speed = 4.5,
+                    incline = 0
                 )
             ),
             relatedVideoList = listOf(

@@ -59,6 +59,7 @@ dependencies {
     implementation "androidx.constraintlayout:constraintlayout:$rootProject.constraintLayoutVersion"
     implementation "androidx.media:media:$rootProject.mediaVersion"
     implementation "com.mikhaellopez:circularimageview:$rootProject.circularimageviewVersion"
+    implementation "com.github.smarteist:autoimageslider:$rootProject.autoimagesliderVersion"
 
     testImplementation "junit:junit:$rootProject.junitVersion"
     testImplementation "org.jetbrains.kotlin:kotlin-test-junit:$rootProject.kotlinVersion"
