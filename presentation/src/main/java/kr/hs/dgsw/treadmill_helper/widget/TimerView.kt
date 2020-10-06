@@ -9,7 +9,7 @@ import android.util.AttributeSet
 import android.view.View
 import android.widget.FrameLayout
 import androidx.core.content.ContextCompat
-import kotlinx.android.synthetic.main.item_timer.view.*
+import kotlinx.android.synthetic.main.layout_timer.view.*
 import kr.hs.dgsw.domain.entity.schedule.Part
 import kr.hs.dgsw.domain.entity.schedule.Schedule
 import kr.hs.dgsw.treadmill_helper.R
@@ -22,7 +22,7 @@ class TimerView : FrameLayout {
     private var mContext: Context? = null
     private var attrs: AttributeSet? = null
     private var styleAttr: Int? = null
-    private var view = View.inflate(context, R.layout.item_timer, null)
+    private var view = View.inflate(context, R.layout.layout_timer, null)
 
     lateinit var schedule: Schedule
     lateinit var part: Part
@@ -66,6 +66,8 @@ class TimerView : FrameLayout {
     }
 
     fun updateProgress(progress: Int) {
+        if (progress - 1000 > timer_progress_bar.max)
+            timer_progress_bar.max  = progress - 1000
         timer_progress_bar.progress = progress - 1000
         minutes_text_view.text = progress.milliToMin()
         seconds_text_view.text = progress.milliToSec()
@@ -77,7 +79,7 @@ class TimerView : FrameLayout {
     fun updatePart(part: Part, partIndex: Int) {
         this.part = part
         this.partIndex = partIndex
-        val drawable = ((ContextCompat.getDrawable(mContext!!, R.drawable.progress) as LayerDrawable)
+        val drawable = ((ContextCompat.getDrawable(mContext!!, R.drawable.background_progress) as LayerDrawable)
             .findDrawableByLayerId(R.id.progress) as GradientDrawable)
         drawable.setColor(Color.parseColor(this.part.color.toRGB()))
         timer_progress_bar.progressDrawable = drawable
@@ -91,12 +93,15 @@ class TimerView : FrameLayout {
     fun pause() = this.state_image_view.setImageResource(R.drawable.ic_play)
 
     private fun getAllRemainingTime(currentRemainingTime: Int): Int {
-        return currentRemainingTime +
+        if (::schedule.isInitialized)
+            return currentRemainingTime +
                 schedule.partList.mapIndexed { index: Int, part: Part ->
                     if (index > partIndex)
                         part.time
                     else
                         0
                 }.sum().toMilliseconds()
+        else
+            return 0
     }
 }

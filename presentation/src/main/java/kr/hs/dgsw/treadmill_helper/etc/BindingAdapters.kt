@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.card.MaterialCardView
 import com.smarteist.autoimageslider.SliderView
 import com.smarteist.autoimageslider.SliderViewAdapter
+import kr.co.prnd.YouTubePlayerView
 import kr.hs.dgsw.treadmill_helper.etc.extension.getParentActivity
 
 @BindingAdapter("adapter")

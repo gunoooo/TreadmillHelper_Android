@@ -18,12 +18,14 @@ class PartItemViewModel : BaseItemViewModel<PartNavigator>() {
         this.color.value = this.part.color.toRGB()
         this.title.value = this.part.title
         this.incline.value = "incline : ${this.part.incline}"
-        this.speed.value = "speed : ${this.part.speed}"
+        this.speed.value = "speed : ${this.part.speed}km/h"
     }
 
-    fun onClickPlus30() {
-
+    fun onClickPlus30sec() {
+        getNavigator().plus30sec()
     }
 
-
+    fun onClickMinus30sec() {
+        getNavigator().minus30sec()
+    }
 }

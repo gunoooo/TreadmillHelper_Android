@@ -34,7 +34,8 @@ fun ScheduleData.toEntity(): Schedule {
         idx = idx,
         title = title,
         scheduleType = scheduleType,
-        partList = partList.map { it.toEntity() }
+        partList = partList.map { it.toEntity() },
+        relatedVideoList = relatedVideoList.map { it.toEntity() }
     )
 }
 
@@ -58,7 +59,8 @@ fun ScheduleEntity.toEntity(): Schedule {
         idx = idx,
         title = title,
         scheduleType = scheduleType,
-        partList = emptyList()
+        partList = emptyList(),
+        relatedVideoList = emptyList()
     )
 }
 
@@ -85,7 +87,8 @@ fun ScheduleDetailEntity.toEntity(): Schedule {
         idx = schedule.idx,
         title = schedule.title,
         scheduleType = schedule.scheduleType,
-        partList = partList.map { it.toEntity() }
+        partList = partList.map { it.toEntity() },
+        relatedVideoList = relatedVideoList.map { it.toEntity() }
     )
 }
 

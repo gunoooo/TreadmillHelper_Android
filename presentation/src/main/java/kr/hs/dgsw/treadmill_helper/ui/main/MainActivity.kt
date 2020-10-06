@@ -1,20 +1,15 @@
 package kr.hs.dgsw.treadmill_helper.ui.main
 
 import android.annotation.SuppressLint
-import android.content.res.Resources
 import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
-import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.SnapHelper
 import kotlinx.android.synthetic.main.activity_main.*
 import kr.hs.dgsw.treadmill_helper.base.BaseActivity
 import kr.hs.dgsw.treadmill_helper.databinding.ActivityMainBinding
 import kr.hs.dgsw.treadmill_helper.etc.extension.getViewModel
-import kr.hs.dgsw.treadmill_helper.etc.extension.toMilliseconds
 import kr.hs.dgsw.treadmill_helper.etc.listener.SnapPagerScrollListener
-import kr.hs.dgsw.treadmill_helper.etc.listener.SnapPagerScrollListener.ON_SETTLED
 import javax.inject.Inject
 
 
@@ -41,6 +36,10 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
                 timer_view.initSchedule(it)
             })
 
+            videoData.observe(this@MainActivity, Observer {
+                youtube_player_view.play(it.source)
+            })
+
             timerPauseEvent.observe(this@MainActivity, Observer {
                 timer_view.pause()
             })
@@ -48,6 +47,16 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
             timerPlayEvent.observe(this@MainActivity, Observer {
                 timer_view.play()
             })
+
+            with(partListAdapter) {
+                plus30secEvent.observe(this@MainActivity, Observer {
+                    mViewModel.plus30sec()
+                })
+
+                minus30secEvent.observe(this@MainActivity, Observer {
+                    mViewModel.minus30sec()
+                })
+            }
         }
     }
 
@@ -64,13 +73,11 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
         part_recyclerview.setHasFixedSize(true)
         part_recyclerview.addOnScrollListener(
             SnapPagerScrollListener(
-                pagerSnapHelper,
-                ON_SETTLED,
-                true
+                pagerSnapHelper
             ) { position ->
                 mViewModel.setPart(position)
             }
         )
-        PagerSnapHelper().attachToRecyclerView(part_recyclerview)
+        pagerSnapHelper.attachToRecyclerView(part_recyclerview)
     }
 }

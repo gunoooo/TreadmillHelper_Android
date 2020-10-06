@@ -60,6 +60,7 @@ dependencies {
     implementation "androidx.media:media:$rootProject.mediaVersion"
     implementation "com.mikhaellopez:circularimageview:$rootProject.circularimageviewVersion"
     implementation "com.github.smarteist:autoimageslider:$rootProject.autoimagesliderVersion"
+    implementation "kr.co.prnd:youtube-player-view:$rootProject.youtubeViewVersion"
 
     testImplementation "junit:junit:$rootProject.junitVersion"
     testImplementation "org.jetbrains.kotlin:kotlin-test-junit:$rootProject.kotlinVersion"

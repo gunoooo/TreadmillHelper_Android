@@ -8,12 +8,14 @@ import io.reactivex.observers.DisposableSingleObserver
 import kr.hs.dgsw.data.etc.extension.refreshAll
 import kr.hs.dgsw.domain.entity.schedule.Part
 import kr.hs.dgsw.domain.entity.schedule.Schedule
+import kr.hs.dgsw.domain.entity.video.Video
 import kr.hs.dgsw.domain.usecase.schedule.GetScheduleUseCase
 import kr.hs.dgsw.domain.usecase.timer.CountDownTimeUseCase
 import kr.hs.dgsw.treadmill_helper.base.viewmodel.BaseViewModel
 import kr.hs.dgsw.treadmill_helper.etc.SingleLiveEvent
 import kr.hs.dgsw.treadmill_helper.etc.extension.toMilliseconds
 import kr.hs.dgsw.treadmill_helper.widget.recyclerview.part.PartListAdapter
+import kr.hs.dgsw.treadmill_helper.widget.recyclerview.video.VideoListAdapter
 
 class MainViewModel(
     private val getScheduleUseCase: GetScheduleUseCase,
@@ -22,11 +24,14 @@ class MainViewModel(
     var partIndex: Int = 0
     private lateinit var timer: Disposable
     private val partList = ArrayList<Part>()
+    private val videoList = ArrayList<Video>()
 
     val partListAdapter = PartListAdapter(partList)
+    val videoListAdapter = VideoListAdapter(videoList)
 
     val scheduleData = MutableLiveData<Schedule>()
     val partData = MutableLiveData<Part>()
+    val videoData = MutableLiveData<Video>()
     val remainingTimeData = MutableLiveData<Int>()
 
     val timerPauseEvent = SingleLiveEvent<Unit>()
@@ -38,8 +43,11 @@ class MainViewModel(
                 override fun onSuccess(t: Schedule) {
                     scheduleData.value = t
                     setPart()
+                    setVideo()
                     partList.refreshAll(scheduleData.value!!.partList)
                     partListAdapter.notifyDataSetChanged()
+                    videoList.refreshAll(scheduleData.value!!.relatedVideoList)
+                    videoListAdapter.notifyDataSetChanged()
                 }
 
                 override fun onError(e: Throwable) {
@@ -63,7 +71,7 @@ class MainViewModel(
                 }
 
                 override fun onComplete() {
-                    if (++partIndex == scheduleData.value!!.partList.size) {
+                    if (++partIndex > partList.size - 1) {
 
                     } else {
                         setPart()
@@ -83,6 +91,33 @@ class MainViewModel(
     private fun setPart() {
         partData.value = scheduleData.value!!.partList[partIndex]
         startTimer(partData.value!!.time.toMilliseconds())
+    }
+
+    fun setVideo() {
+        videoData.value =
+            if (scheduleData.value!!.relatedVideoList.isEmpty())
+                null
+            else
+                scheduleData.value!!.relatedVideoList[0]
+    }
+
+    fun plus30sec() {
+        timer.dispose()
+        startTimer(remainingTimeData.value!! + 30000 - 1000)
+    }
+
+    fun minus30sec() {
+        timer.dispose()
+        if (remainingTimeData.value!! - 30000 - 1000 > 0) {
+            startTimer(remainingTimeData.value!! - 30000 - 1000)
+        }
+        else {
+            if (++partIndex > partList.size - 1) {
+
+            } else {
+                setPart()
+            }
+        }
     }
 
     fun onClickTimer() {

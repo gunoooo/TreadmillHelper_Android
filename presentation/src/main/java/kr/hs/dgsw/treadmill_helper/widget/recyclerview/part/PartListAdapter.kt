@@ -10,11 +10,21 @@ import kotlinx.android.synthetic.main.item_part.view.*
 import kr.hs.dgsw.domain.entity.schedule.Part
 import kr.hs.dgsw.treadmill_helper.R
 import kr.hs.dgsw.treadmill_helper.databinding.ItemPartBinding
+import kr.hs.dgsw.treadmill_helper.etc.SingleLiveEvent
 import kr.hs.dgsw.treadmill_helper.etc.extension.dpToPx
 
 class PartListAdapter(private val partList: List<Part>) :
     RecyclerView.Adapter<PartListAdapter.PartItemViewHolder>(),
     PartNavigator {
+    val plus30secEvent = SingleLiveEvent<Unit>()
+    override fun plus30sec() {
+        plus30secEvent.call()
+    }
+    val minus30secEvent = SingleLiveEvent<Unit>()
+    override fun minus30sec() {
+        minus30secEvent.call()
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PartItemViewHolder {
         return PartItemViewHolder(
             DataBindingUtil.inflate(

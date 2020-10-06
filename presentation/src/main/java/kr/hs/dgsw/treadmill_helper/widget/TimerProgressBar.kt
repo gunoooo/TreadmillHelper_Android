@@ -28,7 +28,7 @@ class TimerProgressBar : ProgressBar {
         this.styleAttr = defStyleAttr
 
         rotation = 270F
-        progressDrawable = context.getDrawable(R.drawable.progress)
+        progressDrawable = context.getDrawable(R.drawable.background_progress)
         isIndeterminate = false
     }
 
