@@ -19,14 +19,14 @@
             android:id="@+id/stroke_1"
             android:layout_width="5dp"
             android:layout_height="match_parent"
-            app:mutableColor="@{viewModel.color}"/>
+            app:mutableColor="@{viewModel.colorData}"/>
 
         <FrameLayout
             android:id="@+id/stroke_2"
             android:layout_width="5dp"
             android:layout_height="match_parent"
             android:layout_gravity="end"
-            app:mutableColor="@{viewModel.color}"/>
+            app:mutableColor="@{viewModel.colorData}"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -43,6 +43,7 @@
                 android:textColor="@color/colorText"
                 android:fontFamily="@font/nanum_square_light"
                 android:autoSizeTextType="uniform"
+                android:maxLines="2"
                 android:layout_weight="1"
                 android:onClick="@{() -> viewModel.onClickMinus30sec()}" />
 
@@ -59,8 +60,9 @@
                     android:gravity="center"
                     android:fontFamily="@font/nanum_square_regular"
                     android:textColor="@color/colorText"
+                    android:maxLines="1"
                     android:autoSizeTextType="uniform"
-                    app:mutableText="@{viewModel.title}"
+                    app:mutableText="@{viewModel.titleData}"
                     tools:text="RUN"/>
 
                 <TextView
@@ -71,7 +73,7 @@
                     android:fontFamily="@font/nanum_square_light"
                     android:textColor="@color/colorText"
                     android:autoSizeTextType="uniform"
-                    app:mutableText="@{viewModel.speed}"
+                    app:mutableText="@{viewModel.speedData}"
                     tools:text="speed : 10.5km/h" />
 
                 <TextView
@@ -82,7 +84,7 @@
                     android:fontFamily="@font/nanum_square_light"
                     android:textColor="@color/colorText"
                     android:autoSizeTextType="uniform"
-                    app:mutableText="@{viewModel.incline}"
+                    app:mutableText="@{viewModel.inclineData}"
                     tools:text="incline : 0" />
             </LinearLayout>
 
@@ -96,6 +98,7 @@
                 android:textColor="@color/colorText"
                 android:fontFamily="@font/nanum_square_light"
                 android:autoSizeTextType="uniform"
+                android:maxLines="2"
                 android:layout_weight="1"
                 android:onClick="@{() -> viewModel.onClickPlus30sec()}" />
         </LinearLayout>

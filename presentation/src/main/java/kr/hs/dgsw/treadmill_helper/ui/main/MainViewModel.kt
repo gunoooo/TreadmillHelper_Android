@@ -2,6 +2,7 @@ package kr.hs.dgsw.treadmill_helper.ui.main
 
 import androidx.lifecycle.MutableLiveData
 import androidx.room.EmptyResultSetException
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.PlayerConstants
 import io.reactivex.disposables.Disposable
 import io.reactivex.observers.DisposableObserver
 import io.reactivex.observers.DisposableSingleObserver
@@ -21,10 +22,12 @@ class MainViewModel(
     private val getScheduleUseCase: GetScheduleUseCase,
     private val countDownTimeUseCase: CountDownTimeUseCase
 ) : BaseViewModel() {
-    var partIndex: Int = 0
     private lateinit var timer: Disposable
     private val partList = ArrayList<Part>()
     private val videoList = ArrayList<Video>()
+
+    var partIndex = 0
+    var videoState = PlayerConstants.PlayerState.UNSTARTED
 
     val partListAdapter = PartListAdapter(partList)
     val videoListAdapter = VideoListAdapter(videoList)
@@ -36,6 +39,10 @@ class MainViewModel(
 
     val timerPauseEvent = SingleLiveEvent<Unit>()
     val timerPlayEvent = SingleLiveEvent<Unit>()
+
+    init {
+        setSchedule(1)
+    }
 
     fun setSchedule(scheduleIdx: Int) {
         addDisposable(getScheduleUseCase.buildUseCaseObservable(GetScheduleUseCase.Params(scheduleIdx)),

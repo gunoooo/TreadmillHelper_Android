@@ -2,10 +2,17 @@ package kr.hs.dgsw.treadmill_helper.ui.main
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.view.View
+import androidx.constraintlayout.motion.widget.MotionLayout
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.PlayerConstants
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.YouTubePlayerListener
 import kotlinx.android.synthetic.main.activity_main.*
+import kr.hs.dgsw.treadmill_helper.R
 import kr.hs.dgsw.treadmill_helper.base.BaseActivity
 import kr.hs.dgsw.treadmill_helper.databinding.ActivityMainBinding
 import kr.hs.dgsw.treadmill_helper.etc.extension.getViewModel
@@ -19,6 +26,8 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
 
     override val viewModel: MainViewModel
         get() = getViewModel(viewModelFactory)
+
+    private lateinit var youTubePlayer: YouTubePlayer
 
     @SuppressLint("SetTextI18n")
     override fun observerViewModel() {
@@ -37,7 +46,18 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
             })
 
             videoData.observe(this@MainActivity, Observer {
-                youtube_player_view.play(it.source)
+                youtube_player_view.addYouTubePlayerListener(object : AbstractYouTubePlayerListener() {
+                    override fun onReady(youTubePlayer: YouTubePlayer) {
+                        this@MainActivity.youTubePlayer = youTubePlayer
+                        this@MainActivity.youTubePlayer.loadVideo(it.source, 0F)
+                    }
+
+                    override fun onStateChange(
+                        youTubePlayer: YouTubePlayer,
+                        state: PlayerConstants.PlayerState
+                    ) {
+                    }
+                })
             })
 
             timerPauseEvent.observe(this@MainActivity, Observer {
@@ -62,8 +82,25 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        mViewModel.setSchedule(1)
         initRecyclerView()
+        youtube_player_view
+            .getPlayerUiController().showUi(false)
+        motion_layout.setTransitionListener(object : MotionLayout.TransitionListener {
+            override fun onTransitionStarted(motionLayout: MotionLayout, startId: Int, endId: Int) { }
+
+            override fun onTransitionChange(motionLayout: MotionLayout, startId: Int, endId: Int, progress: Float) {
+                if (progress < 1)
+                    youtube_player_view
+                        .getPlayerUiController().showUi(false)
+                else
+                    youtube_player_view
+                        .getPlayerUiController().showUi(true)
+            }
+
+            override fun onTransitionCompleted(motionLayout: MotionLayout, currentId: Int) { }
+
+            override fun onTransitionTrigger(motionLayout: MotionLayout, triggerId: Int, positive: Boolean, progress: Float) { }
+        })
     }
 
     private fun initRecyclerView() {

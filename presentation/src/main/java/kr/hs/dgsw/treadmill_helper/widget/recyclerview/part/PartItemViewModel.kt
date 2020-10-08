@@ -7,18 +7,18 @@ import kr.hs.dgsw.treadmill_helper.base.viewmodel.BaseItemViewModel
 class PartItemViewModel : BaseItemViewModel<PartNavigator>() {
     private lateinit var part: Part
 
-    val color = MutableLiveData<String>()
-    val title = MutableLiveData<String>()
-    val incline = MutableLiveData<String>()
-    val speed = MutableLiveData<String>()
+    val colorData = MutableLiveData<String>()
+    val titleData = MutableLiveData<String>()
+    val inclineData = MutableLiveData<String>()
+    val speedData = MutableLiveData<String>()
 
     fun bind(model: Part) {
-        this.part = model
+        part = model
 
-        this.color.value = this.part.color.toRGB()
-        this.title.value = this.part.title
-        this.incline.value = "incline : ${this.part.incline}"
-        this.speed.value = "speed : ${this.part.speed}km/h"
+        colorData.value = part.color.toRGB()
+        titleData.value = part.title
+        inclineData.value = "incline : ${part.incline}"
+        speedData.value = "speed : ${part.speed}km/h"
     }
 
     fun onClickPlus30sec() {

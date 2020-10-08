@@ -11,8 +11,8 @@ fun Int.format(digits: Int) = "%0${digits}d".format(this)
 fun Int.toMilliseconds() = this * 1000
 
 fun Int.secToTimeFormat(): String {
-    val hours = (this / 60 / 12).format(2)
-    val minutes = (this / 60 % 12).format(2)
+    val hours = (this / 60 / 60).format(2)
+    val minutes = (this / 60 % 60).format(2)
     val seconds = (this % 60).format(2)
     return if (hours != "00")
         "$hours : $minutes : $seconds"

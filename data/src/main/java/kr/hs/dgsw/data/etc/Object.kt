@@ -51,10 +51,10 @@ object Object {
             ),
             relatedVideoList = listOf(
                 VideoData(
-                    title = "※Subscriber Request※ This Invention will solve your hair-drying laziness [Invention King] Ep.6",
-                    thumbnail = "https://i.ytimg.com/vi/d2u6K1O3NQg/original.jpg",
-                    source = "d2u6K1O3NQg",
-                    duration = 860,
+                    title = "Virtual Run | Amazing Norwegian Nature Scenery for your Virtual Treadmill Workout",
+                    thumbnail = "https://i.ytimg.com/vi/VsmsGtiavUQ/original.jpg",
+                    source = "VsmsGtiavUQ",
+                    duration = 2460,
                     category = VideoCategory.VIRTUAL
                 )
             )
