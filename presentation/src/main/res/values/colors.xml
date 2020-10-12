@@ -1,14 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3050bf</color>
-    <color name="colorPrimaryLight">#4461c5</color>
-    <color name="colorPrimaryDark">#11142B</color>
+<!--<color name="colorPrimary">#3050bf</color>-->
+<!--<color name="colorPrimaryLight">#4461c5</color>-->
+<!--<color name="colorPrimaryDark">#11142B</color>-->
+<!--<color name="colorAccent">#FA3953</color>-->
+
+<!--<color name="colorGrey">#606881</color>-->
+<!--<color name="colorBackground">#090b20</color>-->
+<!--<color name="colorText">#FFFFFF</color>-->
+<!--<color name="colorTransparent">#00FFFFFF</color>-->
+
+<!--<color name="colorTimer">#11142B</color>-->
+<!--<color name="colorTimerState">#272C43</color>-->
+
+    <color name="colorPrimary">#1D4FFF</color>
+    <color name="colorPrimaryLight">#5E82FF</color>
+    <color name="colorPrimaryDark">#2B2B33</color>
+    <color name="colorSecond">#9e31ed</color>
     <color name="colorAccent">#FA3953</color>
 
-    <color name="colorBackground">#090b20</color>
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorGrey">#80879C</color>
+    <color name="colorBackground">#2B2C35</color>
     <color name="colorText">#FFFFFF</color>
     <color name="colorTransparent">#00FFFFFF</color>
 
-    <color name="colorTimer">#11142B</color>
-    <color name="colorTimerState">#272C43</color>
+    <color name="colorTimer">#2B2B33</color>
+    <color name="colorTimerState">#353740</color>
+    <color name="colorVideoControlBtn">#30354A</color>
 </resources>

@@ -12,8 +12,7 @@ import kr.hs.dgsw.treadmill_helper.R
 /**
  * https://stackoverflow.com/questions/57819969/how-to-handle-onclick-and-onclicklistener-in-motionlayout-similar-to-youtube
  */
-class MainMotionLayout(context: Context, attributeSet: AttributeSet? = null) : MotionLayout(context, attributeSet) {
-
+class TimerMotionLayout(context: Context, attributeSet: AttributeSet? = null) : MotionLayout(context, attributeSet) {
     private val viewRect = Rect()
     private var touchStarted = false
 

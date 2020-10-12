@@ -56,6 +56,34 @@ object Object {
                     source = "VsmsGtiavUQ",
                     duration = 2460,
                     category = VideoCategory.VIRTUAL
+                ),
+                VideoData(
+                    title = "Virtual Run | The Bridge | Sun Fun Run! | Treadmill Workout",
+                    thumbnail = "https://i.ytimg.com/vi/shzvF4cVCv0/original.jpg",
+                    source = "shzvF4cVCv0",
+                    duration = 3496,
+                    category = VideoCategory.VIRTUAL
+                ),
+                VideoData(
+                    title = "Virtual Run | Relaxing Nature Scenery | Treadmill Workout",
+                    thumbnail = "https://i.ytimg.com/vi/kav_pl6S9AQ/original.jpg",
+                    source = "kav_pl6S9AQ",
+                    duration = 1289,
+                    category = VideoCategory.VIRTUAL
+                ),
+                VideoData(
+                    title = "Virtual Run | Stunning Trails in Beautiful Nature Scenery | Treadmill Running, Walk, Workout",
+                    thumbnail = "https://i.ytimg.com/vi/rlG10erTysE/original.jpg",
+                    source = "rlG10erTysE",
+                    duration = 2650,
+                    category = VideoCategory.VIRTUAL
+                ),
+                VideoData(
+                    title = "Virtual Run | Zen Nature Scenery for your Virtual Treadmill Workout",
+                    thumbnail = "https://i.ytimg.com/vi/qZou0yB1RFk/original.jpg",
+                    source = "qZou0yB1RFk",
+                    duration = 2850,
+                    category = VideoCategory.VIRTUAL
                 )
             )
         )

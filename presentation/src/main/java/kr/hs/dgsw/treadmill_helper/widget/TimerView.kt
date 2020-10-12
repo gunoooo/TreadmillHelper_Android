@@ -9,12 +9,14 @@ import android.util.AttributeSet
 import android.view.View
 import android.widget.FrameLayout
 import androidx.core.content.ContextCompat
+import androidx.core.view.marginBottom
 import kotlinx.android.synthetic.main.layout_timer.view.*
 import kr.hs.dgsw.domain.entity.schedule.Part
 import kr.hs.dgsw.domain.entity.schedule.Schedule
 import kr.hs.dgsw.treadmill_helper.R
 import kr.hs.dgsw.treadmill_helper.etc.extension.milliToMin
 import kr.hs.dgsw.treadmill_helper.etc.extension.milliToSec
+import kr.hs.dgsw.treadmill_helper.etc.extension.milliToTimeFormat
 import kr.hs.dgsw.treadmill_helper.etc.extension.toMilliseconds
 
 @SuppressLint("SetTextI18n")
@@ -50,13 +52,13 @@ class TimerView : FrameLayout {
         this.styleAttr = defStyleAttr
 
         addView(view)
-
     }
 
-    override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
-        super.onMeasure(widthMeasureSpec, heightMeasureSpec)
-        val width = measuredWidth
-        setMeasuredDimension(width, width)
+    override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
+        super.onSizeChanged(w, h, oldw, oldh)
+        part_text_view.textSize = w / 40F
+        time_text_view.textSize = w / 15F
+        all_time_text_view.textSize = w / 40F
     }
 
     fun initSchedule(schedule: Schedule) {
@@ -69,11 +71,8 @@ class TimerView : FrameLayout {
         if (progress - 1000 > timer_progress_bar.max)
             timer_progress_bar.max  = progress - 1000
         timer_progress_bar.progress = progress - 1000
-        minutes_text_view.text = progress.milliToMin()
-        seconds_text_view.text = progress.milliToSec()
-        val allRemainingTime = getAllRemainingTime(progress)
-        all_minutes_text_view.text = allRemainingTime.milliToMin()
-        all_seconds_text_view.text = allRemainingTime.milliToSec()
+        time_text_view.text = progress.milliToTimeFormat()
+        all_time_text_view.text = getAllRemainingTime(progress).milliToTimeFormat()
     }
 
     fun updatePart(part: Part, partIndex: Int) {

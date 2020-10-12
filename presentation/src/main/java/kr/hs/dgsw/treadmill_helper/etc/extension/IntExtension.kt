@@ -20,6 +20,16 @@ fun Int.secToTimeFormat(): String {
         "$minutes : $seconds"
 }
 
+fun Int.milliToTimeFormat(): String {
+    val hours = (this / 1000 / 60 / 60).format(2)
+    val minutes = (this / 1000 / 60 % 60).format(2)
+    val seconds = (this / 1000 % 60).format(2)
+    return if (hours != "00")
+        "$hours : $minutes : $seconds"
+    else
+        "$minutes : $seconds"
+}
+
 fun Int.milliToMin() = (this / 1000 / 60).format(2)
 
 fun Int.milliToSec() = (this / 1000 % 60).format(2)

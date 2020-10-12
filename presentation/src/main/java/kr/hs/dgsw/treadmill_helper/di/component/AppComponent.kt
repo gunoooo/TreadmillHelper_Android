@@ -20,6 +20,7 @@ import javax.inject.Singleton
         DataSourceModule::class,
         RepositoryModule::class,
         ActivityBindingModule::class,
+        FragmentBindingModule::class,
         AndroidInjectionModule::class
     ]
 )

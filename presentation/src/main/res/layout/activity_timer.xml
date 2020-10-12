@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="viewModel"
+            type="kr.hs.dgsw.treadmill_helper.ui.timer.TimerViewModel" />
+    </data>
+
+    <kr.hs.dgsw.treadmill_helper.widget.TimerMotionLayout
+        android:id="@+id/motion_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorBackground"
+        app:layoutDescription="@xml/activity_timer_scene"
+        tools:context=".ui.timer.TimerActivity">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/header_container"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/schedule_list_btn"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginStart="10dp"
+            android:src="@drawable/ic_format_list"
+            app:layout_constraintBottom_toBottomOf="@id/header_container"
+            app:layout_constraintStart_toStartOf="@id/header_container"
+            app:layout_constraintTop_toTopOf="@id/header_container" />
+
+        <TextView
+            android:id="@+id/schedule_title_text_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:textSize="23sp"
+            android:fontFamily="@font/nanum_square_regular"
+            android:gravity="center"
+            android:textColor="@color/colorText"
+            android:text="@{viewModel.scheduleData.title}"
+            app:layout_constraintBottom_toBottomOf="@id/header_container"
+            app:layout_constraintStart_toEndOf="@id/schedule_list_btn"
+            app:layout_constraintTop_toTopOf="@id/header_container"
+            tools:text="BEGINNER" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/part_recyclerview"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="30dp"
+            app:adapter="@{viewModel.partListAdapter}"
+            tools:listitem="@layout/item_part"
+            app:layout_constraintBottom_toTopOf="@+id/video_control_btn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/timer_view" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/video_control_btn"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:background="@drawable/background_video_control"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintBottom_toTopOf="@id/youtube_player_view_container"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/video_control_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableEnd="@drawable/ic_arrow_down"
+            android:drawablePadding="10dp"
+            android:textColor="@color/colorText"
+            android:textSize="15sp"
+            android:text="@string/text_close_video"
+            app:layout_constraintBottom_toBottomOf="@id/video_control_btn"
+            app:layout_constraintEnd_toEndOf="@id/video_control_btn"
+            app:layout_constraintStart_toStartOf="@id/video_control_btn"
+            app:layout_constraintTop_toTopOf="@id/video_control_btn" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/youtube_player_view_container"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/colorPrimaryDark"
+            app:layout_constraintDimensionRatio="16:9"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:id="@+id/video_title_text_view"
+            android:layout_width="0dp"
+            android:layout_height="45dp"
+            android:gravity="bottom"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:paddingBottom="5dp"
+            android:fontFamily="@font/nanum_square_regular"
+            android:textColor="@color/colorText"
+            android:textSize="20sp"
+            android:text="@{viewModel.videoData.title}"
+            android:ellipsize="end"
+            android:maxLines="1"
+            app:layout_constraintEnd_toStartOf="@id/play_pause_btn"
+            app:layout_constraintStart_toEndOf="@id/youtube_player_view"
+            app:layout_constraintTop_toTopOf="@id/youtube_player_view_container" />
+
+        <TextView
+            android:id="@+id/video_category_text_view"
+            android:layout_width="0dp"
+            android:layout_height="45dp"
+            android:gravity="top"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:paddingTop="5dp"
+            android:fontFamily="@font/nanum_square_regular"
+            android:textColor="@color/colorGrey"
+            android:textSize="17sp"
+            android:text="@{viewModel.videoData.category.name()}"
+            android:ellipsize="end"
+            android:maxLines="1"
+            app:layout_constraintBottom_toBottomOf="@id/youtube_player_view_container"
+            app:layout_constraintEnd_toStartOf="@id/play_pause_btn"
+            app:layout_constraintStart_toEndOf="@id/youtube_player_view" />
+
+        <ImageView
+            android:id="@+id/play_pause_btn"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginEnd="15dp"
+            android:src="@drawable/ic_pause"
+            android:tint="@android:color/white"
+            app:layout_constraintBottom_toBottomOf="@id/youtube_player_view_container"
+            app:layout_constraintEnd_toEndOf="@id/youtube_player_view_container"
+            app:layout_constraintTop_toTopOf="@id/youtube_player_view_container" />
+
+        <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+            android:id="@+id/youtube_player_view"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toTopOf="@id/youtube_player_view_container"
+            app:layout_constraintBottom_toBottomOf="@id/youtube_player_view_container"
+            app:layout_constraintStart_toStartOf="@id/youtube_player_view_container"
+            app:layout_constraintEnd_toEndOf="@id/youtube_player_view_container" />
+
+        <FrameLayout
+            android:id="@+id/video_recyclerview_container"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@color/colorBackground"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/youtube_player_view_container" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/video_recyclerview"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:nestedScrollingEnabled="false"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:adapter="@{viewModel.videoListAdapter}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/youtube_player_view_container" />
+
+        <kr.hs.dgsw.treadmill_helper.widget.TimerView
+            android:id="@+id/timer_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="20dp"
+            android:onClick="@{() -> viewModel.onClickTimer()}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/header_container" />
+    </kr.hs.dgsw.treadmill_helper.widget.TimerMotionLayout>
+</layout>

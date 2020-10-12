@@ -1,4 +1,4 @@
-package kr.hs.dgsw.treadmill_helper.ui.main
+package kr.hs.dgsw.treadmill_helper.ui.timer
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -6,7 +6,7 @@ import kr.hs.dgsw.domain.usecase.schedule.GetScheduleUseCase
 import kr.hs.dgsw.domain.usecase.timer.CountDownTimeUseCase
 import javax.inject.Inject
 
-open class MainViewModelFactory @Inject constructor(
+open class TimerViewModelFactory @Inject constructor(
     private val getScheduleUseCase: GetScheduleUseCase,
     private val countDownTimeUseCase: CountDownTimeUseCase
 ) : ViewModelProvider.Factory {

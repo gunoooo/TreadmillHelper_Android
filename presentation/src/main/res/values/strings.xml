@@ -1,6 +1,13 @@
 <resources>
     <string name="app_name">TreadmillHelper</string>
+    
     <string name="text_colon">:</string>
     <string name="text_plus_30sec">+\n30</string>
     <string name="text_minus_30sec">-\n30</string>
+    <string name="text_close_video">CLOSE VIDEO</string>
+    
+    <string name="menu_home">HOME</string>
+    <string name="menu_video">VIDEO</string>
+    <string name="menu_record">RECORD</string>
+    <string name="menu_menu">MENU</string>
 </resources>

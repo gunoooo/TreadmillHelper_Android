@@ -11,7 +11,6 @@ import dagger.android.support.DaggerFragment
 import kr.hs.dgsw.treadmill_helper.BR
 import kr.hs.dgsw.treadmill_helper.R
 import kr.hs.dgsw.treadmill_helper.base.viewmodel.BaseViewModel
-import kr.hs.dgsw.treadmill_helper.ui.main.MainActivity
 import java.lang.reflect.ParameterizedType
 import java.lang.reflect.Type
 import java.util.*

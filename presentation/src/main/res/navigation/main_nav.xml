@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/main_nav" app:startDestination="@id/homeFragment">
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="kr.hs.dgsw.treadmill_helper.ui.home.HomeFragment"
+        android:label="HomeFragment" />
+
+    <fragment
+        android:id="@+id/videoFragment"
+        android:name="kr.hs.dgsw.treadmill_helper.ui.video.VideoFragment"
+        android:label="VideoFragment" />
+
+    <fragment
+        android:id="@+id/recordFragment"
+        android:name="kr.hs.dgsw.treadmill_helper.ui.record.RecordFragment"
+        android:label="RecordFragment" />
+
+    <fragment
+        android:id="@+id/menuFragment"
+        android:name="kr.hs.dgsw.treadmill_helper.ui.menu.MenuFragment"
+        android:label="MenuFragment" />
+</navigation>
