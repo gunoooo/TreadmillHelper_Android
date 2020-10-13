@@ -1,17 +1,17 @@
 package kr.hs.dgsw.data.etc
 
 import kr.hs.dgsw.data.entity.PartData
-import kr.hs.dgsw.data.entity.ScheduleData
+import kr.hs.dgsw.data.entity.RoutineData
 import kr.hs.dgsw.data.entity.VideoData
 import kr.hs.dgsw.domain.entity.Color
-import kr.hs.dgsw.domain.entity.ScheduleType
+import kr.hs.dgsw.domain.entity.RoutineType
 import kr.hs.dgsw.domain.entity.VideoCategory
 
 object Object {
-    val presetScheduleList = listOf(
-        ScheduleData(
-            title = "Beginner",
-            scheduleType = ScheduleType.PRESET,
+    val presetRoutineList = listOf(
+        RoutineData(
+            title = "BEGINNER",
+            routineType = RoutineType.PRESET,
             partList = listOf(
                 PartData(
                     title = "Warm up",

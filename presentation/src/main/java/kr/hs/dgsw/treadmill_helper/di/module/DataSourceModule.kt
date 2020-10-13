@@ -2,13 +2,13 @@ package kr.hs.dgsw.treadmill_helper.di.module
 
 import dagger.Module
 import dagger.Provides
-import kr.hs.dgsw.data.datasource.ScheduleDataSource
-import kr.hs.dgsw.data.datasource.ScheduleDataSourceImpl
+import kr.hs.dgsw.data.datasource.RoutineDataSource
+import kr.hs.dgsw.data.datasource.RoutineDataSourceImpl
 import javax.inject.Singleton
 
 @Module
 class DataSourceModule {
     @Singleton
     @Provides
-    fun provideScheduleDataSource(scheduleDataSourceImpl: ScheduleDataSourceImpl): ScheduleDataSource = scheduleDataSourceImpl
+    fun provideRoutineDataSource(routineDataSourceImpl: RoutineDataSourceImpl): RoutineDataSource = routineDataSourceImpl
 }

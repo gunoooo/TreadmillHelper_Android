@@ -12,8 +12,8 @@ import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.PlayerConstan
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
 import kotlinx.android.synthetic.main.activity_timer.*
+import kr.hs.dgsw.domain.entity.workout.Routine
 import kr.hs.dgsw.treadmill_helper.base.BaseActivity
-import kr.hs.dgsw.treadmill_helper.databinding.ActivityMainBinding
 import kr.hs.dgsw.treadmill_helper.databinding.ActivityTimerBinding
 import kr.hs.dgsw.treadmill_helper.etc.extension.getViewModel
 import kr.hs.dgsw.treadmill_helper.etc.listener.SnapPagerScrollListener
@@ -34,15 +34,15 @@ class TimerActivity : BaseActivity<ActivityTimerBinding, TimerViewModel>() {
         with(mViewModel) {
             partData.observe(this@TimerActivity, Observer {
                 timer_view.updatePart(it, partIndex)
-                part_recyclerview.smoothScrollToPosition(partIndex)
+                part_recycler_view.smoothScrollToPosition(partIndex)
             })
 
             remainingTimeData.observe(this@TimerActivity, Observer {
                 timer_view.updateProgress(it)
             })
 
-            scheduleData.observe(this@TimerActivity, Observer {
-                timer_view.initSchedule(it)
+            routineData.observe(this@TimerActivity, Observer {
+                timer_view.initRoutine(it)
             })
 
             videoData.observe(this@TimerActivity, Observer {
@@ -82,23 +82,33 @@ class TimerActivity : BaseActivity<ActivityTimerBinding, TimerViewModel>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        initUI()
+        initIntent()
+    }
+
+    private fun initUI() {
         initRecyclerView()
         initMotionLayout()
     }
 
+    private fun initIntent() {
+        val routine = intent.getSerializableExtra(EXTRA_SCHEDULE) as Routine
+        mViewModel.setRoutine(routine)
+    }
+
     private fun initRecyclerView() {
         val pagerSnapHelper = PagerSnapHelper()
-        part_recyclerview.layoutManager =
+        part_recycler_view.layoutManager =
             LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        part_recyclerview.setHasFixedSize(true)
-        part_recyclerview.addOnScrollListener(
+        part_recycler_view.setHasFixedSize(true)
+        part_recycler_view.addOnScrollListener(
             SnapPagerScrollListener(
                 pagerSnapHelper
             ) { position ->
                 mViewModel.setPart(position)
             }
         )
-        pagerSnapHelper.attachToRecyclerView(part_recyclerview)
+        pagerSnapHelper.attachToRecyclerView(part_recycler_view)
     }
 
     @SuppressLint("SetTextI18n")
@@ -148,5 +158,9 @@ class TimerActivity : BaseActivity<ActivityTimerBinding, TimerViewModel>() {
                 video_control_text_view.text = "OPEN VIDEO"
             }
         }
+    }
+
+    companion object {
+        const val EXTRA_SCHEDULE = "routine"
     }
 }

@@ -6,18 +6,18 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.TypeConverters
 import kr.hs.dgsw.data.database.converter.ColorConverter
-import kr.hs.dgsw.data.database.converter.ScheduleTypeConverter
+import kr.hs.dgsw.data.database.converter.RoutineTypeConverter
 import kr.hs.dgsw.data.database.converter.VideoCategoryConverter
 import kr.hs.dgsw.data.database.dao.PartDao
-import kr.hs.dgsw.data.database.dao.ScheduleDao
+import kr.hs.dgsw.data.database.dao.RoutineDao
 import kr.hs.dgsw.data.database.dao.VideoDao
 import kr.hs.dgsw.data.database.entity.PartEntity
-import kr.hs.dgsw.data.database.entity.ScheduleEntity
+import kr.hs.dgsw.data.database.entity.RoutineEntity
 import kr.hs.dgsw.data.database.entity.VideoEntity
 
 @Database(
     entities = [
-        ScheduleEntity::class,
+        RoutineEntity::class,
         PartEntity::class,
         VideoEntity::class
     ],
@@ -26,12 +26,12 @@ import kr.hs.dgsw.data.database.entity.VideoEntity
 )
 @TypeConverters(
     ColorConverter::class,
-    ScheduleTypeConverter::class,
+    RoutineTypeConverter::class,
     VideoCategoryConverter::class
 )
 abstract class RoomDatabase : androidx.room.RoomDatabase() {
 
-    abstract fun scheduleDao(): ScheduleDao
+    abstract fun routineDao(): RoutineDao
     abstract fun partDao(): PartDao
     abstract fun videoDao(): VideoDao
 

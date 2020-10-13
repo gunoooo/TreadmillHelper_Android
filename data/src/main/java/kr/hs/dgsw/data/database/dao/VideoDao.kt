@@ -9,9 +9,9 @@ import kr.hs.dgsw.data.database.entity.VideoEntity
 
 @Dao
 interface VideoDao : BaseDao<VideoEntity> {
-    @Query("SELECT * FROM video_table WHERE scheduleIdx=:scheduleIdx")
-    fun getVideoList(scheduleIdx: Int): Single<List<VideoEntity>>
+    @Query("SELECT * FROM video_table WHERE routineIdx=:routineIdx")
+    fun getVideoList(routineIdx: Int): Single<List<VideoEntity>>
 
-    @Query("DELETE FROM video_table WHERE scheduleIdx=:scheduleIdx")
-    fun deleteByScheduleIdx(scheduleIdx: Int): Completable
+    @Query("DELETE FROM video_table WHERE routineIdx=:routineIdx")
+    fun deleteByRoutineIdx(routineIdx: Int): Completable
 }

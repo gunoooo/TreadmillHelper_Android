@@ -12,8 +12,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="10dp"
-        app:cardBackgroundColor="@color/colorPrimaryDark"
+        app:cardBackgroundColor="@color/colorBackground"
         app:cardCornerRadius="15dp"
+        app:cardElevation="10dp"
         tools:layout_height="130dp" >
         <FrameLayout
             android:id="@+id/stroke_1"

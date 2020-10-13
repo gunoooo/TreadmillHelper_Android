@@ -3,9 +3,6 @@ package kr.hs.dgsw.treadmill_helper.etc.extension
 import android.content.res.Resources
 import android.util.TypedValue
 
-
-
-
 fun Int.format(digits: Int) = "%0${digits}d".format(this)
 
 fun Int.toMilliseconds() = this * 1000

@@ -14,9 +14,9 @@ fun Video.toDataEntity(): VideoData {
     )
 }
 
-fun Video.toDbEntity(scheduleIdx: Int): VideoEntity {
+fun Video.toDbEntity(routineIdx: Int): VideoEntity {
     return VideoEntity(
-        scheduleIdx = scheduleIdx,
+        routineIdx = routineIdx,
         title = title,
         thumbnail = thumbnail,
         duration = duration,
@@ -35,9 +35,9 @@ fun VideoData.toEntity(): Video {
     )
 }
 
-fun VideoData.toDbEntity(scheduleIdx: Int): VideoEntity {
+fun VideoData.toDbEntity(routineIdx: Int): VideoEntity {
     return VideoEntity(
-        scheduleIdx = scheduleIdx,
+        routineIdx = routineIdx,
         title = title,
         thumbnail = thumbnail,
         duration = duration,

@@ -36,6 +36,14 @@ fun setMutableColor(view: View, color: MutableLiveData<String>) {
     })
 }
 
+@BindingAdapter("mutableTint")
+fun setMutableTint(view: ImageView, tint: MutableLiveData<String>) {
+    val parentActivity: AppCompatActivity = view.getParentActivity() ?: return
+    tint.observe(parentActivity, Observer { value ->
+        view.setColorFilter(Color.parseColor(value))
+    })
+}
+
 @BindingAdapter("mutableImageUrl")
 fun setMutableImageUrl(view: ImageView, url: MutableLiveData<String>) {
     val parentActivity: AppCompatActivity = view.getParentActivity() ?: return

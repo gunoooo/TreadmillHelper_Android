@@ -1,8 +1,9 @@
 package kr.hs.dgsw.treadmill_helper.widget.recyclerview.part
 
 import androidx.lifecycle.MutableLiveData
-import kr.hs.dgsw.domain.entity.schedule.Part
+import kr.hs.dgsw.domain.entity.workout.Part
 import kr.hs.dgsw.treadmill_helper.base.viewmodel.BaseItemViewModel
+import kr.hs.dgsw.treadmill_helper.etc.extension.secToTimeFormat
 
 class PartItemViewModel : BaseItemViewModel<PartNavigator>() {
     private lateinit var part: Part
@@ -11,6 +12,8 @@ class PartItemViewModel : BaseItemViewModel<PartNavigator>() {
     val titleData = MutableLiveData<String>()
     val inclineData = MutableLiveData<String>()
     val speedData = MutableLiveData<String>()
+    val durationData = MutableLiveData<String>()
+    val calorieData = MutableLiveData<String>()
 
     fun bind(model: Part) {
         part = model
@@ -19,6 +22,8 @@ class PartItemViewModel : BaseItemViewModel<PartNavigator>() {
         titleData.value = part.title
         inclineData.value = "incline : ${part.incline}"
         speedData.value = "speed : ${part.speed}km/h"
+        durationData.value = "duration : ${part.time.secToTimeFormat()}"
+        calorieData.value = "${part.getCalorie()}kcal"
     }
 
     fun onClickPlus30sec() {

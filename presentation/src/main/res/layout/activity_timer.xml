@@ -19,42 +19,41 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/header_container"
             android:layout_width="0dp"
-            android:layout_height="40dp"
+            android:layout_height="30dp"
+            android:layout_margin="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/schedule_list_btn"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:layout_marginStart="10dp"
-            android:src="@drawable/ic_format_list"
+            android:id="@+id/routine_list_btn"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_arrow_left"
             app:layout_constraintBottom_toBottomOf="@id/header_container"
             app:layout_constraintStart_toStartOf="@id/header_container"
             app:layout_constraintTop_toTopOf="@id/header_container" />
 
         <TextView
-            android:id="@+id/schedule_title_text_view"
+            android:id="@+id/routine_title_text_view"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:textSize="23sp"
+            android:layout_marginStart="20dp"
+            android:textSize="20sp"
             android:fontFamily="@font/nanum_square_regular"
-            android:gravity="center"
             android:textColor="@color/colorText"
-            android:text="@{viewModel.scheduleData.title}"
+            android:text="@{viewModel.routineData.title}"
             app:layout_constraintBottom_toBottomOf="@id/header_container"
-            app:layout_constraintStart_toEndOf="@id/schedule_list_btn"
+            app:layout_constraintStart_toEndOf="@id/routine_list_btn"
             app:layout_constraintTop_toTopOf="@id/header_container"
             tools:text="BEGINNER" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/part_recyclerview"
+            android:id="@+id/part_recycler_view"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginBottom="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
             app:adapter="@{viewModel.partListAdapter}"
             tools:listitem="@layout/item_part"
             app:layout_constraintBottom_toTopOf="@+id/video_control_btn"

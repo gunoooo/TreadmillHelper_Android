@@ -9,13 +9,10 @@ import android.util.AttributeSet
 import android.view.View
 import android.widget.FrameLayout
 import androidx.core.content.ContextCompat
-import androidx.core.view.marginBottom
 import kotlinx.android.synthetic.main.layout_timer.view.*
-import kr.hs.dgsw.domain.entity.schedule.Part
-import kr.hs.dgsw.domain.entity.schedule.Schedule
+import kr.hs.dgsw.domain.entity.workout.Part
+import kr.hs.dgsw.domain.entity.workout.Routine
 import kr.hs.dgsw.treadmill_helper.R
-import kr.hs.dgsw.treadmill_helper.etc.extension.milliToMin
-import kr.hs.dgsw.treadmill_helper.etc.extension.milliToSec
 import kr.hs.dgsw.treadmill_helper.etc.extension.milliToTimeFormat
 import kr.hs.dgsw.treadmill_helper.etc.extension.toMilliseconds
 
@@ -26,7 +23,7 @@ class TimerView : FrameLayout {
     private var styleAttr: Int? = null
     private var view = View.inflate(context, R.layout.layout_timer, null)
 
-    lateinit var schedule: Schedule
+    lateinit var routine: Routine
     lateinit var part: Part
     private var partIndex: Int = 0
 
@@ -61,10 +58,10 @@ class TimerView : FrameLayout {
         all_time_text_view.textSize = w / 40F
     }
 
-    fun initSchedule(schedule: Schedule) {
-        this.schedule = schedule
+    fun initRoutine(routine: Routine) {
+        this.routine = routine
         play()
-        part_text_view.text = "${this.partIndex + 1} / ${this.schedule.partList.size}"
+        part_text_view.text = "${this.partIndex + 1} / ${this.routine.partList.size}"
     }
 
     fun updateProgress(progress: Int) {
@@ -83,8 +80,8 @@ class TimerView : FrameLayout {
         drawable.setColor(Color.parseColor(this.part.color.toRGB()))
         timer_progress_bar.progressDrawable = drawable
         timer_progress_bar.max = this.part.time.toMilliseconds()
-        if (::schedule.isInitialized)
-            part_text_view.text = "${this.partIndex + 1} / ${this.schedule.partList.size}"
+        if (::routine.isInitialized)
+            part_text_view.text = "${this.partIndex + 1} / ${this.routine.partList.size}"
     }
 
     fun play() = this.state_image_view.setImageDrawable(null)
@@ -92,9 +89,9 @@ class TimerView : FrameLayout {
     fun pause() = this.state_image_view.setImageResource(R.drawable.ic_play)
 
     private fun getAllRemainingTime(currentRemainingTime: Int): Int {
-        if (::schedule.isInitialized)
+        if (::routine.isInitialized)
             return currentRemainingTime +
-                schedule.partList.mapIndexed { index: Int, part: Part ->
+                routine.partList.mapIndexed { index: Int, part: Part ->
                     if (index > partIndex)
                         part.time
                     else

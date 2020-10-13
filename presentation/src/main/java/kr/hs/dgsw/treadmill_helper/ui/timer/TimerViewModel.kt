@@ -4,12 +4,11 @@ import androidx.lifecycle.MutableLiveData
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.PlayerConstants
 import io.reactivex.disposables.Disposable
 import io.reactivex.observers.DisposableObserver
-import io.reactivex.observers.DisposableSingleObserver
 import kr.hs.dgsw.data.etc.extension.refreshAll
-import kr.hs.dgsw.domain.entity.schedule.Part
-import kr.hs.dgsw.domain.entity.schedule.Schedule
+import kr.hs.dgsw.domain.entity.workout.Part
+import kr.hs.dgsw.domain.entity.workout.Routine
 import kr.hs.dgsw.domain.entity.video.Video
-import kr.hs.dgsw.domain.usecase.schedule.GetScheduleUseCase
+import kr.hs.dgsw.domain.usecase.routine.GetRoutineUseCase
 import kr.hs.dgsw.domain.usecase.timer.CountDownTimeUseCase
 import kr.hs.dgsw.treadmill_helper.base.viewmodel.BaseViewModel
 import kr.hs.dgsw.treadmill_helper.etc.SingleLiveEvent
@@ -18,7 +17,7 @@ import kr.hs.dgsw.treadmill_helper.widget.recyclerview.part.PartListAdapter
 import kr.hs.dgsw.treadmill_helper.widget.recyclerview.video.VideoListAdapter
 
 class TimerViewModel(
-    private val getScheduleUseCase: GetScheduleUseCase,
+    private val getRoutineUseCase: GetRoutineUseCase,
     private val countDownTimeUseCase: CountDownTimeUseCase
 ) : BaseViewModel() {
     private lateinit var timer: Disposable
@@ -29,10 +28,10 @@ class TimerViewModel(
     var videoState = PlayerConstants.PlayerState.UNSTARTED
     var videoContainerViewState = VideoContainerViewState.HIDE
 
-    val partListAdapter = PartListAdapter(partList)
+    val partListAdapter = PartListAdapter(partList, PartListAdapter.ViewType.HORIZONTAL)
     val videoListAdapter = VideoListAdapter(videoList)
 
-    val scheduleData = MutableLiveData<Schedule>()
+    val routineData = MutableLiveData<Routine>()
     val partData = MutableLiveData<Part>()
     val videoData = MutableLiveData<Video>()
     val remainingTimeData = MutableLiveData<Int>()
@@ -40,27 +39,14 @@ class TimerViewModel(
     val timerPauseEvent = SingleLiveEvent<Unit>()
     val timerPlayEvent = SingleLiveEvent<Unit>()
 
-    init {
-        setSchedule(1)
-    }
-
-    fun setSchedule(scheduleIdx: Int) {
-        addDisposable(getScheduleUseCase.buildUseCaseObservable(GetScheduleUseCase.Params(scheduleIdx)),
-            object : DisposableSingleObserver<Schedule>() {
-                override fun onSuccess(t: Schedule) {
-                    scheduleData.value = t
-                    setPart()
-                    setVideo()
-                    partList.refreshAll(scheduleData.value!!.partList)
-                    partListAdapter.notifyDataSetChanged()
-                    videoList.refreshAll(scheduleData.value!!.relatedVideoList)
-                    videoListAdapter.notifyDataSetChanged()
-                }
-
-                override fun onError(e: Throwable) {
-                    onErrorEvent.value = e
-                }
-            })
+    fun setRoutine(routine: Routine) {
+        routineData.value = routine
+        setPart()
+        setVideo()
+        partList.refreshAll(routineData.value!!.partList)
+        partListAdapter.notifyDataSetChanged()
+        videoList.refreshAll(routineData.value!!.relatedVideoList)
+        videoListAdapter.notifyDataSetChanged()
     }
 
     private fun startTimer(partTime: Int) {
@@ -96,16 +82,16 @@ class TimerViewModel(
     }
 
     private fun setPart() {
-        partData.value = scheduleData.value!!.partList[partIndex]
+        partData.value = routineData.value!!.partList[partIndex]
         startTimer(partData.value!!.time.toMilliseconds())
     }
 
     fun setVideo() {
         videoData.value =
-            if (scheduleData.value!!.relatedVideoList.isEmpty())
+            if (routineData.value!!.relatedVideoList.isEmpty())
                 null
             else
-                scheduleData.value!!.relatedVideoList[0]
+                routineData.value!!.relatedVideoList[0]
     }
 
     fun plus30sec() {

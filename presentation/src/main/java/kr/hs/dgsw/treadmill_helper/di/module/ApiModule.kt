@@ -2,7 +2,7 @@ package kr.hs.dgsw.treadmill_helper.di.module
 
 import dagger.Module
 import dagger.Provides
-import kr.hs.dgsw.data.network.api.ScheduleApi
+import kr.hs.dgsw.data.network.api.RoutineApi
 import retrofit2.Retrofit
 import javax.inject.Singleton
 
@@ -10,6 +10,6 @@ import javax.inject.Singleton
 class ApiModule {
     @Singleton
     @Provides
-    fun provideScheduleApi(retrofit: Retrofit): ScheduleApi =
-        retrofit.create(ScheduleApi::class.java)
+    fun provideRoutineApi(retrofit: Retrofit): RoutineApi =
+        retrofit.create(RoutineApi::class.java)
 }

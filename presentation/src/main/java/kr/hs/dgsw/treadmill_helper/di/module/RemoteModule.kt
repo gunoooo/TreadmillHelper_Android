@@ -2,13 +2,13 @@ package kr.hs.dgsw.treadmill_helper.di.module
 
 import dagger.Module
 import dagger.Provides
-import kr.hs.dgsw.data.network.remote.ScheduleRemote
-import kr.hs.dgsw.data.network.remote.ScheduleRemoteImpl
+import kr.hs.dgsw.data.network.remote.RoutineRemote
+import kr.hs.dgsw.data.network.remote.RoutineRemoteImpl
 import javax.inject.Singleton
 
 @Module
 class RemoteModule {
     @Singleton
     @Provides
-    fun provideScheduleRemote(scheduleRemoteImpl: ScheduleRemoteImpl): ScheduleRemote = scheduleRemoteImpl
+    fun provideRoutineRemote(routineRemoteImpl: RoutineRemoteImpl): RoutineRemote = routineRemoteImpl
 }

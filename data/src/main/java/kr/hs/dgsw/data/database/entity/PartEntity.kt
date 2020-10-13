@@ -6,7 +6,7 @@ import kr.hs.dgsw.domain.entity.Color
 
 @Entity(tableName = "part_table")
 data class PartEntity(
-    var scheduleIdx: Int,
+    var routineIdx: Int,
     val title: String,
     val time: Int,
     val color: Color,
@@ -16,8 +16,8 @@ data class PartEntity(
     @PrimaryKey(autoGenerate = true)
     var idx: Int = 0
 
-    constructor(idx: Int, scheduleIdx: Int, title: String, time: Int, color: Color, speed: Double, incline: Int):
-            this(scheduleIdx, title, time, color, speed, incline) {
+    constructor(idx: Int, routineIdx: Int, title: String, time: Int, color: Color, speed: Double, incline: Int):
+            this(routineIdx, title, time, color, speed, incline) {
         this.idx = idx
     }
 

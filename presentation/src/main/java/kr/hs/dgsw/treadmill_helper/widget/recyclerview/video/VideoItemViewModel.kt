@@ -10,13 +10,15 @@ class VideoItemViewModel : BaseItemViewModel<VideoNavigator>() {
 
     val thumbnailData = MutableLiveData<String>()
     val titleData = MutableLiveData<String>()
-    val durationAndCategoryData = MutableLiveData<String>()
+    val durationData = MutableLiveData<String>()
+    val categoryData = MutableLiveData<String>()
 
     fun bind(model: Video) {
         video = model
 
         thumbnailData.value = video.thumbnail
         titleData.value = video.title
-        durationAndCategoryData.value = "${video.duration.secToTimeFormat()}  |  ${video.category}"
+        durationData.value = video.duration.secToTimeFormat()
+        categoryData.value = video.category.toString()
     }
 }

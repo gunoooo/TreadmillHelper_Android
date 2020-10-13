@@ -6,7 +6,7 @@ import kr.hs.dgsw.domain.entity.VideoCategory
 
 @Entity(tableName = "video_table")
 data class VideoEntity(
-    var scheduleIdx: Int,
+    var routineIdx: Int,
     val title: String,
     val thumbnail: String,
     val source: String,
@@ -16,8 +16,8 @@ data class VideoEntity(
     @PrimaryKey(autoGenerate = true)
     var idx: Int = 0
 
-    constructor(idx: Int, scheduleIdx: Int, title: String, thumbnail: String, source: String, duration: Int, category: VideoCategory):
-            this(scheduleIdx, title, thumbnail, source, duration, category) {
+    constructor(idx: Int, routineIdx: Int, title: String, thumbnail: String, source: String, duration: Int, category: VideoCategory):
+            this(routineIdx, title, thumbnail, source, duration, category) {
         this.idx = idx
     }
 
