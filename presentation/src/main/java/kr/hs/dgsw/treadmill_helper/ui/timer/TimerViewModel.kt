@@ -5,8 +5,8 @@ import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.PlayerConstan
 import io.reactivex.disposables.Disposable
 import io.reactivex.observers.DisposableObserver
 import kr.hs.dgsw.data.etc.extension.refreshAll
-import kr.hs.dgsw.domain.entity.workout.Part
-import kr.hs.dgsw.domain.entity.workout.Routine
+import kr.hs.dgsw.domain.entity.routine.Part
+import kr.hs.dgsw.domain.entity.routine.Routine
 import kr.hs.dgsw.domain.entity.video.Video
 import kr.hs.dgsw.domain.usecase.routine.GetRoutineUseCase
 import kr.hs.dgsw.domain.usecase.timer.CountDownTimeUseCase

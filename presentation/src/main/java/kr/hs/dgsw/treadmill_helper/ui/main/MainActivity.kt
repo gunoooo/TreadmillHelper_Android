@@ -22,6 +22,10 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        initUI()
+    }
+
+    private fun initUI() {
         navController = findNavController(R.id.page_fragment)
         bottom_navigation_view.setupWithNavController(navController)
     }

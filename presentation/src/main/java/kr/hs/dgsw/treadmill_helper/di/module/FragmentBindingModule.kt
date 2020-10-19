@@ -1,14 +1,11 @@
 package kr.hs.dgsw.treadmill_helper.di.module
 
-import com.gunwoo.karaoke.singsangsung.di.scope.PerActivity
-import com.gunwoo.karaoke.singsangsung.di.scope.PerFragment
+import kr.hs.dgsw.treadmill_helper.di.scope.PerFragment
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 import kr.hs.dgsw.treadmill_helper.ui.home.HomeFragment
-import kr.hs.dgsw.treadmill_helper.ui.main.MainActivity
 import kr.hs.dgsw.treadmill_helper.ui.menu.MenuFragment
 import kr.hs.dgsw.treadmill_helper.ui.record.RecordFragment
-import kr.hs.dgsw.treadmill_helper.ui.timer.TimerActivity
 import kr.hs.dgsw.treadmill_helper.ui.video.VideoFragment
 
 @Module

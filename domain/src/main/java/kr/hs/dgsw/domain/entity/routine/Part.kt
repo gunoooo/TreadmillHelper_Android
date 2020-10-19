@@ -1,10 +1,11 @@
-package kr.hs.dgsw.domain.entity.workout
+package kr.hs.dgsw.domain.entity.routine
 
 import kr.hs.dgsw.domain.entity.Color
 import java.io.Serializable
 import kotlin.math.roundToInt
 
 data class Part(
+    val idx: Int,
     val title: String,
     var time: Int,
     val color: Color,

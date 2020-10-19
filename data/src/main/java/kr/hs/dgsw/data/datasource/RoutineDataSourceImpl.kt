@@ -57,9 +57,9 @@ class RoutineDataSourceImpl @Inject constructor(
 
     override fun updateRoutine(routineData: RoutineData): Completable {
         return cache.updateRoutine(
-            routineData.toDbEntity(),
-            routineData.partList.map { it.toDbEntity(routineData.idx) },
-            routineData.relatedVideoList.map { it.toDbEntity(routineData.idx) }
+            routineData.toDbEntity(routineData.idx),
+            routineData.partList.map { it.toDbEntity(it.idx, routineData.idx) },
+            routineData.relatedVideoList.map { it.toDbEntity(it.idx, routineData.idx) }
         )
     }
 }

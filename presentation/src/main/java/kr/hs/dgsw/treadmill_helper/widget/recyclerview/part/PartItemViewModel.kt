@@ -1,7 +1,7 @@
 package kr.hs.dgsw.treadmill_helper.widget.recyclerview.part
 
 import androidx.lifecycle.MutableLiveData
-import kr.hs.dgsw.domain.entity.workout.Part
+import kr.hs.dgsw.domain.entity.routine.Part
 import kr.hs.dgsw.treadmill_helper.base.viewmodel.BaseItemViewModel
 import kr.hs.dgsw.treadmill_helper.etc.extension.secToTimeFormat
 

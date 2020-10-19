@@ -3,8 +3,6 @@ package kr.hs.dgsw.treadmill_helper.ui.timer
 import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.constraintlayout.motion.widget.MotionLayout
-import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.constraintlayout.widget.ConstraintSet
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
@@ -12,7 +10,7 @@ import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.PlayerConstan
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
 import kotlinx.android.synthetic.main.activity_timer.*
-import kr.hs.dgsw.domain.entity.workout.Routine
+import kr.hs.dgsw.domain.entity.routine.Routine
 import kr.hs.dgsw.treadmill_helper.base.BaseActivity
 import kr.hs.dgsw.treadmill_helper.databinding.ActivityTimerBinding
 import kr.hs.dgsw.treadmill_helper.etc.extension.getViewModel
@@ -91,11 +89,6 @@ class TimerActivity : BaseActivity<ActivityTimerBinding, TimerViewModel>() {
         initMotionLayout()
     }
 
-    private fun initIntent() {
-        val routine = intent.getSerializableExtra(EXTRA_SCHEDULE) as Routine
-        mViewModel.setRoutine(routine)
-    }
-
     private fun initRecyclerView() {
         val pagerSnapHelper = PagerSnapHelper()
         part_recycler_view.layoutManager =
@@ -138,26 +131,11 @@ class TimerActivity : BaseActivity<ActivityTimerBinding, TimerViewModel>() {
                 override fun onTransitionTrigger(motionLayout: MotionLayout, triggerId: Int, positive: Boolean, progress: Float) { }
             })
         }
+    }
 
-        video_control_btn.setOnClickListener {
-            if (mViewModel.videoContainerViewState == TimerViewModel.VideoContainerViewState.HIDE) {
-                val constraintSet = ConstraintSet()
-                constraintSet.clone(youtube_player_view_container)
-                youtube_player_view_container.layoutParams =
-                    ConstraintLayout.LayoutParams(0, 90)
-                constraintSet.applyTo(youtube_player_view_container)
-                mViewModel.videoContainerViewState = TimerViewModel.VideoContainerViewState.PREVIEW
-                video_control_text_view.text = "CLOSE VIDEO"
-            } else if (mViewModel.videoContainerViewState == TimerViewModel.VideoContainerViewState.PREVIEW) {
-                val constraintSet = ConstraintSet()
-                constraintSet.clone(youtube_player_view_container)
-                youtube_player_view_container.layoutParams =
-                    ConstraintLayout.LayoutParams(0, 1)
-                constraintSet.applyTo(youtube_player_view_container)
-                mViewModel.videoContainerViewState = TimerViewModel.VideoContainerViewState.HIDE
-                video_control_text_view.text = "OPEN VIDEO"
-            }
-        }
+    private fun initIntent() {
+        val routine = intent.getSerializableExtra(EXTRA_SCHEDULE) as Routine
+        mViewModel.setRoutine(routine)
     }
 
     companion object {

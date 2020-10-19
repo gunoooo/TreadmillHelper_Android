@@ -4,7 +4,7 @@ import kr.hs.dgsw.data.database.cache.RoutineCacheImpl
 import kr.hs.dgsw.data.database.entity.PartEntity
 import kr.hs.dgsw.data.database.entity.RoutineDetailEntity
 import kr.hs.dgsw.data.database.entity.RoutineEntity
-import kr.hs.dgsw.data.database.entity.VideoEntity
+import kr.hs.dgsw.data.database.entity.RelatedVideoEntity
 import kr.hs.dgsw.data.exception.TableEmptyException
 import kr.hs.dgsw.domain.entity.Color
 import kr.hs.dgsw.domain.entity.RoutineType
@@ -51,7 +51,7 @@ class RoutineCacheTest {
                     )
                 ),
                 relatedVideoList = listOf(
-                    VideoEntity(
+                    RelatedVideoEntity(
                         idx = 1,
                         routineIdx = 1,
                         title = "Run With Me",
@@ -60,7 +60,7 @@ class RoutineCacheTest {
                         duration = 1000,
                         category = VideoCategory.RUNNING
                     ),
-                    VideoEntity(
+                    RelatedVideoEntity(
                         idx = 1,
                         routineIdx = 1,
                         title = "Run With Me",
@@ -83,14 +83,14 @@ class RoutineCacheTest {
         val returnValue = listOf(
             RoutineDetailEntity(
                 routine = RoutineEntity(
-                    idx = 1,
+                    idx = 2,
                     title = "My Custom Routine",
                     routineType = RoutineType.CUSTOM
                 ),
                 partList = listOf(
                     PartEntity(
-                        idx = 1,
-                        routineIdx = 1,
+                        idx = 2,
+                        routineIdx = 2,
                         title = "Warming up",
                         time = 300,
                         color = Color.BLACK,
@@ -98,8 +98,8 @@ class RoutineCacheTest {
                         incline = 0
                     ),
                     PartEntity(
-                        idx = 2,
-                        routineIdx = 1,
+                        idx = 3,
+                        routineIdx = 2,
                         title = "Warming up",
                         time = 300,
                         color = Color.BLACK,
@@ -108,18 +108,18 @@ class RoutineCacheTest {
                     )
                 ),
                 relatedVideoList = listOf(
-                    VideoEntity(
-                        idx = 1,
-                        routineIdx = 1,
+                    RelatedVideoEntity(
+                        idx = 2,
+                        routineIdx = 2,
                         title = "Run With Me",
                         thumbnail = "",
                         source = "",
                         duration = 1000,
                         category = VideoCategory.RUNNING
                     ),
-                    VideoEntity(
-                        idx = 2,
-                        routineIdx = 1,
+                    RelatedVideoEntity(
+                        idx = 3,
+                        routineIdx = 2,
                         title = "Run With Me",
                         thumbnail = "",
                         source = "",
@@ -130,14 +130,14 @@ class RoutineCacheTest {
             ),
             RoutineDetailEntity(
                 routine = RoutineEntity(
-                    idx = 2,
+                    idx = 3,
                     title = "My Custom Routine",
                     routineType = RoutineType.CUSTOM
                 ),
                 partList = listOf(
                     PartEntity(
-                        idx = 3,
-                        routineIdx = 2,
+                        idx = 4,
+                        routineIdx = 3,
                         title = "Warming up",
                         time = 300,
                         color = Color.BLACK,
@@ -145,8 +145,8 @@ class RoutineCacheTest {
                         incline = 0
                     ),
                     PartEntity(
-                        idx = 4,
-                        routineIdx = 2,
+                        idx = 5,
+                        routineIdx = 3,
                         title = "Warming up",
                         time = 300,
                         color = Color.BLACK,
@@ -155,18 +155,18 @@ class RoutineCacheTest {
                     )
                 ),
                 relatedVideoList = listOf(
-                    VideoEntity(
-                        idx = 3,
-                        routineIdx = 2,
+                    RelatedVideoEntity(
+                        idx = 4,
+                        routineIdx = 3,
                         title = "Run With Me",
                         thumbnail = "",
                         source = "",
                         duration = 1000,
                         category = VideoCategory.RUNNING
                     ),
-                    VideoEntity(
-                        idx = 4,
-                        routineIdx = 2,
+                    RelatedVideoEntity(
+                        idx = 5,
+                        routineIdx = 3,
                         title = "Run With Me",
                         thumbnail = "",
                         source = "",
@@ -190,6 +190,8 @@ class RoutineCacheTest {
             ),
             partList = listOf(
                 PartEntity(
+                    idx = 1,
+                    routineIdx = 1,
                     title = "Warming up",
                     time = 300,
                     color = Color.BLACK,
@@ -197,6 +199,8 @@ class RoutineCacheTest {
                     incline = 0
                 ),
                 PartEntity(
+                    idx = 2,
+                    routineIdx = 1,
                     title = "Warming up",
                     time = 300,
                     color = Color.BLACK,
@@ -205,14 +209,18 @@ class RoutineCacheTest {
                 )
             ),
             relatedVideoList = listOf(
-                VideoEntity(
+                RelatedVideoEntity(
+                    idx = 1,
+                    routineIdx = 1,
                     title = "Run With Me",
                     thumbnail = "",
                     source = "",
                     duration = 1000,
                     category = VideoCategory.RUNNING
                 ),
-                VideoEntity(
+                RelatedVideoEntity(
+                    idx = 2,
+                    routineIdx = 1,
                     title = "Run With Me",
                     thumbnail = "",
                     source = "",
@@ -250,14 +258,14 @@ class RoutineCacheTest {
                     )
                 ),
                 relatedVideoList = listOf(
-                    VideoEntity(
+                    RelatedVideoEntity(
                         title = "Run With Me",
                         thumbnail = "",
                         source = "",
                         duration = 1000,
                         category = VideoCategory.RUNNING
                     ),
-                    VideoEntity(
+                    RelatedVideoEntity(
                         title = "Run With Me",
                         thumbnail = "",
                         source = "",
@@ -288,14 +296,14 @@ class RoutineCacheTest {
                     )
                 ),
                 relatedVideoList = listOf(
-                    VideoEntity(
+                    RelatedVideoEntity(
                         title = "Run With Me",
                         thumbnail = "",
                         source = "",
                         duration = 1000,
                         category = VideoCategory.RUNNING
                     ),
-                    VideoEntity(
+                    RelatedVideoEntity(
                         title = "Run With Me",
                         thumbnail = "",
                         source = "",
@@ -320,13 +328,12 @@ class RoutineCacheTest {
     fun updateRoutine_success() {
         insertRoutineDetailList_success()
         val routineEntity = RoutineEntity(
-            idx = 2,
-            title = "My Custom Routine 2",
+            idx = 1,
+            title = "My Custom Routine *",
             routineType = RoutineType.CUSTOM
         )
         val partEntityList = listOf(
             PartEntity(
-                routineIdx = 2,
                 title = "Warming up",
                 time = 300,
                 color = Color.BLACK,
@@ -335,8 +342,7 @@ class RoutineCacheTest {
             )
         )
         val videoEntityList = listOf(
-            VideoEntity(
-                routineIdx = 2,
+            RelatedVideoEntity(
                 title = "Run With Me",
                 thumbnail = "",
                 source = "",
@@ -348,7 +354,7 @@ class RoutineCacheTest {
             RoutineDetailEntity(
                 routine = RoutineEntity(
                     idx = 1,
-                    title = "My Custom Routine",
+                    title = "My Custom Routine *",
                     routineType = RoutineType.CUSTOM
                 ),
                 partList = listOf(
@@ -360,29 +366,11 @@ class RoutineCacheTest {
                         color = Color.BLACK,
                         speed = 6.5,
                         incline = 0
-                    ),
-                    PartEntity(
-                        idx = 2,
-                        routineIdx = 1,
-                        title = "Warming up",
-                        time = 300,
-                        color = Color.BLACK,
-                        speed = 6.5,
-                        incline = 0
                     )
                 ),
                 relatedVideoList = listOf(
-                    VideoEntity(
+                    RelatedVideoEntity(
                         idx = 1,
-                        routineIdx = 1,
-                        title = "Run With Me",
-                        thumbnail = "",
-                        source = "",
-                        duration = 1000,
-                        category = VideoCategory.RUNNING
-                    ),
-                    VideoEntity(
-                        idx = 2,
                         routineIdx = 1,
                         title = "Run With Me",
                         thumbnail = "",
@@ -395,7 +383,7 @@ class RoutineCacheTest {
             RoutineDetailEntity(
                 routine = RoutineEntity(
                     idx = 2,
-                    title = "My Custom Routine 2",
+                    title = "My Custom Routine",
                     routineType = RoutineType.CUSTOM
                 ),
                 partList = listOf(
@@ -407,11 +395,29 @@ class RoutineCacheTest {
                         color = Color.BLACK,
                         speed = 6.5,
                         incline = 0
+                    ),
+                    PartEntity(
+                        idx = 4,
+                        routineIdx = 2,
+                        title = "Warming up",
+                        time = 300,
+                        color = Color.BLACK,
+                        speed = 6.5,
+                        incline = 0
                     )
                 ),
                 relatedVideoList = listOf(
-                    VideoEntity(
+                    RelatedVideoEntity(
                         idx = 3,
+                        routineIdx = 2,
+                        title = "Run With Me",
+                        thumbnail = "",
+                        source = "",
+                        duration = 1000,
+                        category = VideoCategory.RUNNING
+                    ),
+                    RelatedVideoEntity(
+                        idx = 4,
                         routineIdx = 2,
                         title = "Run With Me",
                         thumbnail = "",
@@ -461,7 +467,7 @@ class RoutineCacheTest {
                     )
                 ),
                 relatedVideoList = listOf(
-                    VideoEntity(
+                    RelatedVideoEntity(
                         idx = 3,
                         routineIdx = 2,
                         title = "Run With Me",
@@ -470,7 +476,7 @@ class RoutineCacheTest {
                         duration = 1000,
                         category = VideoCategory.RUNNING
                     ),
-                    VideoEntity(
+                    RelatedVideoEntity(
                         idx = 4,
                         routineIdx = 2,
                         title = "Run With Me",

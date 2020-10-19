@@ -1,10 +1,18 @@
 package kr.hs.dgsw.data.database.entity
 
 import androidx.room.Entity
+import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
 import kr.hs.dgsw.domain.entity.Color
 
-@Entity(tableName = "part_table")
+@Entity(tableName = "part_table",
+    foreignKeys = [ForeignKey(
+        entity = RoutineEntity::class,
+        parentColumns = arrayOf("idx"),
+        childColumns = arrayOf("routineIdx"),
+        onDelete = ForeignKey.CASCADE
+    )]
+)
 data class PartEntity(
     var routineIdx: Int,
     val title: String,

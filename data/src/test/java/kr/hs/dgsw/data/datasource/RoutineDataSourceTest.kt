@@ -7,8 +7,9 @@ import kr.hs.dgsw.data.database.cache.RoutineCache
 import kr.hs.dgsw.data.database.entity.PartEntity
 import kr.hs.dgsw.data.database.entity.RoutineDetailEntity
 import kr.hs.dgsw.data.database.entity.RoutineEntity
-import kr.hs.dgsw.data.database.entity.VideoEntity
+import kr.hs.dgsw.data.database.entity.RelatedVideoEntity
 import kr.hs.dgsw.data.entity.PartData
+import kr.hs.dgsw.data.entity.RelatedVideoData
 import kr.hs.dgsw.data.entity.RoutineData
 import kr.hs.dgsw.data.entity.VideoData
 import kr.hs.dgsw.data.etc.Object
@@ -57,7 +58,7 @@ class RoutineDataSourceTest {
                     )
                 ),
                 relatedVideoList = listOf(
-                    VideoEntity(
+                    RelatedVideoEntity(
                         idx = 1,
                         routineIdx = 1,
                         title = "Run With Me!",
@@ -85,7 +86,7 @@ class RoutineDataSourceTest {
                     )
                 ),
                 relatedVideoList = listOf(
-                    VideoData(
+                    RelatedVideoData(
                         idx = 1,
                         title = "Run With Me!",
                         thumbnail = "",
@@ -134,7 +135,7 @@ class RoutineDataSourceTest {
                     )
                 ),
                 relatedVideoList = listOf(
-                    VideoEntity(
+                    RelatedVideoEntity(
                         idx = 1,
                         routineIdx = 1,
                         title = "Virtual Run | Amazing Norwegian Nature Scenery for your Virtual Treadmill Workout",
@@ -172,7 +173,7 @@ class RoutineDataSourceTest {
                     )
                 ),
                 relatedVideoList = listOf(
-                    VideoData(
+                    RelatedVideoData(
                         idx = 1,
                         title = "Virtual Run | Amazing Norwegian Nature Scenery for your Virtual Treadmill Workout",
                         thumbnail = "",

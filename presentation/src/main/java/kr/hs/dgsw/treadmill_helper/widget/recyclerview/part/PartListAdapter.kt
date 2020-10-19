@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.item_part.view.*
-import kr.hs.dgsw.domain.entity.workout.Part
+import kr.hs.dgsw.domain.entity.routine.Part
 import kr.hs.dgsw.treadmill_helper.R
 import kr.hs.dgsw.treadmill_helper.databinding.ItemPartBinding
 import kr.hs.dgsw.treadmill_helper.databinding.ItemPartVerticalBinding
@@ -51,6 +51,8 @@ class PartListAdapter(
         if (viewType == ViewType.HORIZONTAL) {
             viewHolder.itemView.layoutParams.width =
                 Resources.getSystem().displayMetrics.widthPixels - 16.dpToPx() * 4
+            viewHolder.itemView.stroke_1.visibility = View.VISIBLE
+            viewHolder.itemView.stroke_2.visibility = View.VISIBLE
             if (position == 0)
                 viewHolder.itemView.stroke_1.visibility = View.INVISIBLE
             else if (position == itemCount - 1)

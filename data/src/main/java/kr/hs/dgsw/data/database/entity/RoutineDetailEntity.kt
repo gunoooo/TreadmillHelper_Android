@@ -9,5 +9,5 @@ data class RoutineDetailEntity(
     @Relation(parentColumn = "idx", entityColumn = "routineIdx")
     val partList: List<PartEntity>,
     @Relation(parentColumn = "idx", entityColumn = "routineIdx")
-    val relatedVideoList: List<VideoEntity>
+    val relatedVideoList: List<RelatedVideoEntity>
 )

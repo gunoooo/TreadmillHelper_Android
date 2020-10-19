@@ -51,20 +51,13 @@ abstract class BaseDialog<VB : ViewDataBinding, VM : BaseViewModel> : DaggerDial
     }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        val root = RelativeLayout(activity)
-        root.layoutParams = LayoutParams(
-                LayoutParams.WRAP_CONTENT,
-                LayoutParams.WRAP_CONTENT)
-
         val dialog = Dialog(context!!)
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
-        dialog.setContentView(root)
-        if (dialog.window != null) {
-            dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-            dialog.window!!.setLayout(
-                    LayoutParams.WRAP_CONTENT,
-                    LayoutParams.WRAP_CONTENT)
-        }
+        dialog.setContentView(RelativeLayout(activity))
+        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog.window?.setLayout(
+            resources.displayMetrics.widthPixels * 5 / 6,
+            LayoutParams.WRAP_CONTENT)
         dialog.setCanceledOnTouchOutside(true)
         return dialog
     }

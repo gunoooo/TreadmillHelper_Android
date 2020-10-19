@@ -21,6 +21,7 @@ import javax.inject.Singleton
         RepositoryModule::class,
         ActivityBindingModule::class,
         FragmentBindingModule::class,
+        DialogBindingModule::class,
         AndroidInjectionModule::class
     ]
 )

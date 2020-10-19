@@ -5,19 +5,20 @@
     <data>
         <variable
             name="viewModel"
-            type="kr.hs.dgsw.treadmill_helper.widget.recyclerview.part.PartItemViewModel" />
+            type="kr.hs.dgsw.treadmill_helper.widget.recyclerview.routine.RoutineItemViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="65dp"
-        android:background="@color/colorBackground">
+        android:layout_height="70dp"
+        android:background="@color/colorBackground"
+        android:onClick="@{() -> viewModel.onClickItem()}">
         <TextView
             android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="10dp"
             android:fontFamily="@font/nanum_square_regular"
             android:textColor="@color/colorText"
             android:textSize="21sp"
@@ -33,10 +34,9 @@
             android:layout_marginStart="30dp"
             android:layout_marginBottom="5dp"
             android:src="@drawable/ic_run"
-            app:mutableTint="@{viewModel.colorData}"
+            android:tint="@color/colorPrimary"
             app:layout_constraintBottom_toBottomOf="@+id/textView3"
-            app:layout_constraintStart_toEndOf="@+id/textView3"
-            tools:tint="@color/colorPrimary" />
+            app:layout_constraintStart_toEndOf="@+id/textView3" />
 
         <TextView
             android:id="@+id/textView5"
@@ -60,7 +60,7 @@
             android:fontFamily="@font/nanum_square_light"
             android:textColor="@color/colorText"
             android:textSize="14sp"
-            app:mutableText="@{viewModel.speedData}"
+            app:mutableText="@{viewModel.distanceData}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView3"
@@ -73,18 +73,18 @@
             android:fontFamily="@font/nanum_square_light"
             android:textColor="@color/colorText"
             android:textSize="14sp"
-            app:mutableText="@{viewModel.durationData}"
+            app:mutableText="@{viewModel.timeData}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/textView4"
             app:layout_constraintTop_toBottomOf="@+id/textView3"
-            tools:text="duration : 30:00" />
+            tools:text="time : 30:00" />
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_margin="10dp"
-            android:adjustViewBounds="true"
-            android:src="@drawable/ic_twotone_play"
+            android:src="@drawable/ic_more_vert"
+            android:tint="@color/colorGrey"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

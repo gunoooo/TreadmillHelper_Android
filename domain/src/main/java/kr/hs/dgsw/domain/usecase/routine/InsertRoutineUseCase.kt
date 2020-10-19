@@ -2,7 +2,7 @@ package kr.hs.dgsw.domain.usecase.routine
 
 import io.reactivex.Completable
 import kr.hs.dgsw.domain.base.ParamsUseCase
-import kr.hs.dgsw.domain.entity.workout.Routine
+import kr.hs.dgsw.domain.entity.routine.Routine
 import kr.hs.dgsw.domain.repository.RoutineRepository
 import javax.inject.Inject
 

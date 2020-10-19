@@ -14,17 +14,6 @@ fun Video.toDataEntity(): VideoData {
     )
 }
 
-fun Video.toDbEntity(routineIdx: Int): VideoEntity {
-    return VideoEntity(
-        routineIdx = routineIdx,
-        title = title,
-        thumbnail = thumbnail,
-        duration = duration,
-        source = source,
-        category = category
-    )
-}
-
 fun VideoData.toEntity(): Video {
     return Video(
         title = title,
@@ -35,19 +24,8 @@ fun VideoData.toEntity(): Video {
     )
 }
 
-fun VideoData.toDbEntity(routineIdx: Int): VideoEntity {
+fun VideoData.toDbEntity(): VideoEntity {
     return VideoEntity(
-        routineIdx = routineIdx,
-        title = title,
-        thumbnail = thumbnail,
-        duration = duration,
-        source = source,
-        category = category
-    )
-}
-
-fun VideoEntity.toEntity(): Video {
-    return Video(
         title = title,
         thumbnail = thumbnail,
         duration = duration,
@@ -58,7 +36,6 @@ fun VideoEntity.toEntity(): Video {
 
 fun VideoEntity.toDataEntity(): VideoData {
     return VideoData(
-        idx = idx,
         title = title,
         thumbnail = thumbnail,
         duration = duration,

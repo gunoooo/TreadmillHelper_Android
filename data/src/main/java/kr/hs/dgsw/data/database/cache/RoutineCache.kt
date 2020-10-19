@@ -5,7 +5,7 @@ import io.reactivex.Single
 import kr.hs.dgsw.data.database.entity.PartEntity
 import kr.hs.dgsw.data.database.entity.RoutineEntity
 import kr.hs.dgsw.data.database.entity.RoutineDetailEntity
-import kr.hs.dgsw.data.database.entity.VideoEntity
+import kr.hs.dgsw.data.database.entity.RelatedVideoEntity
 
 interface RoutineCache {
     fun getRoutineList(): Single<List<RoutineEntity>>
@@ -23,6 +23,6 @@ interface RoutineCache {
     fun updateRoutine(
         routineEntity: RoutineEntity,
         partEntityList: List<PartEntity> = emptyList(),
-        videoEntityList: List<VideoEntity> = emptyList()
+        relatedVideoEntityList: List<RelatedVideoEntity> = emptyList()
     ): Completable
 }

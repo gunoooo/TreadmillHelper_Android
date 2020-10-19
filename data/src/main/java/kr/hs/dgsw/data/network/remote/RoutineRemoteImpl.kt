@@ -11,6 +11,7 @@ class RoutineRemoteImpl @Inject constructor(
     override val api: RoutineApi
 ) : BaseRemote<RoutineApi>(), RoutineRemote {
     override fun getPresetRoutineList(): Single<List<RoutineData>> =
-        api.getPresetRoutineList().map(getResponse())
-            .map(RoutineResponse::routines)
+        api.getPresetRoutineList()
+            .map(getResponse())
+            .map { it.routines }
 }

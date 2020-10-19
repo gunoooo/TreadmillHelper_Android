@@ -5,7 +5,7 @@ import io.reactivex.Single
 import kr.hs.dgsw.data.datasource.RoutineDataSource
 import kr.hs.dgsw.data.mapper.toDataEntity
 import kr.hs.dgsw.data.mapper.toEntity
-import kr.hs.dgsw.domain.entity.workout.Routine
+import kr.hs.dgsw.domain.entity.routine.Routine
 import kr.hs.dgsw.domain.repository.RoutineRepository
 import javax.inject.Inject
 
@@ -18,7 +18,7 @@ class RoutineRepositoryImpl @Inject constructor(
     }
 
     override fun getRoutineList(): Single<List<Routine>> {
-        return routineDataSource.getRoutineList()
+        return routineDataSource.getRoutineDetailList()
             .map { routineDataList -> routineDataList.map { it.toEntity() } }
     }
 

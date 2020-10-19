@@ -8,15 +8,15 @@ import kr.hs.dgsw.data.base.BaseCache
 import kr.hs.dgsw.data.database.entity.PartEntity
 import kr.hs.dgsw.data.database.entity.RoutineDetailEntity
 import kr.hs.dgsw.data.database.entity.RoutineEntity
-import kr.hs.dgsw.data.database.entity.VideoEntity
+import kr.hs.dgsw.data.database.entity.RelatedVideoEntity
 import kr.hs.dgsw.data.exception.TableEmptyException
 import javax.inject.Inject
 
-class RoutineCacheImpl @Inject constructor(application: Application)
-    : BaseCache(application), RoutineCache {
+class RoutineCacheImpl @Inject constructor(application: Application) :
+    BaseCache(application), RoutineCache {
     private val routineDao = database.routineDao()
     private val partDao = database.partDao()
-    private val videoDao = database.videoDao()
+    private val relatedVideoDao = database.relatedVideoDao()
 
     override fun getRoutineList(): Single<List<RoutineEntity>> {
         return routineDao.getRoutineList().flatMap {
@@ -49,13 +49,13 @@ class RoutineCacheImpl @Inject constructor(application: Application)
         return routineDao.insertGetIdx(routineDetailEntityList.map { it.routine })
             .flatMapCompletable { idxList ->
                 idxList.forEachIndexed { i, idx ->
-                    routineDetailEntityList.flatMap { it.partList }
+                    routineDetailEntityList[i].partList
                         .forEach { it.routineIdx = idx.toInt() }
-                    routineDetailEntityList.flatMap { it.relatedVideoList }
+                    routineDetailEntityList[i].relatedVideoList
                         .forEach { it.routineIdx = idx.toInt() }
                 }
                 partDao.insert(routineDetailEntityList.flatMap { it.partList })
-                    .andThen(videoDao.insert(routineDetailEntityList.flatMap { it.relatedVideoList }))
+                    .andThen(relatedVideoDao.insert(routineDetailEntityList.flatMap { it.relatedVideoList }))
             }
     }
 
@@ -67,7 +67,7 @@ class RoutineCacheImpl @Inject constructor(application: Application)
                 routineDetailEntity.relatedVideoList
                     .forEach { it.routineIdx = idx.toInt() }
                 partDao.insert(routineDetailEntity.partList)
-                    .andThen(videoDao.insert(routineDetailEntity.relatedVideoList))
+                    .andThen(relatedVideoDao.insert(routineDetailEntity.relatedVideoList))
             }
     }
 
@@ -78,13 +78,17 @@ class RoutineCacheImpl @Inject constructor(application: Application)
     override fun updateRoutine(
         routineEntity: RoutineEntity,
         partEntityList: List<PartEntity>,
-        videoEntityList: List<VideoEntity>
+        relatedVideoEntityList: List<RelatedVideoEntity>
     ): Completable {
-        return videoDao.deleteByRoutineIdx(routineEntity.idx)
+        partEntityList
+            .forEach { it.routineIdx = routineEntity.idx }
+        relatedVideoEntityList
+            .forEach { it.routineIdx = routineEntity.idx }
+        return relatedVideoDao.deleteByRoutineIdx(routineEntity.idx)
             .andThen(partDao.deleteByRoutineIdx(routineEntity.idx)
                 .andThen(routineDao.deleteByIdx(routineEntity.idx)
                     .andThen(routineDao.insert(routineEntity)
                         .andThen(partDao.insert(partEntityList)
-                            .andThen(videoDao.insert(videoEntityList))))))
+                            .andThen(relatedVideoDao.insert(relatedVideoEntityList))))))
     }
 }

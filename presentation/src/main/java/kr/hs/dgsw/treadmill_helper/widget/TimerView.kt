@@ -10,8 +10,8 @@ import android.view.View
 import android.widget.FrameLayout
 import androidx.core.content.ContextCompat
 import kotlinx.android.synthetic.main.layout_timer.view.*
-import kr.hs.dgsw.domain.entity.workout.Part
-import kr.hs.dgsw.domain.entity.workout.Routine
+import kr.hs.dgsw.domain.entity.routine.Part
+import kr.hs.dgsw.domain.entity.routine.Routine
 import kr.hs.dgsw.treadmill_helper.R
 import kr.hs.dgsw.treadmill_helper.etc.extension.milliToTimeFormat
 import kr.hs.dgsw.treadmill_helper.etc.extension.toMilliseconds

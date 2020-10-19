@@ -7,11 +7,11 @@ data class RoutineData(
     val title: String,
     val routineType: RoutineType,
     val partList: List<PartData>,
-    val relatedVideoList: List<VideoData>
+    val relatedVideoList: List<RelatedVideoData>
 ) {
     constructor(idx: Int, title: String, routineType: RoutineType):
             this(idx, title, routineType, emptyList(), emptyList())
 
-    constructor(title: String, routineType: RoutineType, partList: List<PartData>, relatedVideoList: List<VideoData>):
+    constructor(title: String, routineType: RoutineType, partList: List<PartData>, relatedVideoList: List<RelatedVideoData>):
             this(0, title, routineType, partList, relatedVideoList)
 }

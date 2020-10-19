@@ -2,21 +2,11 @@ package kr.hs.dgsw.data.mapper
 
 import kr.hs.dgsw.data.database.entity.PartEntity
 import kr.hs.dgsw.data.entity.PartData
-import kr.hs.dgsw.domain.entity.workout.Part
+import kr.hs.dgsw.domain.entity.routine.Part
 
 fun Part.toDataEntity(): PartData {
     return PartData(
-        title = title,
-        time = time,
-        color = color,
-        speed = speed,
-        incline = incline
-    )
-}
-
-fun Part.toDbEntity(routineIdx: Int): PartEntity {
-    return PartEntity(
-        routineIdx = routineIdx,
+        idx = idx,
         title = title,
         time = time,
         color = color,
@@ -27,6 +17,7 @@ fun Part.toDbEntity(routineIdx: Int): PartEntity {
 
 fun PartData.toEntity(): Part {
     return Part(
+        idx = idx,
         title = title,
         time = time,
         color = color,
@@ -35,19 +26,10 @@ fun PartData.toEntity(): Part {
     )
 }
 
-fun PartData.toDbEntity(routineIdx: Int): PartEntity {
+fun PartData.toDbEntity(idx: Int = 0, routineIdx: Int = 0): PartEntity {
     return PartEntity(
+        idx = idx,
         routineIdx = routineIdx,
-        title = title,
-        time = time,
-        color = color,
-        speed = speed,
-        incline = incline
-    )
-}
-
-fun PartEntity.toEntity(): Part {
-    return Part(
         title = title,
         time = time,
         color = color,

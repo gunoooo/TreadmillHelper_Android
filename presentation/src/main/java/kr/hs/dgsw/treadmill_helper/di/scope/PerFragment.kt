@@ -1,4 +1,4 @@
-package com.gunwoo.karaoke.singsangsung.di.scope
+package kr.hs.dgsw.treadmill_helper.di.scope
 
 import javax.inject.Scope
 

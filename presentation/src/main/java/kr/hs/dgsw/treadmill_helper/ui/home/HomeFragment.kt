@@ -9,6 +9,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.fragment_home.*
+import kr.hs.dgsw.data.database.SharedPreferenceManager
 import kr.hs.dgsw.treadmill_helper.R
 import kr.hs.dgsw.treadmill_helper.base.BaseFragment
 import kr.hs.dgsw.treadmill_helper.databinding.FragmentHomeBinding
@@ -36,28 +37,43 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
                     )
                 )
             })
+
+            routineListDialog.clickItemEvent.observe(this@HomeFragment, Observer {
+                setRoutine(it)
+            })
         }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initUI()
+        initRoutine()
+        initOnClickEvent()
     }
 
-    private fun initUI() {
-        initRecyclerViewSlideEvent(
+    private fun initRoutine() {
+        mViewModel.setRoutine(
+            SharedPreferenceManager
+                .getRoutineIdx(context!!.applicationContext)
+        )
+    }
+
+    private fun initOnClickEvent() {
+        routine_list_btn.setOnClickListener {
+            mViewModel.routineListDialog.show(parentFragmentManager)
+        }
+        initRecyclerViewOnClickEvent(
             part_recycler_view,
             parts_linear_layout,
             part_arrow_image_view
         )
-        initRecyclerViewSlideEvent(
+        initRecyclerViewOnClickEvent(
             relation_video_recycler_view,
             relation_videos_linear_layout,
             relation_video_arrow_image_view
         )
     }
 
-    private fun initRecyclerViewSlideEvent(recyclerView: RecyclerView, button: LinearLayout, arrow: ImageView) {
+    private fun initRecyclerViewOnClickEvent(recyclerView: RecyclerView, button: LinearLayout, arrow: ImageView) {
         recyclerView.alpha = 0F
         button.setOnClickListener {
             arrow.animate()
@@ -66,19 +82,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
                 .start()
             if (recyclerView.visibility == View.GONE) {
                 recyclerView.visibility = View.VISIBLE
-                root_view.post {
-                    root_view
-                        .smoothScrollTo(0, recyclerView.bottom)
-                }
                 recyclerView.animate()
                     .alpha(1F)
                     .setDuration(500)
                     .start()
             } else {
-                root_view.post {
-                    root_view
-                        .smoothScrollTo(0, recyclerView.top)
-                }
                 recyclerView.animate()
                     .alpha(0F)
                     .setDuration(500)
