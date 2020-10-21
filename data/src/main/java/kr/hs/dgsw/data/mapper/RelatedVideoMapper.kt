@@ -22,7 +22,7 @@ fun RelatedVideo.toDataEntity(): RelatedVideoData {
         title = title,
         thumbnail = thumbnail,
         duration = duration,
-        category = category
+        category = category.name
     )
 }
 
@@ -33,7 +33,7 @@ fun RelatedVideoData.toEntity(): RelatedVideo {
         title = title,
         thumbnail = thumbnail,
         duration = duration,
-        category = category
+        category = enumValueOf(category)
     )
 }
 

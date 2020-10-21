@@ -1,17 +1,15 @@
 package kr.hs.dgsw.data.entity
 
-import kr.hs.dgsw.domain.entity.RoutineType
-
 data class RoutineData(
     val idx: Int,
     val title: String,
-    val routineType: RoutineType,
+    val routineType: String,
     val partList: List<PartData>,
     val relatedVideoList: List<RelatedVideoData>
 ) {
-    constructor(idx: Int, title: String, routineType: RoutineType):
+    constructor(idx: Int, title: String, routineType: String):
             this(idx, title, routineType, emptyList(), emptyList())
 
-    constructor(title: String, routineType: RoutineType, partList: List<PartData>, relatedVideoList: List<RelatedVideoData>):
+    constructor(title: String, routineType: String, partList: List<PartData>, relatedVideoList: List<RelatedVideoData>):
             this(0, title, routineType, partList, relatedVideoList)
 }

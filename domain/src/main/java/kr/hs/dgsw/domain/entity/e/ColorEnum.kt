@@ -1,6 +1,6 @@
-package kr.hs.dgsw.domain.entity
+package kr.hs.dgsw.domain.entity.e
 
-enum class Color {
+enum class ColorEnum {
     RED,
     ORANGE,
     YELLOW,

@@ -6,23 +6,45 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import kr.hs.dgsw.domain.entity.video.Video
 import kr.hs.dgsw.treadmill_helper.R
+import kr.hs.dgsw.treadmill_helper.databinding.ItemLoadingBinding
 import kr.hs.dgsw.treadmill_helper.databinding.ItemVideoBinding
+import kr.hs.dgsw.treadmill_helper.widget.recyclerview.LoadingViewType
 
-class VideoListAdapter(private val videoList: List<Video>) :
-    RecyclerView.Adapter<VideoListAdapter.VideoItemViewHolder>(),
+class VideoListAdapter(private val videoList: List<Video?>) :
+    RecyclerView.Adapter<RecyclerView.ViewHolder>(),
     VideoNavigator {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VideoItemViewHolder {
-        return VideoItemViewHolder(
-            DataBindingUtil.inflate(
-                LayoutInflater.from(parent.context),
-                R.layout.item_video,
-                parent, false
-            )
-        )
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        return when (viewType) {
+            LoadingViewType.ITEM.value ->
+                VideoItemViewHolder(
+                    DataBindingUtil.inflate(
+                        LayoutInflater.from(parent.context),
+                        R.layout.item_video,
+                        parent, false
+                    )
+                )
+            else ->
+                LoadingItemViewHolder(
+                    DataBindingUtil.inflate(
+                        LayoutInflater.from(parent.context),
+                        R.layout.item_loading,
+                        parent, false
+                    )
+                )
+        }
     }
 
-    override fun onBindViewHolder(viewHolder: VideoItemViewHolder, position: Int) {
-        viewHolder.bind(videoList[position])
+    override fun onBindViewHolder(viewHolder: RecyclerView.ViewHolder, position: Int) {
+        val video = videoList[position]
+        if (viewHolder is VideoItemViewHolder)
+            viewHolder.bind(video!!)
+    }
+
+    override fun getItemViewType(position: Int): Int {
+        return if (videoList[position] == null)
+            LoadingViewType.LOADING.value
+        else
+            LoadingViewType.ITEM.value
     }
 
     override fun getItemCount(): Int {
@@ -39,4 +61,7 @@ class VideoListAdapter(private val videoList: List<Video>) :
             binding.viewModel = viewModel
         }
     }
+
+    inner class LoadingItemViewHolder(val binding: ItemLoadingBinding) :
+        RecyclerView.ViewHolder(binding.root)
 }

@@ -11,8 +11,6 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.google.android.material.card.MaterialCardView
-import com.smarteist.autoimageslider.SliderView
-import com.smarteist.autoimageslider.SliderViewAdapter
 import kr.co.prnd.YouTubePlayerView
 import kr.hs.dgsw.treadmill_helper.R
 import kr.hs.dgsw.treadmill_helper.etc.extension.getParentActivity

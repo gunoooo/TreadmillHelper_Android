@@ -1,6 +1,6 @@
 package kr.hs.dgsw.domain.entity.video
 
-import kr.hs.dgsw.domain.entity.VideoCategory
+import kr.hs.dgsw.domain.entity.e.VideoCategoryEnum
 import java.io.Serializable
 
 data class Video(
@@ -8,5 +8,5 @@ data class Video(
     val thumbnail: String,
     val source: String,
     val duration: Int,
-    val category: VideoCategory
+    val category: VideoCategoryEnum
 ) : Serializable

@@ -1,6 +1,6 @@
 package kr.hs.dgsw.domain.entity.routine
 
-import kr.hs.dgsw.domain.entity.VideoCategory
+import kr.hs.dgsw.domain.entity.e.VideoCategoryEnum
 
 data class RelatedVideo(
     val idx: Int,
@@ -8,5 +8,5 @@ data class RelatedVideo(
     val title: String,
     val thumbnail: String,
     val duration: Int,
-    val category: VideoCategory
+    val category: VideoCategoryEnum
 )

@@ -10,7 +10,7 @@ fun Video.toDataEntity(): VideoData {
         thumbnail = thumbnail,
         duration = duration,
         source = source,
-        category = category
+        category = category.name
     )
 }
 
@@ -20,7 +20,7 @@ fun VideoData.toEntity(): Video {
         thumbnail = thumbnail,
         duration = duration,
         source = source,
-        category = category
+        category = enumValueOf(category)
     )
 }
 

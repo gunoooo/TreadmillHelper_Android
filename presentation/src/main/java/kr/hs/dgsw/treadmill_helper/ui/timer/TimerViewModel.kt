@@ -5,6 +5,7 @@ import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.PlayerConstan
 import io.reactivex.disposables.Disposable
 import io.reactivex.observers.DisposableObserver
 import kr.hs.dgsw.data.etc.extension.refreshAll
+import kr.hs.dgsw.data.mapper.toVideo
 import kr.hs.dgsw.domain.entity.routine.Part
 import kr.hs.dgsw.domain.entity.routine.Routine
 import kr.hs.dgsw.domain.entity.video.Video
@@ -91,7 +92,7 @@ class TimerViewModel(
             if (routineData.value!!.relatedVideoList.isEmpty())
                 null
             else
-                routineData.value!!.relatedVideoList[0]
+                routineData.value!!.relatedVideoList[0].toVideo()
     }
 
     fun plus30sec() {

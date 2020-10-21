@@ -18,7 +18,7 @@ class RoutineDataSourceImpl @Inject constructor(
             .onErrorResumeNext {
                 cache.insertRoutineDetailList(Object.presetRoutineList
                     .map { it.toRoutineDetailEntity() })
-                    .andThen(cache.getRoutineDetailList())
+                    .andThen(Single.defer { cache.getRoutineDetailList() })
             }
             .map { routineList ->
                 routineList.map {
@@ -32,7 +32,7 @@ class RoutineDataSourceImpl @Inject constructor(
             .onErrorResumeNext {
                 cache.insertRoutineDetailList(Object.presetRoutineList
                     .map { it.toRoutineDetailEntity() })
-                    .andThen(cache.getRoutineList())
+                    .andThen(Single.defer { cache.getRoutineList() })
             }
             .map { routineList ->
                 routineList.map {

@@ -6,9 +6,9 @@ import kr.hs.dgsw.data.database.entity.RoutineDetailEntity
 import kr.hs.dgsw.data.database.entity.RoutineEntity
 import kr.hs.dgsw.data.database.entity.RelatedVideoEntity
 import kr.hs.dgsw.data.exception.TableEmptyException
-import kr.hs.dgsw.domain.entity.Color
-import kr.hs.dgsw.domain.entity.RoutineType
-import kr.hs.dgsw.domain.entity.VideoCategory
+import kr.hs.dgsw.domain.entity.e.ColorEnum
+import kr.hs.dgsw.domain.entity.e.RoutineTypeEnum
+import kr.hs.dgsw.domain.entity.e.VideoCategoryEnum
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
@@ -28,7 +28,7 @@ class RoutineCacheTest {
                 routine = RoutineEntity(
                     idx = 1,
                     title = "My Custom Routine",
-                    routineType = RoutineType.CUSTOM
+                    routineType = RoutineTypeEnum.CUSTOM
                 ),
                 partList = listOf(
                     PartEntity(
@@ -36,7 +36,7 @@ class RoutineCacheTest {
                         routineIdx = 1,
                         title = "Warming up",
                         time = 300,
-                        color = Color.BLACK,
+                        color = ColorEnum.BLACK,
                         speed = 6.5,
                         incline = 0
                     ),
@@ -45,7 +45,7 @@ class RoutineCacheTest {
                         routineIdx = 1,
                         title = "Warming up",
                         time = 300,
-                        color = Color.BLACK,
+                        color = ColorEnum.BLACK,
                         speed = 6.5,
                         incline = 0
                     )
@@ -58,7 +58,7 @@ class RoutineCacheTest {
                         thumbnail = "",
                         source = "",
                         duration = 1000,
-                        category = VideoCategory.RUNNING
+                        category = VideoCategoryEnum.RUNNING
                     ),
                     RelatedVideoEntity(
                         idx = 1,
@@ -67,7 +67,7 @@ class RoutineCacheTest {
                         thumbnail = "",
                         source = "",
                         duration = 1000,
-                        category = VideoCategory.RUNNING
+                        category = VideoCategoryEnum.RUNNING
                     )
                 )
             )
@@ -85,7 +85,7 @@ class RoutineCacheTest {
                 routine = RoutineEntity(
                     idx = 2,
                     title = "My Custom Routine",
-                    routineType = RoutineType.CUSTOM
+                    routineType = RoutineTypeEnum.CUSTOM
                 ),
                 partList = listOf(
                     PartEntity(
@@ -93,7 +93,7 @@ class RoutineCacheTest {
                         routineIdx = 2,
                         title = "Warming up",
                         time = 300,
-                        color = Color.BLACK,
+                        color = ColorEnum.BLACK,
                         speed = 6.5,
                         incline = 0
                     ),
@@ -102,7 +102,7 @@ class RoutineCacheTest {
                         routineIdx = 2,
                         title = "Warming up",
                         time = 300,
-                        color = Color.BLACK,
+                        color = ColorEnum.BLACK,
                         speed = 6.5,
                         incline = 0
                     )
@@ -115,7 +115,7 @@ class RoutineCacheTest {
                         thumbnail = "",
                         source = "",
                         duration = 1000,
-                        category = VideoCategory.RUNNING
+                        category = VideoCategoryEnum.RUNNING
                     ),
                     RelatedVideoEntity(
                         idx = 3,
@@ -124,7 +124,7 @@ class RoutineCacheTest {
                         thumbnail = "",
                         source = "",
                         duration = 1000,
-                        category = VideoCategory.RUNNING
+                        category = VideoCategoryEnum.RUNNING
                     )
                 )
             ),
@@ -132,7 +132,7 @@ class RoutineCacheTest {
                 routine = RoutineEntity(
                     idx = 3,
                     title = "My Custom Routine",
-                    routineType = RoutineType.CUSTOM
+                    routineType = RoutineTypeEnum.CUSTOM
                 ),
                 partList = listOf(
                     PartEntity(
@@ -140,7 +140,7 @@ class RoutineCacheTest {
                         routineIdx = 3,
                         title = "Warming up",
                         time = 300,
-                        color = Color.BLACK,
+                        color = ColorEnum.BLACK,
                         speed = 6.5,
                         incline = 0
                     ),
@@ -149,7 +149,7 @@ class RoutineCacheTest {
                         routineIdx = 3,
                         title = "Warming up",
                         time = 300,
-                        color = Color.BLACK,
+                        color = ColorEnum.BLACK,
                         speed = 6.5,
                         incline = 0
                     )
@@ -162,7 +162,7 @@ class RoutineCacheTest {
                         thumbnail = "",
                         source = "",
                         duration = 1000,
-                        category = VideoCategory.RUNNING
+                        category = VideoCategoryEnum.RUNNING
                     ),
                     RelatedVideoEntity(
                         idx = 5,
@@ -171,7 +171,7 @@ class RoutineCacheTest {
                         thumbnail = "",
                         source = "",
                         duration = 1000,
-                        category = VideoCategory.RUNNING
+                        category = VideoCategoryEnum.RUNNING
                     )
                 )
             )
@@ -186,7 +186,7 @@ class RoutineCacheTest {
         val routineDetailEntity = RoutineDetailEntity(
             routine = RoutineEntity(
                 title = "My Custom Routine",
-                routineType = RoutineType.CUSTOM
+                routineType = RoutineTypeEnum.CUSTOM
             ),
             partList = listOf(
                 PartEntity(
@@ -194,7 +194,7 @@ class RoutineCacheTest {
                     routineIdx = 1,
                     title = "Warming up",
                     time = 300,
-                    color = Color.BLACK,
+                    color = ColorEnum.BLACK,
                     speed = 6.5,
                     incline = 0
                 ),
@@ -203,7 +203,7 @@ class RoutineCacheTest {
                     routineIdx = 1,
                     title = "Warming up",
                     time = 300,
-                    color = Color.BLACK,
+                    color = ColorEnum.BLACK,
                     speed = 6.5,
                     incline = 0
                 )
@@ -216,7 +216,7 @@ class RoutineCacheTest {
                     thumbnail = "",
                     source = "",
                     duration = 1000,
-                    category = VideoCategory.RUNNING
+                    category = VideoCategoryEnum.RUNNING
                 ),
                 RelatedVideoEntity(
                     idx = 2,
@@ -225,7 +225,7 @@ class RoutineCacheTest {
                     thumbnail = "",
                     source = "",
                     duration = 1000,
-                    category = VideoCategory.RUNNING
+                    category = VideoCategoryEnum.RUNNING
                 )
             )
         )
@@ -239,20 +239,20 @@ class RoutineCacheTest {
             RoutineDetailEntity(
                 routine = RoutineEntity(
                     title = "My Custom Routine",
-                    routineType = RoutineType.CUSTOM
+                    routineType = RoutineTypeEnum.CUSTOM
                 ),
                 partList = listOf(
                     PartEntity(
                         title = "Warming up",
                         time = 300,
-                        color = Color.BLACK,
+                        color = ColorEnum.BLACK,
                         speed = 6.5,
                         incline = 0
                     ),
                     PartEntity(
                         title = "Warming up",
                         time = 300,
-                        color = Color.BLACK,
+                        color = ColorEnum.BLACK,
                         speed = 6.5,
                         incline = 0
                     )
@@ -263,34 +263,34 @@ class RoutineCacheTest {
                         thumbnail = "",
                         source = "",
                         duration = 1000,
-                        category = VideoCategory.RUNNING
+                        category = VideoCategoryEnum.RUNNING
                     ),
                     RelatedVideoEntity(
                         title = "Run With Me",
                         thumbnail = "",
                         source = "",
                         duration = 1000,
-                        category = VideoCategory.RUNNING
+                        category = VideoCategoryEnum.RUNNING
                     )
                 )
             ),
             RoutineDetailEntity(
                 routine = RoutineEntity(
                     title = "My Custom Routine",
-                    routineType = RoutineType.CUSTOM
+                    routineType = RoutineTypeEnum.CUSTOM
                 ),
                 partList = listOf(
                     PartEntity(
                         title = "Warming up",
                         time = 300,
-                        color = Color.BLACK,
+                        color = ColorEnum.BLACK,
                         speed = 6.5,
                         incline = 0
                     ),
                     PartEntity(
                         title = "Warming up",
                         time = 300,
-                        color = Color.BLACK,
+                        color = ColorEnum.BLACK,
                         speed = 6.5,
                         incline = 0
                     )
@@ -301,14 +301,14 @@ class RoutineCacheTest {
                         thumbnail = "",
                         source = "",
                         duration = 1000,
-                        category = VideoCategory.RUNNING
+                        category = VideoCategoryEnum.RUNNING
                     ),
                     RelatedVideoEntity(
                         title = "Run With Me",
                         thumbnail = "",
                         source = "",
                         duration = 1000,
-                        category = VideoCategory.RUNNING
+                        category = VideoCategoryEnum.RUNNING
                     )
                 )
             )
@@ -330,13 +330,13 @@ class RoutineCacheTest {
         val routineEntity = RoutineEntity(
             idx = 1,
             title = "My Custom Routine *",
-            routineType = RoutineType.CUSTOM
+            routineType = RoutineTypeEnum.CUSTOM
         )
         val partEntityList = listOf(
             PartEntity(
                 title = "Warming up",
                 time = 300,
-                color = Color.BLACK,
+                color = ColorEnum.BLACK,
                 speed = 6.5,
                 incline = 0
             )
@@ -347,7 +347,7 @@ class RoutineCacheTest {
                 thumbnail = "",
                 source = "",
                 duration = 1000,
-                category = VideoCategory.RUNNING
+                category = VideoCategoryEnum.RUNNING
             )
         )
         val returnValue = listOf(
@@ -355,7 +355,7 @@ class RoutineCacheTest {
                 routine = RoutineEntity(
                     idx = 1,
                     title = "My Custom Routine *",
-                    routineType = RoutineType.CUSTOM
+                    routineType = RoutineTypeEnum.CUSTOM
                 ),
                 partList = listOf(
                     PartEntity(
@@ -363,7 +363,7 @@ class RoutineCacheTest {
                         routineIdx = 1,
                         title = "Warming up",
                         time = 300,
-                        color = Color.BLACK,
+                        color = ColorEnum.BLACK,
                         speed = 6.5,
                         incline = 0
                     )
@@ -376,7 +376,7 @@ class RoutineCacheTest {
                         thumbnail = "",
                         source = "",
                         duration = 1000,
-                        category = VideoCategory.RUNNING
+                        category = VideoCategoryEnum.RUNNING
                     )
                 )
             ),
@@ -384,7 +384,7 @@ class RoutineCacheTest {
                 routine = RoutineEntity(
                     idx = 2,
                     title = "My Custom Routine",
-                    routineType = RoutineType.CUSTOM
+                    routineType = RoutineTypeEnum.CUSTOM
                 ),
                 partList = listOf(
                     PartEntity(
@@ -392,7 +392,7 @@ class RoutineCacheTest {
                         routineIdx = 2,
                         title = "Warming up",
                         time = 300,
-                        color = Color.BLACK,
+                        color = ColorEnum.BLACK,
                         speed = 6.5,
                         incline = 0
                     ),
@@ -401,7 +401,7 @@ class RoutineCacheTest {
                         routineIdx = 2,
                         title = "Warming up",
                         time = 300,
-                        color = Color.BLACK,
+                        color = ColorEnum.BLACK,
                         speed = 6.5,
                         incline = 0
                     )
@@ -414,7 +414,7 @@ class RoutineCacheTest {
                         thumbnail = "",
                         source = "",
                         duration = 1000,
-                        category = VideoCategory.RUNNING
+                        category = VideoCategoryEnum.RUNNING
                     ),
                     RelatedVideoEntity(
                         idx = 4,
@@ -423,7 +423,7 @@ class RoutineCacheTest {
                         thumbnail = "",
                         source = "",
                         duration = 1000,
-                        category = VideoCategory.RUNNING
+                        category = VideoCategoryEnum.RUNNING
                     )
                 )
             )
@@ -444,7 +444,7 @@ class RoutineCacheTest {
                 routine = RoutineEntity(
                     idx = 2,
                     title = "My Custom Routine",
-                    routineType = RoutineType.CUSTOM
+                    routineType = RoutineTypeEnum.CUSTOM
                 ),
                 partList = listOf(
                     PartEntity(
@@ -452,7 +452,7 @@ class RoutineCacheTest {
                         routineIdx = 2,
                         title = "Warming up",
                         time = 300,
-                        color = Color.BLACK,
+                        color = ColorEnum.BLACK,
                         speed = 6.5,
                         incline = 0
                     ),
@@ -461,7 +461,7 @@ class RoutineCacheTest {
                         routineIdx = 2,
                         title = "Warming up",
                         time = 300,
-                        color = Color.BLACK,
+                        color = ColorEnum.BLACK,
                         speed = 6.5,
                         incline = 0
                     )
@@ -474,7 +474,7 @@ class RoutineCacheTest {
                         thumbnail = "",
                         source = "",
                         duration = 1000,
-                        category = VideoCategory.RUNNING
+                        category = VideoCategoryEnum.RUNNING
                     ),
                     RelatedVideoEntity(
                         idx = 4,
@@ -483,7 +483,7 @@ class RoutineCacheTest {
                         thumbnail = "",
                         source = "",
                         duration = 1000,
-                        category = VideoCategory.RUNNING
+                        category = VideoCategoryEnum.RUNNING
                     )
                 )
             )

@@ -1,7 +1,7 @@
 package kr.hs.dgsw.data.base
 
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
-import kr.hs.dgsw.domain.etc.Constants
+import kr.hs.dgsw.data.etc.Object
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.junit.Before
@@ -22,7 +22,7 @@ open class BaseRemoteTest {
 //            .addInterceptor(errorResponseInterceptor)
         retrofit = Retrofit.Builder()
             .client(okHttpBuilder.build())
-            .baseUrl(Constants.DEFAULT_HOST)
+            .baseUrl(Object.DEFAULT_HOST)
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .callbackExecutor(Executors.newSingleThreadExecutor())

@@ -73,7 +73,6 @@ dependencies {
 
     implementation "com.google.code.gson:gson:$rootProject.gsonVersion"
     implementation "com.google.guava:guava:$rootProject.guavaVersion"
-    implementation "com.github.HaarigerHarald:android-youtubeExtractor:master-SNAPSHOT"
 
     implementation project(':domain')
 }

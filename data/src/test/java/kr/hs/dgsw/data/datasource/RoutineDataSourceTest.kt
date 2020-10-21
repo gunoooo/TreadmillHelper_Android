@@ -11,12 +11,11 @@ import kr.hs.dgsw.data.database.entity.RelatedVideoEntity
 import kr.hs.dgsw.data.entity.PartData
 import kr.hs.dgsw.data.entity.RelatedVideoData
 import kr.hs.dgsw.data.entity.RoutineData
-import kr.hs.dgsw.data.entity.VideoData
 import kr.hs.dgsw.data.etc.Object
 import kr.hs.dgsw.data.mapper.toRoutineDetailEntity
-import kr.hs.dgsw.domain.entity.Color
-import kr.hs.dgsw.domain.entity.RoutineType
-import kr.hs.dgsw.domain.entity.VideoCategory
+import kr.hs.dgsw.domain.entity.e.ColorEnum
+import kr.hs.dgsw.domain.entity.e.RoutineTypeEnum
+import kr.hs.dgsw.domain.entity.e.VideoCategoryEnum
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -44,7 +43,7 @@ class RoutineDataSourceTest {
                 routine = RoutineEntity(
                     idx = 1,
                     title = "My Custom Routine 1",
-                    routineType = RoutineType.CUSTOM
+                    routineType = RoutineTypeEnum.CUSTOM
                 ),
                 partList = listOf(
                     PartEntity(
@@ -52,7 +51,7 @@ class RoutineDataSourceTest {
                         routineIdx = 1,
                         title = "Warming up",
                         time = 300,
-                        color = Color.RED,
+                        color = ColorEnum.RED,
                         speed = 6.5,
                         incline = 0
                     )
@@ -65,7 +64,7 @@ class RoutineDataSourceTest {
                         thumbnail = "",
                         source = "",
                         duration = 160,
-                        category = VideoCategory.RUNNING
+                        category = VideoCategoryEnum.RUNNING
                     )
                 )
             )
@@ -74,13 +73,13 @@ class RoutineDataSourceTest {
             RoutineData(
                 idx = 1,
                 title = "My Custom Routine 1",
-                routineType = RoutineType.CUSTOM,
+                routineType = RoutineTypeEnum.CUSTOM,
                 partList = listOf(
                     PartData(
                         idx = 1,
                         title = "Warming up",
                         time = 300,
-                        color = Color.RED,
+                        color = ColorEnum.RED,
                         speed = 6.5,
                         incline = 0
                     )
@@ -92,7 +91,7 @@ class RoutineDataSourceTest {
                         thumbnail = "",
                         source = "",
                         duration = 160,
-                        category = VideoCategory.RUNNING
+                        category = VideoCategoryEnum.RUNNING
                     )
                 )
             )
@@ -112,7 +111,7 @@ class RoutineDataSourceTest {
                 routine = RoutineEntity(
                     idx = 1,
                     title = "Beginner",
-                    routineType = RoutineType.PRESET
+                    routineType = RoutineTypeEnum.PRESET
                 ),
                 partList = listOf(
                     PartEntity(
@@ -120,7 +119,7 @@ class RoutineDataSourceTest {
                         routineIdx = 1,
                         title = "Warm up",
                         time = 600,
-                        color = Color.YELLOW,
+                        color = ColorEnum.YELLOW,
                         speed = 5.5,
                         incline = 0
                     ),
@@ -129,7 +128,7 @@ class RoutineDataSourceTest {
                         routineIdx = 1,
                         title = "Walking",
                         time = 300,
-                        color = Color.GREEN,
+                        color = ColorEnum.GREEN,
                         speed = 7.5,
                         incline = 0
                     )
@@ -142,7 +141,7 @@ class RoutineDataSourceTest {
                         thumbnail = "",
                         source = "",
                         duration = 2460,
-                        category = VideoCategory.VIRTUAL
+                        category = VideoCategoryEnum.VIRTUAL
                     )
                 )
             )
@@ -153,13 +152,13 @@ class RoutineDataSourceTest {
             RoutineData(
                 idx = 1,
                 title = "Beginner",
-                routineType = RoutineType.PRESET,
+                routineType = RoutineTypeEnum.PRESET,
                 partList = listOf(
                     PartData(
                         idx = 1,
                         title = "Warm up",
                         time = 600,
-                        color = Color.YELLOW,
+                        color = ColorEnum.YELLOW,
                         speed = 5.5,
                         incline = 0
                     ),
@@ -167,7 +166,7 @@ class RoutineDataSourceTest {
                         idx = 2,
                         title = "Walking",
                         time = 300,
-                        color = Color.GREEN,
+                        color = ColorEnum.GREEN,
                         speed = 7.5,
                         incline = 0
                     )
@@ -179,7 +178,7 @@ class RoutineDataSourceTest {
                         thumbnail = "",
                         source = "",
                         duration = 2460,
-                        category = VideoCategory.VIRTUAL
+                        category = VideoCategoryEnum.VIRTUAL
                     )
                 )
             )

@@ -3,7 +3,6 @@ package kr.hs.dgsw.data.database.entity
 import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
-import kr.hs.dgsw.domain.entity.VideoCategory
 
 @Entity(tableName = "related_video_table",
     foreignKeys = [ForeignKey(
@@ -18,16 +17,16 @@ data class RelatedVideoEntity(
     val thumbnail: String,
     val source: String,
     val duration: Int,
-    val category: VideoCategory
+    val category: String
 ) {
     @PrimaryKey(autoGenerate = true)
     var idx: Int = 0
 
-    constructor(idx: Int, routineIdx: Int, title: String, thumbnail: String, source: String, duration: Int, category: VideoCategory):
+    constructor(idx: Int, routineIdx: Int, title: String, thumbnail: String, source: String, duration: Int, category: String):
             this(routineIdx, title, thumbnail, source, duration, category) {
         this.idx = idx
     }
 
-    constructor(title: String, thumbnail: String, source: String, duration: Int, category: VideoCategory):
+    constructor(title: String, thumbnail: String, source: String, duration: Int, category: String):
             this(0, title, thumbnail, source, duration, category)
 }

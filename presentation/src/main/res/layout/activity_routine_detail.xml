@@ -106,7 +106,7 @@
                 <ImageView
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:src="@drawable/ic_plus"
+                    android:src="@drawable/ic_plus_accent"
                     android:tint="@color/colorAccent"/>
 
                 <TextView
@@ -177,7 +177,7 @@
                 <ImageView
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:src="@drawable/ic_plus"
+                    android:src="@drawable/ic_plus_accent"
                     android:tint="@color/colorAccent"/>
 
                 <TextView

@@ -16,12 +16,7 @@ class VideoCacheImpl @Inject constructor(application: Application) :
     private val relatedVideo = database.relatedVideoDao()
 
     override fun getVideoList(): Single<List<VideoEntity>> {
-        return videoDao.getVideoList().flatMap {
-            if (it.isEmpty())
-                Single.error(TableEmptyException("video_table"))
-            else
-                Single.just(it)
-        }
+        return videoDao.getVideoList()
     }
 
     override fun insertVideo(videoEntity: VideoEntity): Completable {
