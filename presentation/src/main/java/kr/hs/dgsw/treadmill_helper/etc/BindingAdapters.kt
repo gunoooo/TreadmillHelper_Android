@@ -5,13 +5,12 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.google.android.material.card.MaterialCardView
-import kr.co.prnd.YouTubePlayerView
 import kr.hs.dgsw.treadmill_helper.R
 import kr.hs.dgsw.treadmill_helper.etc.extension.getParentActivity
 
@@ -23,7 +22,7 @@ fun setAdapter(view: RecyclerView, adapter: RecyclerView.Adapter<*>) {
 @BindingAdapter("mutableText")
 fun setMutableText(view: TextView, text: MutableLiveData<String>) {
     val parentActivity: AppCompatActivity = view.getParentActivity() ?: return
-    text.observe(parentActivity, Observer { value -> view.text = value?:""})
+    text.observe(parentActivity, Observer { value -> view.text = value ?: "" })
 }
 
 @BindingAdapter("mutableColor")
@@ -45,8 +44,10 @@ fun setMutableTint(view: ImageView, tint: MutableLiveData<String>) {
 @BindingAdapter("mutableImageUrl")
 fun setMutableImageUrl(view: ImageView, url: MutableLiveData<String>) {
     val parentActivity: AppCompatActivity = view.getParentActivity() ?: return
-    url.observe(parentActivity, Observer { value -> Glide.with(view.context)
-        .load(value)
-        .error(R.color.colorBackground)
-        .into(view)})
+    url.observe(parentActivity, Observer { value ->
+        Glide.with(view.context)
+            .load(value)
+            .error(R.color.colorBackground)
+            .into(view)
+    })
 }

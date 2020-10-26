@@ -33,6 +33,10 @@ class VideoDataSourceImpl @Inject constructor(
         }
     }
 
+    override fun getVideoDetail(url: String): Single<VideoData> {
+        return remote.getVideoDetail(url)
+    }
+
     override fun insertRelatedVideo(
         routineIdx: Int,
         relatedVideoEntity: RelatedVideoEntity

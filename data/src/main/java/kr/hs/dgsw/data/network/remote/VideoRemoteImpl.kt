@@ -17,4 +17,9 @@ class VideoRemoteImpl @Inject constructor(
             .map(getResponse())
             .map { it.videos }
     }
+
+    override fun getVideoDetail(url: String): Single<VideoData> {
+        return api.getVideoDetail(url)
+            .map(getResponse())
+    }
 }

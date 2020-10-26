@@ -8,6 +8,8 @@ import kr.hs.dgsw.data.entity.VideoData
 interface VideoDataSource {
     fun getVideoList(page: Int): Single<List<VideoData>>
 
+    fun getVideoDetail(url: String): Single<VideoData>
+
     fun insertRelatedVideo(
         routineIdx: Int,
         relatedVideoEntity: RelatedVideoEntity

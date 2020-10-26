@@ -4,5 +4,6 @@ enum class VideoCategoryEnum {
     VIRTUAL,
     TRAINING,
     RUNNING,
+    CUSTOM,
     NONE
 }

@@ -1,78 +1,138 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-    <androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="viewModel"
+            type="kr.hs.dgsw.treadmill_helper.ui.video.add.VideoAddViewModel"/>
+
+        <import type="android.view.View" />
+    </data>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
         android:layout_marginHorizontal="20dp"
         android:layout_marginVertical="50dp"
         android:background="@color/colorBackground">
         <TextView
-            android:id="@+id/textView9"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="20dp"
             android:layout_marginStart="20dp"
             android:fontFamily="@font/nanum_square_regular"
             android:text="NEW VIDEO"
             android:textColor="@color/colorText"
-            android:textSize="30sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:textSize="20sp" />
 
-        <EditText
-            android:id="@+id/editText"
-            android:layout_width="0dp"
+        <FrameLayout
+            android:id="@+id/input_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="@{viewModel.isLoaded ? View.GONE : View.VISIBLE}"
+            android:layout_marginTop="20dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="@{viewModel.isLoading ? View.INVISIBLE : View.VISIBLE}"
+                android:orientation="vertical">
+                <EditText
+                    android:id="@+id/video_edit_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="20dp"
+                    android:fontFamily="@font/nanum_square_light"
+                    android:hint="YOUTUBE VIDEO URL"
+                    android:inputType="text"
+                    android:textColorHint="@color/colorGrey"
+                    android:textColor="@color/colorText"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/nanum_square_light"
+                    android:text="※ Enter only the YouTube video link"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <androidx.core.widget.ContentLoadingProgressBar
+                style="?android:attr/progressBarStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:visibility="@{viewModel.isLoading ? View.VISIBLE : View.INVISIBLE}" />
+        </FrameLayout>
+
+        <LinearLayout
+            android:id="@+id/preview_view"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:layout_marginHorizontal="20dp"
-            android:drawableEnd="@drawable/ic_drop_down"
-            android:fontFamily="@font/nanum_square_light"
-            android:hint="YOUTUBE VIDEO URL"
-            android:inputType="text"
-            android:textColorHint="@color/colorGrey"
-            android:textSize="25sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView9" />
+            android:orientation="vertical"
+            android:visibility="@{viewModel.isLoaded ? View.VISIBLE : View.GONE}"
+            tools:visibility="gone">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                app:mutableImageUrl="@{viewModel.thumbnailData}"
+                tools:src="@drawable/img_thumbnail" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:fontFamily="@font/nanum_square_light"
-            android:text="※ Please enter only the YouTube video link"
-            android:textColor="@color/colorAccent"
-            android:textSize="14sp"
-            app:layout_constraintStart_toStartOf="@+id/editText"
-            app:layout_constraintTop_toBottomOf="@+id/editText" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:textSize="20sp"
+                android:textColor="@color/colorText"
+                android:fontFamily="@font/nanum_square_regular"
+                android:layout_margin="15dp"
+                app:mutableText="@{viewModel.titleData}"
+                tools:text="[ENG sub] schoolrapper2 [4회/단독] 김근수 조원우 - 껍데기는 가 @1차팀대항전 180316 EP.4" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_gravity="end"
+                android:maxLines="1"
+                android:textSize="17sp"
+                android:textColor="@color/colorGrey"
+                android:fontFamily="@font/nanum_square_regular"
+                app:mutableText="@{viewModel.durationData}"
+                tools:text="30:20" />
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
-            android:layout_marginEnd="30dp"
-            android:layout_marginBottom="30dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
             android:gravity="center"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editText">
+            android:layout_gravity="end">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/nanum_square_light"
                 android:text="CANCEL"
-                android:textColor="@color/colorAccent"
-                android:textSize="30sp" />
+                android:textColor="@color/colorPrimary"
+                android:textSize="15sp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
+                android:layout_marginStart="10dp"
                 android:fontFamily="@font/nanum_square_regular"
                 android:text="APPLY"
-                android:textColor="@color/colorPrimary"
-                android:textSize="30sp" />
+                android:textSize="15sp"
+                android:textColor="@{viewModel.isLoaded ? @color/colorPrimary : @color/colorGrey}"
+                tools:textColor="@color/colorPrimary"/>
         </LinearLayout>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 </layout>

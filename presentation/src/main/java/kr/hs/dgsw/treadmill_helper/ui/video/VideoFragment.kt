@@ -23,13 +23,13 @@ class VideoFragment : BaseFragment<FragmentVideoBinding, VideoViewModel>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initRecyclerView()
+        initOnClickEvent()
     }
 
     private fun initRecyclerView() {
         video_recycler_view.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
-
                 if (dy > 0)
                     video_add_fab.hide()
                 else
@@ -38,7 +38,6 @@ class VideoFragment : BaseFragment<FragmentVideoBinding, VideoViewModel>() {
 
             override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
                 super.onScrollStateChanged(recyclerView, newState)
-
                 if (!recyclerView.canScrollVertically(1) && newState == RecyclerView.SCREEN_STATE_OFF) {
                     if (!mViewModel.isLastPage) {
                         if (!mViewModel.videoList.contains(null)) {
@@ -49,5 +48,11 @@ class VideoFragment : BaseFragment<FragmentVideoBinding, VideoViewModel>() {
                 }
             }
         })
+    }
+
+    private fun initOnClickEvent() {
+        video_add_fab.setOnClickListener {
+            mViewModel.videoAddDialog.show(parentFragmentManager)
+        }
     }
 }

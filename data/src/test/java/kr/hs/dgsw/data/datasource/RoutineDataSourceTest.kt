@@ -43,7 +43,7 @@ class RoutineDataSourceTest {
                 routine = RoutineEntity(
                     idx = 1,
                     title = "My Custom Routine 1",
-                    routineType = RoutineTypeEnum.CUSTOM
+                    routineType = RoutineTypeEnum.CUSTOM.name
                 ),
                 partList = listOf(
                     PartEntity(
@@ -51,7 +51,7 @@ class RoutineDataSourceTest {
                         routineIdx = 1,
                         title = "Warming up",
                         time = 300,
-                        color = ColorEnum.RED,
+                        color = ColorEnum.RED.name,
                         speed = 6.5,
                         incline = 0
                     )
@@ -64,7 +64,7 @@ class RoutineDataSourceTest {
                         thumbnail = "",
                         source = "",
                         duration = 160,
-                        category = VideoCategoryEnum.RUNNING
+                        category = VideoCategoryEnum.RUNNING.name
                     )
                 )
             )
@@ -73,13 +73,13 @@ class RoutineDataSourceTest {
             RoutineData(
                 idx = 1,
                 title = "My Custom Routine 1",
-                routineType = RoutineTypeEnum.CUSTOM,
+                routineType = RoutineTypeEnum.CUSTOM.name,
                 partList = listOf(
                     PartData(
                         idx = 1,
                         title = "Warming up",
                         time = 300,
-                        color = ColorEnum.RED,
+                        color = ColorEnum.RED.name,
                         speed = 6.5,
                         incline = 0
                     )
@@ -91,7 +91,7 @@ class RoutineDataSourceTest {
                         thumbnail = "",
                         source = "",
                         duration = 160,
-                        category = VideoCategoryEnum.RUNNING
+                        category = VideoCategoryEnum.RUNNING.name
                     )
                 )
             )
@@ -111,7 +111,7 @@ class RoutineDataSourceTest {
                 routine = RoutineEntity(
                     idx = 1,
                     title = "Beginner",
-                    routineType = RoutineTypeEnum.PRESET
+                    routineType = RoutineTypeEnum.PRESET.name
                 ),
                 partList = listOf(
                     PartEntity(
@@ -119,7 +119,7 @@ class RoutineDataSourceTest {
                         routineIdx = 1,
                         title = "Warm up",
                         time = 600,
-                        color = ColorEnum.YELLOW,
+                        color = ColorEnum.YELLOW.name,
                         speed = 5.5,
                         incline = 0
                     ),
@@ -128,7 +128,7 @@ class RoutineDataSourceTest {
                         routineIdx = 1,
                         title = "Walking",
                         time = 300,
-                        color = ColorEnum.GREEN,
+                        color = ColorEnum.GREEN.name,
                         speed = 7.5,
                         incline = 0
                     )
@@ -141,7 +141,7 @@ class RoutineDataSourceTest {
                         thumbnail = "",
                         source = "",
                         duration = 2460,
-                        category = VideoCategoryEnum.VIRTUAL
+                        category = VideoCategoryEnum.VIRTUAL.name
                     )
                 )
             )
@@ -152,13 +152,13 @@ class RoutineDataSourceTest {
             RoutineData(
                 idx = 1,
                 title = "Beginner",
-                routineType = RoutineTypeEnum.PRESET,
+                routineType = RoutineTypeEnum.PRESET.name,
                 partList = listOf(
                     PartData(
                         idx = 1,
                         title = "Warm up",
                         time = 600,
-                        color = ColorEnum.YELLOW,
+                        color = ColorEnum.YELLOW.name,
                         speed = 5.5,
                         incline = 0
                     ),
@@ -166,7 +166,7 @@ class RoutineDataSourceTest {
                         idx = 2,
                         title = "Walking",
                         time = 300,
-                        color = ColorEnum.GREEN,
+                        color = ColorEnum.GREEN.name,
                         speed = 7.5,
                         incline = 0
                     )
@@ -178,7 +178,7 @@ class RoutineDataSourceTest {
                         thumbnail = "",
                         source = "",
                         duration = 2460,
-                        category = VideoCategoryEnum.VIRTUAL
+                        category = VideoCategoryEnum.VIRTUAL.name
                     )
                 )
             )

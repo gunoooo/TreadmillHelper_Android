@@ -8,6 +8,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.Executors
+import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
 @Module
@@ -20,6 +21,7 @@ class NetWorkModule {
 //        val errorResponseInterceptor = ErrorResponseInterceptor()
         val okHttpBuilder = OkHttpClient().newBuilder()
             .addInterceptor(interceptor)
+            .readTimeout(30, TimeUnit.SECONDS)
 //            .addInterceptor(errorResponseInterceptor)
         return okHttpBuilder.build()
     }

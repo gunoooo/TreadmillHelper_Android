@@ -8,6 +8,7 @@ import org.junit.Before
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.Executors
+import java.util.concurrent.TimeUnit
 
 open class BaseRemoteTest {
     protected lateinit var retrofit: Retrofit
@@ -18,6 +19,7 @@ open class BaseRemoteTest {
         interceptor.level = HttpLoggingInterceptor.Level.BODY
 //        val errorResponseInterceptor = ErrorResponseInterceptor()
         val okHttpBuilder = OkHttpClient().newBuilder()
+            .readTimeout(30, TimeUnit.SECONDS)
             .addInterceptor(interceptor)
 //            .addInterceptor(errorResponseInterceptor)
         retrofit = Retrofit.Builder()

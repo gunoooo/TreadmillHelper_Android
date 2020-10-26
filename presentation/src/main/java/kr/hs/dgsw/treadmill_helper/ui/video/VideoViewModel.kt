@@ -5,6 +5,7 @@ import kr.hs.dgsw.data.etc.Object
 import kr.hs.dgsw.domain.entity.video.Video
 import kr.hs.dgsw.domain.usecase.video.GetVideoListUseCase
 import kr.hs.dgsw.treadmill_helper.base.viewmodel.BaseViewModel
+import kr.hs.dgsw.treadmill_helper.ui.video.add.VideoAddDialog
 import kr.hs.dgsw.treadmill_helper.widget.recyclerview.video.VideoListAdapter
 
 class VideoViewModel(
@@ -15,6 +16,8 @@ class VideoViewModel(
     val videoList = ArrayList<Video?>()
 
     val videoListAdapter = VideoListAdapter(videoList)
+
+    val videoAddDialog = VideoAddDialog()
 
     init {
         setVideoList()

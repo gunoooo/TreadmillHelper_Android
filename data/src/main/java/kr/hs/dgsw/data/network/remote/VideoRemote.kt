@@ -8,4 +8,8 @@ interface VideoRemote {
         page: Int,
         size: Int
     ): Single<List<VideoData>>
+
+    fun getVideoDetail(
+        url: String
+    ): Single<VideoData>
 }
