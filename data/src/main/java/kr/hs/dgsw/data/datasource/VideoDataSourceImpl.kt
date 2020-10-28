@@ -5,6 +5,7 @@ import io.reactivex.Single
 import kr.hs.dgsw.data.database.cache.VideoCache
 import kr.hs.dgsw.data.database.entity.RelatedVideoEntity
 import kr.hs.dgsw.data.database.entity.VideoEntity
+import kr.hs.dgsw.data.entity.RelatedVideoData
 import kr.hs.dgsw.data.entity.VideoData
 import kr.hs.dgsw.data.etc.Object
 import kr.hs.dgsw.data.mapper.toDataEntity
@@ -37,9 +38,13 @@ class VideoDataSourceImpl @Inject constructor(
         return remote.getVideoDetail(url)
     }
 
+    override fun insertVideo(videoData: VideoData): Completable {
+        return cache.insertVideo(videoData.toDbEntity())
+    }
+
     override fun insertRelatedVideo(
         routineIdx: Int,
-        relatedVideoEntity: RelatedVideoEntity
+        relatedVideoData: RelatedVideoData
     ): Completable {
         TODO("Not yet implemented")
     }

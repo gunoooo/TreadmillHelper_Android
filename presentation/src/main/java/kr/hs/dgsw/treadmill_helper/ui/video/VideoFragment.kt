@@ -1,12 +1,17 @@
 package kr.hs.dgsw.treadmill_helper.ui.video
 
+import android.R
 import android.os.Bundle
 import android.view.View
+import android.widget.ArrayAdapter
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.fragment_video.*
+import kr.hs.dgsw.domain.entity.e.VideoCategoryEnum
 import kr.hs.dgsw.treadmill_helper.base.BaseFragment
 import kr.hs.dgsw.treadmill_helper.databinding.FragmentVideoBinding
 import kr.hs.dgsw.treadmill_helper.etc.extension.getViewModel
+import kr.hs.dgsw.treadmill_helper.ui.video.add.VideoAddDialog
 import javax.inject.Inject
 
 class VideoFragment : BaseFragment<FragmentVideoBinding, VideoViewModel>() {
@@ -22,8 +27,13 @@ class VideoFragment : BaseFragment<FragmentVideoBinding, VideoViewModel>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initRecyclerView()
+        initUI()
         initOnClickEvent()
+    }
+
+    private fun initUI() {
+        initRecyclerView()
+        initSpinner()
     }
 
     private fun initRecyclerView() {
@@ -50,9 +60,27 @@ class VideoFragment : BaseFragment<FragmentVideoBinding, VideoViewModel>() {
         })
     }
 
+    private fun initSpinner() {
+        val adapter =
+            ArrayAdapter<String>(requireContext(),
+                R.layout.simple_spinner_item,
+                VideoCategoryEnum.values().map { it.name })
+        adapter.setDropDownViewResource(R.layout.simple_spinner_dropdown_item)
+    }
+
     private fun initOnClickEvent() {
         video_add_fab.setOnClickListener {
-            mViewModel.videoAddDialog.show(parentFragmentManager)
+            val videoAddDialog = VideoAddDialog()
+            videoAddDialog.show(parentFragmentManager)
+            videoAddDialog.addVideoEvent.observe(viewLifecycleOwner, Observer {
+                mViewModel.apply {
+                    page = 0
+                    isLastPage = false
+                    videoList.clear()
+                    videoListAdapter.notifyDataSetChanged()
+                    setVideoList()
+                }
+            })
         }
     }
 }

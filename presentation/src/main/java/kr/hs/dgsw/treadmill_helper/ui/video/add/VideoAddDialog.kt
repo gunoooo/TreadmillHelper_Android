@@ -1,13 +1,14 @@
 package kr.hs.dgsw.treadmill_helper.ui.video.add
 
-import android.content.DialogInterface
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
+import androidx.lifecycle.Observer
 import kotlinx.android.synthetic.main.dialog_video_add.*
 import kr.hs.dgsw.treadmill_helper.base.dialog.BaseDialog
 import kr.hs.dgsw.treadmill_helper.databinding.DialogVideoAddBinding
+import kr.hs.dgsw.treadmill_helper.etc.SingleLiveEvent
 import kr.hs.dgsw.treadmill_helper.etc.extension.getViewModel
 import kr.hs.dgsw.treadmill_helper.etc.extension.isYouTubeUrl
 import javax.inject.Inject
@@ -19,15 +20,21 @@ class VideoAddDialog : BaseDialog<DialogVideoAddBinding, VideoAddViewModel>() {
     override val viewModel: VideoAddViewModel
         get() = getViewModel(viewModelFactory)
 
+    val addVideoEvent = SingleLiveEvent<Unit>()
+
     override fun observerViewModel() {
         with(mViewModel) {
-
+            addVideoEvent.observe(this@VideoAddDialog, Observer {
+                this@VideoAddDialog.addVideoEvent.call()
+                dismiss()
+            })
         }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initVideoEditText()
+        initOnClickEvent()
     }
 
     private fun initVideoEditText() {
@@ -44,8 +51,9 @@ class VideoAddDialog : BaseDialog<DialogVideoAddBinding, VideoAddViewModel>() {
         })
     }
 
-    override fun onDismiss(dialog: DialogInterface) {
-        mViewModel.clearData()
-        super.onDismiss(dialog)
+    private fun initOnClickEvent() {
+        cancel_btn.setOnClickListener {
+            dismiss()
+        }
     }
 }

@@ -8,22 +8,75 @@
             type="kr.hs.dgsw.treadmill_helper.ui.video.VideoViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/colorBackground"
         android:paddingBottom="?actionBarSize">
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimaryDark">
+            <com.google.android.material.appbar.MaterialToolbar
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_scrollFlags="scroll|enterAlways|snap">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="5dp"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="10dp">
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/input_layout_id"
+                        style="@style/TextInputLayout"
+                        android:textColorHint="@color/colorGrey"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_gravity="center"
+                        android:layout_marginEnd="5dp">
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/input_id"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:imeOptions="flagNoExtractUi|flagNoFullscreen|flagNoAccessoryAction"
+                            android:hint="SEARCH"
+                            android:inputType="text"
+                            android:textColorHint="@color/colorGrey"
+                            android:textColor="@color/colorWhite"
+                            android:padding="10dp"
+                            android:textSize="15sp"
+                            android:fontFamily="sans-serif-light"
+                            android:privateImeOptions="nm"/>
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <ImageButton
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_search"
+                        android:background="@null" />
+
+                    <ImageButton
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_tune"
+                        android:background="@null" />
+                </LinearLayout>
+            </com.google.android.material.appbar.MaterialToolbar>
+        </com.google.android.material.appbar.AppBarLayout>
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/video_recycler_view"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
             android:overScrollMode="never"
             app:adapter="@{viewModel.videoListAdapter}"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
             tools:listitem="@layout/item_video" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -32,11 +85,10 @@
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
             android:src="@drawable/ic_plus"
+            android:layout_gravity="bottom|end"
             app:tint="@color/colorWhite"
             app:backgroundTint="@color/colorPrimary"
             app:borderWidth="0dp"
-            app:fabSize="auto"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            app:fabSize="auto" />
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

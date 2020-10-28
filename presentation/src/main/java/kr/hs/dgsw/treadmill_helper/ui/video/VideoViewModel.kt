@@ -17,21 +17,23 @@ class VideoViewModel(
 
     val videoListAdapter = VideoListAdapter(videoList)
 
-    val videoAddDialog = VideoAddDialog()
-
     init {
         setVideoList()
     }
 
     fun setVideoList() {
-        videoList.add(null)
-        videoListAdapter.notifyItemInserted(videoList.size - 1)
-
+        startLoading()
         addDisposable(getVideoListUseCase.buildUseCaseObservable(GetVideoListUseCase.Params(page)),
             object : DisposableSingleObserver<List<Video>>() {
                 override fun onSuccess(t: List<Video>) {
-                    videoList.remove(null)
-                    videoListAdapter.notifyItemRemoved(videoList.size)
+                    stopLoading()
+
+                    val beforeListSize = videoList.size
+                    videoList.addAll(t)
+                    if (beforeListSize == 0)
+                        videoListAdapter.notifyDataSetChanged()
+                    else
+                        videoListAdapter.notifyItemRangeInserted(beforeListSize, videoList.size - beforeListSize)
 
                     if (page == 0) {
                         page++
@@ -40,18 +42,22 @@ class VideoViewModel(
                     }
 
                     isLastPage = t.size < Object.VIDEO_ITEM_SIZE
-
-                    val beforeListSize = videoList.size
-                    videoList.addAll(t)
-                    if (beforeListSize == 0)
-                        videoListAdapter.notifyDataSetChanged()
-                    else
-                        videoListAdapter.notifyItemRangeInserted(beforeListSize, videoList.size - beforeListSize)
                 }
 
                 override fun onError(e: Throwable) {
+                    stopLoading()
                     onErrorEvent.value = e
                 }
             })
+    }
+
+    private fun startLoading() {
+        videoList.add(null)
+        videoListAdapter.notifyItemInserted(videoList.size - 1)
+    }
+
+    private fun stopLoading() {
+        videoList.remove(null)
+        videoListAdapter.notifyItemRemoved(videoList.size)
     }
 }

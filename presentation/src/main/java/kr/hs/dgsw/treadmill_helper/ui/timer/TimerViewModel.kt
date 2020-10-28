@@ -46,7 +46,7 @@ class TimerViewModel(
         setVideo()
         partList.refreshAll(routineData.value!!.partList)
         partListAdapter.notifyDataSetChanged()
-        videoList.refreshAll(routineData.value!!.relatedVideoList)
+        videoList.refreshAll(routineData.value!!.relatedVideoList.map { it.toVideo() })
         videoListAdapter.notifyDataSetChanged()
     }
 

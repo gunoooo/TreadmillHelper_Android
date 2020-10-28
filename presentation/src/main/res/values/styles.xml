@@ -7,4 +7,11 @@
         <item name="android:navigationBarColor">@color/colorPrimaryDark</item>
         <item name="android:statusBarColor">@color/colorPrimaryDark</item>
     </style>
+
+    <style name="TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+        <item name="boxStrokeWidth">0dp</item>
+        <item name="boxStrokeWidthFocused">0dp</item>
+        <item name="hintTextColor">@color/colorGrey</item>
+        <item name="android:background">#363642</item>
+    </style>
 </resources>
