@@ -8,21 +8,13 @@ import kr.hs.dgsw.data.database.entity.RoutineDetailEntity
 import kr.hs.dgsw.data.database.entity.RelatedVideoEntity
 
 interface RoutineCache {
-    fun getRoutineList(): Single<List<RoutineEntity>>
+    fun getRoutineList(): Single<List<RoutineDetailEntity>>
 
-    fun getRoutineDetailList(): Single<List<RoutineDetailEntity>>
+    fun getRoutine(routineIdx: Int): Single<RoutineDetailEntity>
 
-    fun getRoutineDetail(routineIdx: Int): Single<RoutineDetailEntity>
+    fun insertRoutineList(routineDetailEntityList: List<RoutineDetailEntity>): Single<List<RoutineDetailEntity>>
 
-    fun insertRoutineDetailList(routineDetailEntityList: List<RoutineDetailEntity>): Completable
-
-    fun insertRoutineDetail(routineDetailEntity: RoutineDetailEntity): Completable
+    fun insertRoutine(routineDetailEntity: RoutineDetailEntity): Single<RoutineDetailEntity>
 
     fun deleteRoutine(routineIdx: Int): Completable
-
-    fun updateRoutine(
-        routineEntity: RoutineEntity,
-        partEntityList: List<PartEntity> = emptyList(),
-        relatedVideoEntityList: List<RelatedVideoEntity> = emptyList()
-    ): Completable
 }

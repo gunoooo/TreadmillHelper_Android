@@ -13,27 +13,8 @@ import javax.inject.Inject
 class RoutineDataSourceImpl @Inject constructor(
     private val cache: RoutineCache
 ) : RoutineDataSource {
-    override fun getRoutineDetailList(): Single<List<RoutineData>> {
-        return cache.getRoutineDetailList()
-            .onErrorResumeNext {
-                cache.insertRoutineDetailList(Object.presetRoutineList
-                    .map { it.toRoutineDetailEntity() })
-                    .andThen(Single.defer { cache.getRoutineDetailList() })
-            }
-            .map { routineList ->
-                routineList.map {
-                    it.toDataEntity()
-                }
-            }
-    }
-
     override fun getRoutineList(): Single<List<RoutineData>> {
         return cache.getRoutineList()
-            .onErrorResumeNext {
-                cache.insertRoutineDetailList(Object.presetRoutineList
-                    .map { it.toRoutineDetailEntity() })
-                    .andThen(Single.defer { cache.getRoutineList() })
-            }
             .map { routineList ->
                 routineList.map {
                     it.toDataEntity()
@@ -42,24 +23,25 @@ class RoutineDataSourceImpl @Inject constructor(
     }
 
     override fun getRoutine(routineIdx: Int): Single<RoutineData> {
-        return cache.getRoutineDetail(routineIdx)
-            .onErrorResumeNext {
-                cache.insertRoutineDetailList(Object.presetRoutineList
-                    .map { it.toRoutineDetailEntity() })
-                    .andThen(Single.defer { cache.getRoutineDetail(routineIdx) })
-            }
+        return cache.getRoutine(routineIdx)
             .map { it.toDataEntity() }
     }
 
-    override fun insertRoutine(routineData: RoutineData): Completable {
-        return cache.insertRoutineDetail(routineData.toRoutineDetailEntity())
+    override fun insertRoutineList(routineDataList: List<RoutineData>): Single<List<RoutineData>> {
+        return cache.insertRoutineList(routineDataList.map { it.toRoutineDetailEntity() })
+            .map { routineList ->
+                routineList.map {
+                    it.toDataEntity()
+                }
+            }
     }
 
-    override fun updateRoutine(routineData: RoutineData): Completable {
-        return cache.updateRoutine(
-            routineData.toDbEntity(routineData.idx),
-            routineData.partList.map { it.toDbEntity(it.idx, routineData.idx) },
-            routineData.relatedVideoList.map { it.toDbEntity(it.idx, routineData.idx) }
-        )
+    override fun insertRoutine(routineData: RoutineData): Single<RoutineData> {
+        return cache.insertRoutine(routineData.toRoutineDetailEntity())
+            .map { it.toDataEntity() }
+    }
+
+    override fun deleteRoutine(routineIdx: Int): Completable {
+        return cache.deleteRoutine(routineIdx)
     }
 }

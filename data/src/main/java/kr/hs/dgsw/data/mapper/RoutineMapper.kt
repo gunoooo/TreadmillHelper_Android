@@ -7,10 +7,11 @@ import kr.hs.dgsw.domain.entity.routine.Routine
 
 fun Routine.toDataEntity(): RoutineData {
     return RoutineData(
+        idx = idx,
         title = title,
         routineType = routineType.name,
-        partList = partList.map { it.toDataEntity() },
-        relatedVideoList = relatedVideoList.map { it.toDataEntity() }
+        partList = partList.map { it.toDataEntity(idx) },
+        relatedVideoList = relatedVideoList.map { it.toDataEntity(idx) }
     )
 }
 
@@ -24,7 +25,7 @@ fun RoutineData.toEntity(): Routine {
     )
 }
 
-fun RoutineData.toDbEntity(idx: Int = 0): RoutineEntity {
+fun RoutineData.toDbEntity(): RoutineEntity {
     return RoutineEntity(
         idx = idx,
         title = title,
@@ -32,11 +33,11 @@ fun RoutineData.toDbEntity(idx: Int = 0): RoutineEntity {
     )
 }
 
-fun RoutineData.toRoutineDetailEntity(idx: Int = 0): RoutineDetailEntity {
+fun RoutineData.toRoutineDetailEntity(): RoutineDetailEntity {
     return RoutineDetailEntity(
-        routine = toDbEntity(idx),
-        partList = partList.map { it.toDbEntity(idx) },
-        relatedVideoList = relatedVideoList.map { it.toDbEntity(idx) }
+        routine = toDbEntity(),
+        partList = partList.map { it.toDbEntity() },
+        relatedVideoList = relatedVideoList.map { it.toDbEntity() }
     )
 }
 

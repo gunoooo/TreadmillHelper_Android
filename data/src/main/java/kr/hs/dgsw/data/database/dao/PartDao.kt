@@ -9,8 +9,14 @@ import kr.hs.dgsw.data.database.entity.PartEntity
 
 @Dao
 interface PartDao : BaseDao<PartEntity> {
+    @Query("SELECT * FROM part_table")
+    fun getPartList(): Single<List<PartEntity>>
+
     @Query("SELECT * FROM part_table WHERE routineIdx=:routineIdx")
-    fun getPartList(routineIdx: Int): Single<List<PartEntity>>
+    fun getPartListByRoutineIdx(routineIdx: Int): Single<List<PartEntity>>
+
+    @Query("DELETE FROM part_table WHERE idx=:idx")
+    fun deleteByIdx(idx: Int): Completable
 
     @Query("DELETE FROM part_table WHERE routineIdx=:routineIdx")
     fun deleteByRoutineIdx(routineIdx: Int): Completable

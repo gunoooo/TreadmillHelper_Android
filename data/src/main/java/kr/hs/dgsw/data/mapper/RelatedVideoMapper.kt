@@ -15,9 +15,10 @@ fun RelatedVideo.toVideo(): Video {
     )
 }
 
-fun RelatedVideo.toDataEntity(): RelatedVideoData {
+fun RelatedVideo.toDataEntity(routineIdx: Int): RelatedVideoData {
     return RelatedVideoData(
         idx = idx,
+        routineIdx = routineIdx,
         source = source,
         title = title,
         thumbnail = thumbnail,
@@ -37,7 +38,7 @@ fun RelatedVideoData.toEntity(): RelatedVideo {
     )
 }
 
-fun RelatedVideoData.toDbEntity(idx: Int = 0, routineIdx: Int = 0): RelatedVideoEntity {
+fun RelatedVideoData.toDbEntity(): RelatedVideoEntity {
     return RelatedVideoEntity(
         idx = idx,
         routineIdx = routineIdx,
@@ -52,6 +53,7 @@ fun RelatedVideoData.toDbEntity(idx: Int = 0, routineIdx: Int = 0): RelatedVideo
 fun RelatedVideoEntity.toDataEntity(): RelatedVideoData {
     return RelatedVideoData(
         idx = idx,
+        routineIdx = routineIdx,
         source = source,
         title = title,
         thumbnail = thumbnail,

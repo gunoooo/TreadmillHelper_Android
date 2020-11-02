@@ -18,6 +18,7 @@ object Object {
             routineType = RoutineTypeEnum.PRESET.name,
             partList = listOf(
                 PartData(
+                    routineIdx = 1,
                     title = "Warm up",
                     time = 10,
                     color = ColorEnum.YELLOW.name,
@@ -25,6 +26,7 @@ object Object {
                     incline = 0
                 ),
                 PartData(
+                    routineIdx = 1,
                     title = "Walking",
                     time = 300,
                     color = ColorEnum.GREEN.name,
@@ -32,6 +34,7 @@ object Object {
                     incline = 0
                 ),
                 PartData(
+                    routineIdx = 1,
                     title = "Running",
                     time = 120,
                     color = ColorEnum.RED.name,
@@ -39,6 +42,7 @@ object Object {
                     incline = 0
                 ),
                 PartData(
+                    routineIdx = 1,
                     title = "Hiking",
                     time = 180,
                     color = ColorEnum.ORANGE.name,
@@ -46,6 +50,7 @@ object Object {
                     incline = 5
                 ),
                 PartData(
+                    routineIdx = 1,
                     title = "Cool down",
                     time = 300,
                     color = ColorEnum.BLUE.name,
@@ -55,6 +60,7 @@ object Object {
             ),
             relatedVideoList = listOf(
                 RelatedVideoData(
+                    routineIdx = 1,
                     title = "Virtual Run | Amazing Norwegian Nature Scenery for your Virtual Treadmill Workout",
                     thumbnail = "https://i.ytimg.com/vi/VsmsGtiavUQ/original.jpg",
                     source = "VsmsGtiavUQ",
@@ -62,6 +68,7 @@ object Object {
                     category = VideoCategoryEnum.VIRTUAL.name
                 ),
                 RelatedVideoData(
+                    routineIdx = 1,
                     title = "Virtual Run | The Bridge | Sun Fun Run! | Treadmill Workout",
                     thumbnail = "https://i.ytimg.com/vi/shzvF4cVCv0/original.jpg",
                     source = "shzvF4cVCv0",
@@ -69,6 +76,7 @@ object Object {
                     category = VideoCategoryEnum.VIRTUAL.name
                 ),
                 RelatedVideoData(
+                    routineIdx = 1,
                     title = "Virtual Run | Relaxing Nature Scenery | Treadmill Workout",
                     thumbnail = "https://i.ytimg.com/vi/kav_pl6S9AQ/original.jpg",
                     source = "kav_pl6S9AQ",
@@ -76,6 +84,7 @@ object Object {
                     category = VideoCategoryEnum.VIRTUAL.name
                 ),
                 RelatedVideoData(
+                    routineIdx = 1,
                     title = "Virtual Run | Stunning Trails in Beautiful Nature Scenery | Treadmill Running, Walk, Workout",
                     thumbnail = "https://i.ytimg.com/vi/rlG10erTysE/original.jpg",
                     source = "rlG10erTysE",
@@ -83,6 +92,7 @@ object Object {
                     category = VideoCategoryEnum.VIRTUAL.name
                 ),
                 RelatedVideoData(
+                    routineIdx = 1,
                     title = "Virtual Run | Zen Nature Scenery for your Virtual Treadmill Workout",
                     thumbnail = "https://i.ytimg.com/vi/qZou0yB1RFk/original.jpg",
                     source = "qZou0yB1RFk",
@@ -96,6 +106,7 @@ object Object {
             routineType = RoutineTypeEnum.PRESET.name,
             partList = listOf(
                 PartData(
+                    routineIdx = 2,
                     title = "Warm up",
                     time = 10,
                     color = ColorEnum.YELLOW.name,
@@ -103,6 +114,7 @@ object Object {
                     incline = 0
                 ),
                 PartData(
+                    routineIdx = 2,
                     title = "Walking",
                     time = 300,
                     color = ColorEnum.GREEN.name,
@@ -110,6 +122,7 @@ object Object {
                     incline = 0
                 ),
                 PartData(
+                    routineIdx = 2,
                     title = "Running",
                     time = 300,
                     color = ColorEnum.RED.name,
@@ -117,6 +130,7 @@ object Object {
                     incline = 0
                 ),
                 PartData(
+                    routineIdx = 2,
                     title = "Walking",
                     time = 300,
                     color = ColorEnum.GREEN.name,
@@ -124,6 +138,7 @@ object Object {
                     incline = 0
                 ),
                 PartData(
+                    routineIdx = 2,
                     title = "Running",
                     time = 300,
                     color = ColorEnum.RED.name,
@@ -131,13 +146,14 @@ object Object {
                     incline = 0
                 ),
                 PartData(
+                    routineIdx = 2,
                     title = "Walking",
                     time = 300,
                     color = ColorEnum.GREEN.name,
                     speed = 7.5,
                     incline = 0
                 ),
-                PartData(
+                PartData(routineIdx = 2,
                     title = "Running",
                     time = 300,
                     color = ColorEnum.RED.name,
@@ -147,6 +163,7 @@ object Object {
             ),
             relatedVideoList = listOf(
                 RelatedVideoData(
+                    routineIdx = 2,
                     title = "Virtual Run | Amazing Norwegian Nature Scenery for your Virtual Treadmill Workout",
                     thumbnail = "https://i.ytimg.com/vi/VsmsGtiavUQ/original.jpg",
                     source = "VsmsGtiavUQ",
@@ -154,6 +171,7 @@ object Object {
                     category = VideoCategoryEnum.VIRTUAL.name
                 ),
                 RelatedVideoData(
+                    routineIdx = 2,
                     title = "Virtual Run | The Bridge | Sun Fun Run! | Treadmill Workout",
                     thumbnail = "https://i.ytimg.com/vi/shzvF4cVCv0/original.jpg",
                     source = "shzvF4cVCv0",
@@ -161,6 +179,7 @@ object Object {
                     category = VideoCategoryEnum.VIRTUAL.name
                 ),
                 RelatedVideoData(
+                    routineIdx = 2,
                     title = "Virtual Run | Relaxing Nature Scenery | Treadmill Workout",
                     thumbnail = "https://i.ytimg.com/vi/kav_pl6S9AQ/original.jpg",
                     source = "kav_pl6S9AQ",
@@ -168,6 +187,7 @@ object Object {
                     category = VideoCategoryEnum.VIRTUAL.name
                 ),
                 RelatedVideoData(
+                    routineIdx = 2,
                     title = "Virtual Run | Stunning Trails in Beautiful Nature Scenery | Treadmill Running, Walk, Workout",
                     thumbnail = "https://i.ytimg.com/vi/rlG10erTysE/original.jpg",
                     source = "rlG10erTysE",
@@ -175,6 +195,7 @@ object Object {
                     category = VideoCategoryEnum.VIRTUAL.name
                 ),
                 RelatedVideoData(
+                    routineIdx = 2,
                     title = "Virtual Run | Zen Nature Scenery for your Virtual Treadmill Workout",
                     thumbnail = "https://i.ytimg.com/vi/qZou0yB1RFk/original.jpg",
                     source = "qZou0yB1RFk",
@@ -188,6 +209,7 @@ object Object {
             routineType = RoutineTypeEnum.PRESET.name,
             partList = listOf(
                 PartData(
+                    routineIdx = 3,
                     title = "Walking",
                     time = 300,
                     color = ColorEnum.GREEN.name,
@@ -195,6 +217,7 @@ object Object {
                     incline = 0
                 ),
                 PartData(
+                    routineIdx = 3,
                     title = "Running",
                     time = 600,
                     color = ColorEnum.RED.name,
@@ -202,6 +225,7 @@ object Object {
                     incline = 0
                 ),
                 PartData(
+                    routineIdx = 3,
                     title = "Walking",
                     time = 300,
                     color = ColorEnum.GREEN.name,
@@ -209,6 +233,7 @@ object Object {
                     incline = 0
                 ),
                 PartData(
+                    routineIdx = 3,
                     title = "Running",
                     time = 600,
                     color = ColorEnum.RED.name,
@@ -216,6 +241,7 @@ object Object {
                     incline = 0
                 ),
                 PartData(
+                    routineIdx = 3,
                     title = "Walking",
                     time = 300,
                     color = ColorEnum.GREEN.name,
@@ -223,6 +249,7 @@ object Object {
                     incline = 0
                 ),
                 PartData(
+                    routineIdx = 3,
                     title = "Running",
                     time = 600,
                     color = ColorEnum.RED.name,
@@ -230,6 +257,7 @@ object Object {
                     incline = 0
                 ),
                 PartData(
+                    routineIdx = 3,
                     title = "Walking",
                     time = 300,
                     color = ColorEnum.GREEN.name,
@@ -237,6 +265,7 @@ object Object {
                     incline = 0
                 ),
                 PartData(
+                    routineIdx = 3,
                     title = "Running",
                     time = 600,
                     color = ColorEnum.RED.name,
@@ -244,6 +273,7 @@ object Object {
                     incline = 0
                 ),
                 PartData(
+                    routineIdx = 3,
                     title = "Walking",
                     time = 300,
                     color = ColorEnum.GREEN.name,
@@ -251,6 +281,7 @@ object Object {
                     incline = 0
                 ),
                 PartData(
+                    routineIdx = 3,
                     title = "Running",
                     time = 600,
                     color = ColorEnum.RED.name,
@@ -258,6 +289,7 @@ object Object {
                     incline = 0
                 ),
                 PartData(
+                    routineIdx = 3,
                     title = "Cool down",
                     time = 300,
                     color = ColorEnum.BLUE.name,
@@ -267,6 +299,7 @@ object Object {
             ),
             relatedVideoList = listOf(
                 RelatedVideoData(
+                    routineIdx = 3,
                     title = "Virtual Run | Amazing Norwegian Nature Scenery for your Virtual Treadmill Workout",
                     thumbnail = "https://i.ytimg.com/vi/VsmsGtiavUQ/original.jpg",
                     source = "VsmsGtiavUQ",
@@ -274,6 +307,7 @@ object Object {
                     category = VideoCategoryEnum.VIRTUAL.name
                 ),
                 RelatedVideoData(
+                    routineIdx = 3,
                     title = "Virtual Run | The Bridge | Sun Fun Run! | Treadmill Workout",
                     thumbnail = "https://i.ytimg.com/vi/shzvF4cVCv0/original.jpg",
                     source = "shzvF4cVCv0",
@@ -281,6 +315,7 @@ object Object {
                     category = VideoCategoryEnum.VIRTUAL.name
                 ),
                 RelatedVideoData(
+                    routineIdx = 3,
                     title = "Virtual Run | Relaxing Nature Scenery | Treadmill Workout",
                     thumbnail = "https://i.ytimg.com/vi/kav_pl6S9AQ/original.jpg",
                     source = "kav_pl6S9AQ",
@@ -288,6 +323,7 @@ object Object {
                     category = VideoCategoryEnum.VIRTUAL.name
                 ),
                 RelatedVideoData(
+                    routineIdx = 3,
                     title = "Virtual Run | Stunning Trails in Beautiful Nature Scenery | Treadmill Running, Walk, Workout",
                     thumbnail = "https://i.ytimg.com/vi/rlG10erTysE/original.jpg",
                     source = "rlG10erTysE",
@@ -295,6 +331,7 @@ object Object {
                     category = VideoCategoryEnum.VIRTUAL.name
                 ),
                 RelatedVideoData(
+                    routineIdx = 3,
                     title = "Virtual Run | Zen Nature Scenery for your Virtual Treadmill Workout",
                     thumbnail = "https://i.ytimg.com/vi/qZou0yB1RFk/original.jpg",
                     source = "qZou0yB1RFk",
@@ -308,6 +345,7 @@ object Object {
             routineType = RoutineTypeEnum.PRESET.name,
             partList = listOf(
                 PartData(
+                    routineIdx = 4,
                     title = "Running",
                     time = 720,
                     color = ColorEnum.RED.name,
@@ -315,6 +353,7 @@ object Object {
                     incline = 0
                 ),
                 PartData(
+                    routineIdx = 4,
                     title = "Cool down",
                     time = 300,
                     color = ColorEnum.BLUE.name,
@@ -324,6 +363,7 @@ object Object {
             ),
             relatedVideoList = listOf(
                 RelatedVideoData(
+                    routineIdx = 4,
                     title = "Virtual Run | Amazing Norwegian Nature Scenery for your Virtual Treadmill Workout",
                     thumbnail = "https://i.ytimg.com/vi/VsmsGtiavUQ/original.jpg",
                     source = "VsmsGtiavUQ",
@@ -331,6 +371,7 @@ object Object {
                     category = VideoCategoryEnum.VIRTUAL.name
                 ),
                 RelatedVideoData(
+                    routineIdx = 4,
                     title = "Virtual Run | The Bridge | Sun Fun Run! | Treadmill Workout",
                     thumbnail = "https://i.ytimg.com/vi/shzvF4cVCv0/original.jpg",
                     source = "shzvF4cVCv0",
@@ -338,6 +379,7 @@ object Object {
                     category = VideoCategoryEnum.VIRTUAL.name
                 ),
                 RelatedVideoData(
+                    routineIdx = 4,
                     title = "Virtual Run | Relaxing Nature Scenery | Treadmill Workout",
                     thumbnail = "https://i.ytimg.com/vi/kav_pl6S9AQ/original.jpg",
                     source = "kav_pl6S9AQ",
@@ -345,6 +387,7 @@ object Object {
                     category = VideoCategoryEnum.VIRTUAL.name
                 ),
                 RelatedVideoData(
+                    routineIdx = 4,
                     title = "Virtual Run | Stunning Trails in Beautiful Nature Scenery | Treadmill Running, Walk, Workout",
                     thumbnail = "https://i.ytimg.com/vi/rlG10erTysE/original.jpg",
                     source = "rlG10erTysE",
@@ -352,6 +395,7 @@ object Object {
                     category = VideoCategoryEnum.VIRTUAL.name
                 ),
                 RelatedVideoData(
+                    routineIdx = 4,
                     title = "Virtual Run | Zen Nature Scenery for your Virtual Treadmill Workout",
                     thumbnail = "https://i.ytimg.com/vi/qZou0yB1RFk/original.jpg",
                     source = "qZou0yB1RFk",
@@ -365,6 +409,7 @@ object Object {
             routineType = RoutineTypeEnum.PRESET.name,
             partList = listOf(
                 PartData(
+                    routineIdx = 5,
                     title = "Running",
                     time = 120,
                     color = ColorEnum.RED.name,
@@ -372,6 +417,7 @@ object Object {
                     incline = 0
                 ),
                 PartData(
+                    routineIdx = 5,
                     title = "Rest",
                     time = 30,
                     color = ColorEnum.PURPLE.name,
@@ -379,6 +425,7 @@ object Object {
                     incline = 0
                 ),
                 PartData(
+                    routineIdx = 5,
                     title = "Running",
                     time = 150,
                     color = ColorEnum.RED.name,
@@ -386,6 +433,7 @@ object Object {
                     incline = 0
                 ),
                 PartData(
+                    routineIdx = 5,
                     title = "Rest",
                     time = 30,
                     color = ColorEnum.PURPLE.name,
@@ -393,6 +441,7 @@ object Object {
                     incline = 0
                 ),
                 PartData(
+                    routineIdx = 5,
                     title = "Running",
                     time = 180,
                     color = ColorEnum.RED.name,
@@ -400,6 +449,7 @@ object Object {
                     incline = 0
                 ),
                 PartData(
+                    routineIdx = 5,
                     title = "Rest",
                     time = 30,
                     color = ColorEnum.PURPLE.name,
@@ -407,6 +457,7 @@ object Object {
                     incline = 0
                 ),
                 PartData(
+                    routineIdx = 5,
                     title = "Running",
                     time = 210,
                     color = ColorEnum.RED.name,
@@ -414,6 +465,7 @@ object Object {
                     incline = 0
                 ),
                 PartData(
+                    routineIdx = 5,
                     title = "Rest",
                     time = 30,
                     color = ColorEnum.PURPLE.name,
@@ -421,6 +473,7 @@ object Object {
                     incline = 0
                 ),
                 PartData(
+                    routineIdx = 5,
                     title = "Running",
                     time = 240,
                     color = ColorEnum.RED.name,
@@ -428,6 +481,7 @@ object Object {
                     incline = 0
                 ),
                 PartData(
+                    routineIdx = 5,
                     title = "Rest",
                     time = 30,
                     color = ColorEnum.PURPLE.name,
@@ -435,6 +489,7 @@ object Object {
                     incline = 0
                 ),
                 PartData(
+                    routineIdx = 5,
                     title = "Running",
                     time = 270,
                     color = ColorEnum.RED.name,
@@ -442,6 +497,7 @@ object Object {
                     incline = 0
                 ),
                 PartData(
+                    routineIdx = 5,
                     title = "Rest",
                     time = 30,
                     color = ColorEnum.PURPLE.name,
@@ -449,6 +505,7 @@ object Object {
                     incline = 0
                 ),
                 PartData(
+                    routineIdx = 5,
                     title = "Running",
                     time = 300,
                     color = ColorEnum.RED.name,
@@ -456,6 +513,7 @@ object Object {
                     incline = 0
                 ),
                 PartData(
+                    routineIdx = 5,
                     title = "Rest",
                     time = 30,
                     color = ColorEnum.PURPLE.name,
@@ -465,6 +523,7 @@ object Object {
             ),
             relatedVideoList = listOf(
                 RelatedVideoData(
+                    routineIdx = 5,
                     title = "Virtual Run | Amazing Norwegian Nature Scenery for your Virtual Treadmill Workout",
                     thumbnail = "https://i.ytimg.com/vi/VsmsGtiavUQ/original.jpg",
                     source = "VsmsGtiavUQ",
@@ -472,6 +531,7 @@ object Object {
                     category = VideoCategoryEnum.VIRTUAL.name
                 ),
                 RelatedVideoData(
+                    routineIdx = 5,
                     title = "Virtual Run | The Bridge | Sun Fun Run! | Treadmill Workout",
                     thumbnail = "https://i.ytimg.com/vi/shzvF4cVCv0/original.jpg",
                     source = "shzvF4cVCv0",
@@ -479,6 +539,7 @@ object Object {
                     category = VideoCategoryEnum.VIRTUAL.name
                 ),
                 RelatedVideoData(
+                    routineIdx = 5,
                     title = "Virtual Run | Relaxing Nature Scenery | Treadmill Workout",
                     thumbnail = "https://i.ytimg.com/vi/kav_pl6S9AQ/original.jpg",
                     source = "kav_pl6S9AQ",
@@ -486,6 +547,7 @@ object Object {
                     category = VideoCategoryEnum.VIRTUAL.name
                 ),
                 RelatedVideoData(
+                    routineIdx = 5,
                     title = "Virtual Run | Stunning Trails in Beautiful Nature Scenery | Treadmill Running, Walk, Workout",
                     thumbnail = "https://i.ytimg.com/vi/rlG10erTysE/original.jpg",
                     source = "rlG10erTysE",
@@ -493,6 +555,7 @@ object Object {
                     category = VideoCategoryEnum.VIRTUAL.name
                 ),
                 RelatedVideoData(
+                    routineIdx = 5,
                     title = "Virtual Run | Zen Nature Scenery for your Virtual Treadmill Workout",
                     thumbnail = "https://i.ytimg.com/vi/qZou0yB1RFk/original.jpg",
                     source = "qZou0yB1RFk",

@@ -4,9 +4,10 @@ import kr.hs.dgsw.data.database.entity.PartEntity
 import kr.hs.dgsw.data.entity.PartData
 import kr.hs.dgsw.domain.entity.routine.Part
 
-fun Part.toDataEntity(): PartData {
+fun Part.toDataEntity(routineIdx: Int): PartData {
     return PartData(
         idx = idx,
+        routineIdx = routineIdx,
         title = title,
         time = time,
         color = color.name,
@@ -26,7 +27,7 @@ fun PartData.toEntity(): Part {
     )
 }
 
-fun PartData.toDbEntity(idx: Int = 0, routineIdx: Int = 0): PartEntity {
+fun PartData.toDbEntity(): PartEntity {
     return PartEntity(
         idx = idx,
         routineIdx = routineIdx,
@@ -41,6 +42,7 @@ fun PartData.toDbEntity(idx: Int = 0, routineIdx: Int = 0): PartEntity {
 fun PartEntity.toDataEntity(): PartData {
     return PartData(
         idx = idx,
+        routineIdx = routineIdx,
         title = title,
         time = time,
         color = color,

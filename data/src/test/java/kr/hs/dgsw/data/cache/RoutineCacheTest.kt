@@ -72,7 +72,7 @@ class RoutineCacheTest {
                 )
             )
         )
-        routineCache.getRoutineDetailList().test()
+        routineCache.getRoutineList().test()
             .assertValue(returnValue)
             .assertComplete()
     }
@@ -176,7 +176,7 @@ class RoutineCacheTest {
                 )
             )
         )
-        routineCache.getRoutineDetailList().test()
+        routineCache.getRoutineList().test()
             .assertValue(returnValue)
             .assertComplete()
     }
@@ -229,7 +229,7 @@ class RoutineCacheTest {
                 )
             )
         )
-        routineCache.insertRoutineDetail(routineDetailEntity).test()
+        routineCache.insertRoutine(routineDetailEntity).test()
             .assertComplete()
     }
 
@@ -313,126 +313,15 @@ class RoutineCacheTest {
                 )
             )
         )
-        routineCache.insertRoutineDetailList(routineDetailEntityList).test()
+        routineCache.insertRoutineList(routineDetailEntityList).test()
             .assertComplete()
     }
 
     @Test
     fun getRoutineDetail_fail() {
         val routineIdx = 0
-        routineCache.getRoutineDetail(routineIdx).test()
+        routineCache.getRoutine(routineIdx).test()
             .assertError(TableEmptyException::class.java)
-    }
-
-    @Test
-    fun updateRoutine_success() {
-        insertRoutineDetailList_success()
-        val routineEntity = RoutineEntity(
-            idx = 1,
-            title = "My Custom Routine *",
-            routineType = RoutineTypeEnum.CUSTOM.name
-        )
-        val partEntityList = listOf(
-            PartEntity(
-                title = "Warming up",
-                time = 300,
-                color = ColorEnum.BLACK.name,
-                speed = 6.5,
-                incline = 0
-            )
-        )
-        val videoEntityList = listOf(
-            RelatedVideoEntity(
-                title = "Run With Me",
-                thumbnail = "",
-                source = "",
-                duration = 1000,
-                category = VideoCategoryEnum.RUNNING.name
-            )
-        )
-        val returnValue = listOf(
-            RoutineDetailEntity(
-                routine = RoutineEntity(
-                    idx = 1,
-                    title = "My Custom Routine *",
-                    routineType = RoutineTypeEnum.CUSTOM.name
-                ),
-                partList = listOf(
-                    PartEntity(
-                        idx = 1,
-                        routineIdx = 1,
-                        title = "Warming up",
-                        time = 300,
-                        color = ColorEnum.BLACK.name,
-                        speed = 6.5,
-                        incline = 0
-                    )
-                ),
-                relatedVideoList = listOf(
-                    RelatedVideoEntity(
-                        idx = 1,
-                        routineIdx = 1,
-                        title = "Run With Me",
-                        thumbnail = "",
-                        source = "",
-                        duration = 1000,
-                        category = VideoCategoryEnum.RUNNING.name
-                    )
-                )
-            ),
-            RoutineDetailEntity(
-                routine = RoutineEntity(
-                    idx = 2,
-                    title = "My Custom Routine",
-                    routineType = RoutineTypeEnum.CUSTOM.name
-                ),
-                partList = listOf(
-                    PartEntity(
-                        idx = 3,
-                        routineIdx = 2,
-                        title = "Warming up",
-                        time = 300,
-                        color = ColorEnum.BLACK.name,
-                        speed = 6.5,
-                        incline = 0
-                    ),
-                    PartEntity(
-                        idx = 4,
-                        routineIdx = 2,
-                        title = "Warming up",
-                        time = 300,
-                        color = ColorEnum.BLACK.name,
-                        speed = 6.5,
-                        incline = 0
-                    )
-                ),
-                relatedVideoList = listOf(
-                    RelatedVideoEntity(
-                        idx = 3,
-                        routineIdx = 2,
-                        title = "Run With Me",
-                        thumbnail = "",
-                        source = "",
-                        duration = 1000,
-                        category = VideoCategoryEnum.RUNNING.name
-                    ),
-                    RelatedVideoEntity(
-                        idx = 4,
-                        routineIdx = 2,
-                        title = "Run With Me",
-                        thumbnail = "",
-                        source = "",
-                        duration = 1000,
-                        category = VideoCategoryEnum.RUNNING.name
-                    )
-                )
-            )
-        )
-        routineCache.updateRoutine(routineEntity, partEntityList, videoEntityList).test()
-            .assertComplete()
-        routineCache.getRoutineDetailList().test()
-            .assertValue(returnValue)
-            .assertComplete()
     }
 
     @Test
@@ -490,7 +379,7 @@ class RoutineCacheTest {
         )
         routineCache.deleteRoutine(routineIdx).test()
             .assertComplete()
-        routineCache.getRoutineDetailList().test()
+        routineCache.getRoutineList().test()
             .assertValue(returnValue)
     }
 }

@@ -7,9 +7,15 @@ import kr.hs.dgsw.data.database.entity.PartEntity
 interface PartCache {
     fun getPartList(): Single<List<PartEntity>>
 
-    fun insertPart(routineIdx: Int, partEntity: PartEntity): Completable
+    fun insertPart(partEntity: PartEntity): Completable
+
+    fun insertPartList(partEntityList: List<PartEntity>): Completable
 
     fun deletePart(partIdx: Int): Completable
 
-    fun updatePart(partIdx: Int, partEntity: PartEntity): Completable
+    fun deletePartByRoutineIdx(routineIdx: Int): Completable
+
+    fun updatePart(partEntity: PartEntity): Completable
+
+    fun updatePartAll(routineIdx: Int, partEntityList: List<PartEntity>): Completable
 }

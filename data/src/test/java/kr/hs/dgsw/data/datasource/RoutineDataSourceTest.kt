@@ -77,6 +77,7 @@ class RoutineDataSourceTest {
                 partList = listOf(
                     PartData(
                         idx = 1,
+                        routineIdx = 1,
                         title = "Warming up",
                         time = 300,
                         color = ColorEnum.RED.name,
@@ -87,6 +88,7 @@ class RoutineDataSourceTest {
                 relatedVideoList = listOf(
                     RelatedVideoData(
                         idx = 1,
+                        routineIdx = 1,
                         title = "Run With Me!",
                         thumbnail = "",
                         source = "",
@@ -96,9 +98,9 @@ class RoutineDataSourceTest {
                 )
             )
         )
-        `when`(routineCache.getRoutineDetailList())
+        `when`(routineCache.getRoutineList())
             .thenReturn(Single.just(cacheReturnValue))
-        routineDataSource.getRoutineDetailList().test()
+        routineDataSource.getRoutineList().test()
             .assertValue(returnValue)
             .assertComplete()
     }
@@ -156,6 +158,7 @@ class RoutineDataSourceTest {
                 partList = listOf(
                     PartData(
                         idx = 1,
+                        routineIdx = 1,
                         title = "Warm up",
                         time = 600,
                         color = ColorEnum.YELLOW.name,
@@ -164,6 +167,7 @@ class RoutineDataSourceTest {
                     ),
                     PartData(
                         idx = 2,
+                        routineIdx = 1,
                         title = "Walking",
                         time = 300,
                         color = ColorEnum.GREEN.name,
@@ -174,6 +178,7 @@ class RoutineDataSourceTest {
                 relatedVideoList = listOf(
                     RelatedVideoData(
                         idx = 1,
+                        routineIdx = 1,
                         title = "Virtual Run | Amazing Norwegian Nature Scenery for your Virtual Treadmill Workout",
                         thumbnail = "",
                         source = "",
@@ -183,21 +188,12 @@ class RoutineDataSourceTest {
                 )
             )
         )
-        `when`(routineCache.getRoutineDetailList())
+        `when`(routineCache.getRoutineList())
             .thenReturn(Single.error(exception), Single.just(cacheReturnValue))
-        `when`(routineCache.insertRoutineDetailList(cacheParamValue))
-            .thenReturn(Completable.complete())
-        routineDataSource.getRoutineDetailList().test()
+        `when`(routineCache.insertRoutineList(cacheParamValue))
+            .thenReturn(Single.just(cacheReturnValue))
+        routineDataSource.getRoutineList().test()
             .assertValue(returnValue)
             .assertComplete()
-    }
-
-    @Test
-    fun getRoutineDetailList_fail() {
-        val exception = Exception()
-        `when`(routineCache.getRoutineDetailList())
-            .thenReturn(Single.error(exception))
-        routineDataSource.getRoutineDetailList().test()
-            .assertError(Exception::class.java)
     }
 }
