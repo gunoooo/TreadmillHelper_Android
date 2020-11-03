@@ -30,7 +30,7 @@ open class BaseViewModel : ViewModel() {
         isLoading.value = boolean
     }
 
-    val onErrorEvent = SingleLiveEvent<Throwable>()
+    val errorEvent = SingleLiveEvent<Throwable>()
 
     fun addDisposable(single: Single<*>, observer: DisposableSingleObserver<*>) {
         compositeDisposable.add(single.subscribeOn(Schedulers.io())

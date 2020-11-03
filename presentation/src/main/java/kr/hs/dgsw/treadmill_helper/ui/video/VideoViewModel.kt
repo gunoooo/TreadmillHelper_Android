@@ -46,7 +46,7 @@ class VideoViewModel(
 
                 override fun onError(e: Throwable) {
                     stopLoading()
-                    onErrorEvent.value = e
+                    errorEvent.value = e
                 }
             })
     }

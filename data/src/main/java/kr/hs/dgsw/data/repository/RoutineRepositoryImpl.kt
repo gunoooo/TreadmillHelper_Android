@@ -50,15 +50,16 @@ class RoutineRepositoryImpl @Inject constructor(
             }
     }
 
-    override fun insertRoutine(routine: Routine): Completable {
+    override fun insertRoutine(routine: Routine): Single<Routine> {
         return routineDataSource.insertRoutine(routine.toDataEntity())
-            .flatMapCompletable {
+            .flatMap {
                 partDataSource.insertPartList(it.partList)
                     .andThen(relatedVideoDataSource.insertRelatedVideoList(it.relatedVideoList))
+                    .toSingleDefault(it.toEntity())
             }
     }
 
-    override fun updateRoutine(routine: Routine): Completable {
+    override fun updateRoutine(routine: Routine): Single<Routine> {
         return routineDataSource.deleteRoutine(routine.idx)
             .andThen(partDataSource.deletePartByRoutineIdx(routine.idx)
                 .andThen(relatedVideoDataSource.deleteRelatedVideoByRoutineIdx(routine.idx)

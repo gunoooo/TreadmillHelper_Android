@@ -61,7 +61,7 @@ class TimerViewModel(
                 }
 
                 override fun onError(e: Throwable) {
-                    onErrorEvent.value = e
+                    errorEvent.value = e
                 }
 
                 override fun onComplete() {

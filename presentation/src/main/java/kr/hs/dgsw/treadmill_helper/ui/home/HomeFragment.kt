@@ -32,7 +32,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
                         this@HomeFragment.context!!.applicationContext,
                         TimerActivity::class.java
                     ).putExtra(
-                        TimerActivity.EXTRA_SCHEDULE,
+                        TimerActivity.EXTRA_ROUTINE,
                         routineData.value
                     )
                 )

@@ -134,11 +134,11 @@ class TimerActivity : BaseActivity<ActivityTimerBinding, TimerViewModel>() {
     }
 
     private fun initIntent() {
-        val routine = intent.getSerializableExtra(EXTRA_SCHEDULE) as Routine
+        val routine = intent.getSerializableExtra(EXTRA_ROUTINE) as Routine
         mViewModel.setRoutine(routine)
     }
 
     companion object {
-        const val EXTRA_SCHEDULE = "routine"
+        const val EXTRA_ROUTINE = "routine"
     }
 }

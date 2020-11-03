@@ -12,9 +12,9 @@ interface RoutineRepository {
 
     fun getRoutineList(): Single<List<Routine>>
 
-    fun insertRoutine(routine: Routine): Completable
+    fun insertRoutine(routine: Routine): Single<Routine>
 
-    fun updateRoutine(routine: Routine): Completable
+    fun updateRoutine(routine: Routine): Single<Routine>
 
     // Part
     fun getPartList(): Single<List<Part>>

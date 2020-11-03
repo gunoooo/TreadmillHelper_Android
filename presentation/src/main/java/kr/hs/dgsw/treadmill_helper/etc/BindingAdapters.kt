@@ -9,6 +9,7 @@ import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import kr.hs.dgsw.treadmill_helper.R
@@ -17,6 +18,11 @@ import kr.hs.dgsw.treadmill_helper.etc.extension.getParentActivity
 @BindingAdapter("adapter")
 fun setAdapter(view: RecyclerView, adapter: RecyclerView.Adapter<*>) {
     view.adapter = adapter
+}
+
+@BindingAdapter("touchHelper")
+fun setTouchHelper(view: RecyclerView, touchHelper: ItemTouchHelper) {
+    touchHelper.attachToRecyclerView(view)
 }
 
 @BindingAdapter("mutableText")

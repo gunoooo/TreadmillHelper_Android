@@ -27,7 +27,7 @@ class RoutineListViewModel(
                 }
 
                 override fun onError(e: Throwable) {
-                    onErrorEvent.value = e
+                    errorEvent.value = e
                 }
             })
     }

@@ -42,7 +42,7 @@ class VideoAddViewModel(
 
                 override fun onError(e: Throwable) {
                     isLoading.value = false
-                    onErrorEvent.value = e
+                    errorEvent.value = e
                 }
             }
         )
@@ -69,7 +69,7 @@ class VideoAddViewModel(
 
                 override fun onError(e: Throwable) {
                     isLoading.value = false
-                    onErrorEvent.value = e
+                    errorEvent.value = e
                 }
             }
         )
