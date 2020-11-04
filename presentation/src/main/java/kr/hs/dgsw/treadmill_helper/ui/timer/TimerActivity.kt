@@ -58,11 +58,11 @@ class TimerActivity : BaseActivity<ActivityTimerBinding, TimerViewModel>() {
                 })
             })
 
-            timerPauseEvent.observe(this@TimerActivity, Observer {
+            pauseTimerEvent.observe(this@TimerActivity, Observer {
                 timer_view.pause()
             })
 
-            timerPlayEvent.observe(this@TimerActivity, Observer {
+            playTimerEvent.observe(this@TimerActivity, Observer {
                 timer_view.play()
             })
 

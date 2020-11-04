@@ -10,15 +10,12 @@ import kr.hs.dgsw.treadmill_helper.widget.recyclerview.routine.RoutineListAdapte
 class RoutineListViewModel(
     private val getRoutineListUseCase: GetRoutineListUseCase
 ) : BaseViewModel() {
+    var focusRoutineIdx = 0
     private val routineList = ArrayList<Routine>()
 
     val routineListAdapter = RoutineListAdapter(routineList)
 
-    init {
-        setRoutineList()
-    }
-
-    private fun setRoutineList() {
+    fun setRoutineList() {
         addDisposable(getRoutineListUseCase.buildUseCaseObservable(),
             object : DisposableSingleObserver<List<Routine>>() {
                 override fun onSuccess(t: List<Routine>) {

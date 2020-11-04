@@ -29,4 +29,5 @@
     <color name="colorTimer">#2B2B33</color>
     <color name="colorTimerState">#353740</color>
     <color name="colorVideoControlBtn">#30354A</color>
+    <color name="colorRoutineFocus">#33385E</color>
 </resources>

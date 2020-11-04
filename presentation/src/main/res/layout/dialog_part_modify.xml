@@ -113,14 +113,13 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView8">
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/nanum_square_light"
                 android:text="CANCEL"
-                android:textColor="@color/colorAccent"
-                android:textSize="20sp" />
+                android:textColor="@color/colorPrimary"
+                android:textSize="15sp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -129,7 +128,7 @@
                 android:fontFamily="@font/nanum_square_regular"
                 android:text="MODIFY"
                 android:textColor="@color/colorPrimary"
-                android:textSize="20sp" />
+                android:textSize="15sp" />
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

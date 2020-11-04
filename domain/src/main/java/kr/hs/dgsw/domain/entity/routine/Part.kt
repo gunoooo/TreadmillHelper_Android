@@ -5,7 +5,7 @@ import java.io.Serializable
 import kotlin.math.roundToInt
 
 data class Part(
-    val idx: Int,
+    var idx: Int,
     val title: String,
     var time: Int,
     val color: ColorEnum,

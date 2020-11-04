@@ -12,6 +12,7 @@ import kotlinx.android.synthetic.main.item_video_modify.view.*
 import kr.hs.dgsw.domain.entity.routine.RelatedVideo
 import kr.hs.dgsw.treadmill_helper.R
 import kr.hs.dgsw.treadmill_helper.databinding.ItemVideoModifyBinding
+import kr.hs.dgsw.treadmill_helper.etc.SingleLiveEvent
 import kr.hs.dgsw.treadmill_helper.etc.callback.ItemMoveCallback
 import kr.hs.dgsw.treadmill_helper.etc.listener.StartDragListener
 import java.util.*
@@ -23,6 +24,7 @@ class VideoModifyListAdapter(
 ) : RecyclerView.Adapter<VideoModifyListAdapter.VideoModifyItemViewHolder>(),
     ItemMoveCallback.ItemTouchHelperListener<VideoModifyListAdapter.VideoModifyItemViewHolder>,
     VideoModifyNavigator {
+    val updateOrderEvent = SingleLiveEvent<Unit>()
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -71,6 +73,7 @@ class VideoModifyListAdapter(
             relatedVideo.idx = i + 1
         }
         notifyItemMoved(fromPosition, toPosition)
+        updateOrderEvent.call()
     }
 
     override fun onRowSelected(holder: VideoModifyItemViewHolder) {

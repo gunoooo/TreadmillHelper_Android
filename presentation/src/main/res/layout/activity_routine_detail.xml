@@ -11,7 +11,8 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorBackground">
+        android:background="@color/colorBackground"
+        android:overScrollMode="never">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -24,6 +25,7 @@
                 android:padding="20dp"
                 android:background="@drawable/background_bottom_line" >
                 <ImageView
+                    android:id="@+id/back_btn"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:src="@drawable/ic_arrow_left" />
@@ -36,6 +38,7 @@
                     android:fontFamily="@font/nanum_square_regular"
                     android:textColor="@color/colorText"
                     android:textSize="20sp"
+                    android:text="@{viewModel.routineData.title}"
                     tools:text="BEGINNER" />
 
                 <View
@@ -89,6 +92,7 @@
                     android:layout_height="30dp"
                     android:layout_gravity="center_vertical"
                     android:src="@drawable/ic_arrow_down"
+                    android:rotation="180"
                     android:tint="@color/colorWhite" />
             </LinearLayout>
 
@@ -98,12 +102,14 @@
                 android:layout_height="wrap_content"
                 android:nestedScrollingEnabled="false"
                 android:overScrollMode="never"
-                android:visibility="gone"
+                app:adapter="@{viewModel.partModifyListAdapter}"
+                app:touchHelper="@{viewModel.partModifyTouchHelper}"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 tools:listitem="@layout/item_part_modify"
                 tools:visibility="visible"/>
 
             <LinearLayout
+                android:id="@+id/part_add_btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -159,6 +165,7 @@
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_gravity="center_vertical"
+                    android:rotation="180"
                     android:src="@drawable/ic_arrow_down"
                     android:tint="@color/colorWhite" />
             </LinearLayout>
@@ -169,7 +176,6 @@
                 android:layout_height="wrap_content"
                 android:nestedScrollingEnabled="false"
                 android:overScrollMode="never"
-                android:visibility="visible"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:adapter="@{viewModel.videoModifyListAdapter}"
                 app:touchHelper="@{viewModel.videoModifyTouchHelper}"
@@ -177,6 +183,7 @@
                 tools:visibility="visible" />
 
             <LinearLayout
+                android:id="@+id/related_video_add_btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -194,7 +201,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="10dp"
                     android:fontFamily="@font/nanum_square_light"
-                    android:text="ADD RELATION VIDEO"
+                    android:text="ADD RELATED VIDEO"
                     android:textColor="@color/colorAccent"
                     android:textSize="15sp" />
             </LinearLayout>

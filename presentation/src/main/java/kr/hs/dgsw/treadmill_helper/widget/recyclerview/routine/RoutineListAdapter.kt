@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.item_routine.view.*
 import kr.hs.dgsw.domain.entity.routine.Routine
 import kr.hs.dgsw.treadmill_helper.R
 import kr.hs.dgsw.treadmill_helper.databinding.ItemRoutineBinding
@@ -16,6 +17,24 @@ class RoutineListAdapter(
     val clickItemEvent = SingleLiveEvent<Routine>()
     override fun onClickItem(routine: Routine) {
         clickItemEvent.value = routine
+    }
+    val detailEvent = SingleLiveEvent<Routine>()
+    override fun onDetail(routine: Routine) {
+        detailEvent.value = routine
+    }
+    val modifyEvent = SingleLiveEvent<Routine>()
+    override fun onModify(routine: Routine) {
+        modifyEvent.value = routine
+    }
+    val deleteEvent = SingleLiveEvent<Routine>()
+    override fun onDelete(routine: Routine) {
+        detailEvent.value = routine
+    }
+
+    private var focusRoutineIdx: Int = 0
+    fun setFocusRoutineIdx(focusRoutineIdx: Int) {
+        this.focusRoutineIdx = focusRoutineIdx
+        notifyDataSetChanged()
     }
 
     override fun onCreateViewHolder(
@@ -33,6 +52,10 @@ class RoutineListAdapter(
 
     override fun onBindViewHolder(holder: RoutineListAdapter.RoutineItemViewHolder, position: Int) {
         holder.bind(routineList[position])
+        if (routineList[position].idx == focusRoutineIdx) {
+            holder.itemView.setBackgroundColor(
+                holder.itemView.context.getColor(R.color.colorRoutineFocus))
+        }
     }
 
     override fun getItemCount(): Int {

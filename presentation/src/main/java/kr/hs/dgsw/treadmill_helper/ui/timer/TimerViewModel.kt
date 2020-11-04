@@ -37,8 +37,8 @@ class TimerViewModel(
     val videoData = MutableLiveData<Video>()
     val remainingTimeData = MutableLiveData<Int>()
 
-    val timerPauseEvent = SingleLiveEvent<Unit>()
-    val timerPlayEvent = SingleLiveEvent<Unit>()
+    val pauseTimerEvent = SingleLiveEvent<Unit>()
+    val playTimerEvent = SingleLiveEvent<Unit>()
 
     fun setRoutine(routine: Routine) {
         routineData.value = routine
@@ -79,7 +79,7 @@ class TimerViewModel(
         partIndex = position
         timer.dispose()
         setPart()
-        timerPlayEvent.call()
+        playTimerEvent.call()
     }
 
     private fun setPart() {
@@ -116,11 +116,11 @@ class TimerViewModel(
 
     fun onClickTimer() {
         if (timer.isDisposed) {
-            timerPlayEvent.call()
+            playTimerEvent.call()
             startTimer(remainingTimeData.value!! - 1000)
         }
         else {
-            timerPauseEvent.call()
+            pauseTimerEvent.call()
             timer.dispose()
         }
     }

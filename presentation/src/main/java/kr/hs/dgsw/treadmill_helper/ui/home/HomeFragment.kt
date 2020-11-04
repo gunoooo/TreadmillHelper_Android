@@ -38,7 +38,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
                 )
             })
 
-            routineListDialog.clickItemEvent.observe(this@HomeFragment, Observer {
+            routineListDialog.dismissEvent.observe(this@HomeFragment, Observer {
                 setRoutine(it)
             })
         }

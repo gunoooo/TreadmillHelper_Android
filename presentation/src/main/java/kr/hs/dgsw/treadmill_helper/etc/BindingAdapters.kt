@@ -31,6 +31,14 @@ fun setMutableText(view: TextView, text: MutableLiveData<String>) {
     text.observe(parentActivity, Observer { value -> view.text = value ?: "" })
 }
 
+@BindingAdapter("mutableTextColor")
+fun setMutableTextColor(view: TextView, color: MutableLiveData<String>) {
+    val parentActivity: AppCompatActivity = view.getParentActivity() ?: return
+    color.observe(parentActivity, Observer { value ->
+        view.setTextColor(Color.parseColor(value))
+    })
+}
+
 @BindingAdapter("mutableColor")
 fun setMutableColor(view: View, color: MutableLiveData<String>) {
     val parentActivity: AppCompatActivity = view.getParentActivity() ?: return
