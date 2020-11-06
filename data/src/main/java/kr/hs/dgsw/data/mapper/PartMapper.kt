@@ -10,7 +10,7 @@ fun Part.toDataEntity(routineIdx: Int): PartData {
         routineIdx = routineIdx,
         title = title,
         time = time,
-        color = color.name,
+        color = color,
         speed = speed,
         incline = incline
     )
@@ -21,7 +21,7 @@ fun PartData.toEntity(): Part {
         idx = idx,
         title = title,
         time = time,
-        color = enumValueOf(color),
+        color = color,
         speed = speed,
         incline = incline
     )

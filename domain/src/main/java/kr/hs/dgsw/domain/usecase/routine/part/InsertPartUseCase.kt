@@ -1,16 +1,15 @@
 package kr.hs.dgsw.domain.usecase.routine.part
 
-import io.reactivex.Completable
+import io.reactivex.Single
 import kr.hs.dgsw.domain.base.ParamsUseCase
-import kr.hs.dgsw.domain.entity.e.ColorEnum
 import kr.hs.dgsw.domain.entity.routine.Part
 import kr.hs.dgsw.domain.repository.RoutineRepository
 import javax.inject.Inject
 
 class InsertPartUseCase @Inject constructor(
     private val routineRepository: RoutineRepository
-) : ParamsUseCase<InsertPartUseCase.Params, Completable>() {
-    override fun buildUseCaseObservable(params: Params): Completable {
+) : ParamsUseCase<InsertPartUseCase.Params, Single<Part>>() {
+    override fun buildUseCaseObservable(params: Params): Single<Part> {
         return routineRepository.insertPart(
             routineIdx = params.routineIdx,
             part = Part(
@@ -28,7 +27,7 @@ class InsertPartUseCase @Inject constructor(
         val routineIdx: Int,
         val title: String,
         var time: Int,
-        val color: ColorEnum,
+        val color: String,
         val speed: Double,
         val incline: Int
     )

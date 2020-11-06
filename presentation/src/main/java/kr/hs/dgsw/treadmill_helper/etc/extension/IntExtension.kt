@@ -2,6 +2,7 @@ package kr.hs.dgsw.treadmill_helper.etc.extension
 
 import android.content.res.Resources
 import android.util.TypedValue
+import java.util.*
 
 fun Int.format(digits: Int) = "%0${digits}d".format(this)
 
@@ -27,9 +28,11 @@ fun Int.milliToTimeFormat(): String {
         "$minutes : $seconds"
 }
 
-fun Int.milliToMin() = (this / 1000 / 60).format(2)
+fun Int.secToSec() = (this % 60 % 60)
 
-fun Int.milliToSec() = (this / 1000 % 60).format(2)
+fun Int.secToMin() = (this / 60 % 60)
+
+fun Int.secToHour() = (this / 60 / 60)
 
 fun Int.dpToPx() =
     TypedValue.applyDimension(
@@ -37,3 +40,21 @@ fun Int.dpToPx() =
         this.toFloat(),
         Resources.getSystem().displayMetrics
     ).toInt()
+
+fun Int.toArgbString(): String =
+    "#${alpha.toStringComponent()}${red.toStringComponent()}${green.toStringComponent()}${blue.toStringComponent()}".toUpperCase(Locale.getDefault())
+
+private fun Int.toStringComponent(): String =
+    this.toString(16).let { if (it.length == 1) "0${it}" else it }
+
+inline val Int.alpha: Int
+    get() = (this shr 24) and 0xFF
+
+inline val Int.red: Int
+    get() = (this shr 16) and 0xFF
+
+inline val Int.green: Int
+    get() = (this shr 8) and 0xFF
+
+inline val Int.blue: Int
+    get() = this and 0xFF

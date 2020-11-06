@@ -2,6 +2,12 @@
 <layout xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="viewModel"
+            type="kr.hs.dgsw.treadmill_helper.ui.routine.part.add.PartAddViewModel" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -19,21 +25,36 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <EditText
-            android:id="@+id/editText"
+        <LinearLayout
+            android:id="@+id/title_linear_layout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:layout_marginHorizontal="17dp"
-            android:drawableEnd="@drawable/ic_drop_down"
-            android:fontFamily="@font/nanum_square_light"
-            android:hint="TITLE"
-            android:inputType="text"
-            android:textColorHint="@color/colorGrey"
-            android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView9" />
+            app:layout_constraintTop_toBottomOf="@+id/textView9">
+            <EditText
+                android:id="@+id/title_input"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="7"
+                android:fontFamily="sans-serif-light"
+                android:textColor="@color/colorText"
+                android:text="@={viewModel.titleData}"
+                android:hint="TITLE"
+                android:inputType="text"
+                android:textColorHint="@color/colorGrey"
+                android:textSize="20sp" />
+
+            <ImageView
+                android:id="@+id/drop_down_btn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:src="@drawable/ic_drop_down"/>
+        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/linearLayout"
@@ -43,14 +64,16 @@
             android:layout_marginTop="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/editText">
+            app:layout_constraintTop_toBottomOf="@id/title_linear_layout">
             <EditText
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:hint="SPEED"
                 android:inputType="text"
-                android:fontFamily="@font/nanum_square_light"
+                android:fontFamily="sans-serif-light"
+                android:text="@={viewModel.speedData}"
+                android:textColor="@color/colorText"
                 android:textColorHint="@color/colorGrey"
                 android:textSize="20sp" />
 
@@ -58,31 +81,47 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
+                android:layout_marginBottom="5dp"
                 android:fontFamily="@font/nanum_square_light"
                 android:text="km/h"
                 android:textColor="@color/colorText"
-                android:textSize="15sp" />
+                android:textSize="15sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginBottom="5dp"
+                android:layout_marginStart="20dp"
+                android:fontFamily="@font/nanum_square_light"
+                android:text="incline"
+                android:textColor="@color/colorText"
+                android:textSize="15sp"/>
 
             <EditText
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:layout_marginStart="5dp"
                 android:hint="INCLINE"
-                android:fontFamily="@font/nanum_square_light"
+                android:text="@={viewModel.inclineData}"
+                android:fontFamily="sans-serif-light"
+                android:textColor="@color/colorText"
                 android:inputType="text"
                 android:textColorHint="@color/colorGrey"
                 android:textSize="20sp" />
         </LinearLayout>
 
         <TextView
-            android:id="@+id/textView8"
+            android:id="@+id/time_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="10dp"
-            android:fontFamily="@font/nanum_square_regular"
+            android:fontFamily="@font/nanum_square_light"
             android:textColor="@color/colorText"
-            android:textSize="40sp"
+            android:textSize="35sp"
+            android:text="@={viewModel.timeData}"
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintEnd_toStartOf="@id/color_image_view"
             app:layout_constraintStart_toStartOf="parent"
@@ -95,12 +134,12 @@
             android:layout_height="40dp"
             android:layout_marginStart="10dp"
             android:src="@drawable/ic_round"
-            android:tint="@color/colorPrimary"
+            app:mutableTint="@{viewModel.colorData}"
             app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintBottom_toBottomOf="@+id/textView8"
+            app:layout_constraintBottom_toBottomOf="@+id/time_text_view"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/textView8"
-            app:layout_constraintTop_toTopOf="@+id/textView8"
+            app:layout_constraintStart_toEndOf="@+id/time_text_view"
+            app:layout_constraintTop_toTopOf="@+id/time_text_view"
             tools:tint="@color/colorPrimary" />
 
         <LinearLayout
@@ -112,9 +151,9 @@
             android:gravity="center"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView8">
-
+            app:layout_constraintTop_toBottomOf="@+id/time_text_view">
             <TextView
+                android:id="@+id/cancel_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/nanum_square_light"
@@ -123,6 +162,7 @@
                 android:textSize="15sp" />
 
             <TextView
+                android:id="@+id/apply_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"

@@ -16,12 +16,18 @@ class PartDataSourceImpl @Inject constructor(
             .map { partList -> partList.map { it.toDataEntity() } }
     }
 
-    override fun insertPart(partData: PartData): Completable {
+    override fun insertPart(partData: PartData): Single<PartData> {
         return cache.insertPart(partData.toDbEntity())
+            .map { it.toDataEntity() }
     }
 
-    override fun insertPartList(partDataList: List<PartData>): Completable {
+    override fun insertPartList(partDataList: List<PartData>): Single<List<PartData>> {
         return cache.insertPartList(partDataList.map { it.toDbEntity() })
+            .map { partList ->
+                partList.map {
+                    it.toDataEntity()
+                }
+            }
     }
 
     override fun deletePart(partIdx: Int): Completable {

@@ -18,7 +18,7 @@ class PartItemViewModel : BaseItemViewModel<PartNavigator>() {
     fun bind(model: Part) {
         part = model
 
-        colorData.value = part.color.toRGB()
+        colorData.value = part.color
         titleData.value = part.title
         inclineData.value = "incline : ${part.incline}"
         speedData.value = "speed : ${part.speed}km/h"

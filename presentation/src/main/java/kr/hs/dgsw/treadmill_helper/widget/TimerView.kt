@@ -77,7 +77,7 @@ class TimerView : FrameLayout {
         this.partIndex = partIndex
         val drawable = ((ContextCompat.getDrawable(mContext!!, R.drawable.background_progress) as LayerDrawable)
             .findDrawableByLayerId(R.id.progress) as GradientDrawable)
-        drawable.setColor(Color.parseColor(this.part.color.toRGB()))
+        drawable.setColor(Color.parseColor(this.part.color))
         timer_progress_bar.progressDrawable = drawable
         timer_progress_bar.max = this.part.time.toMilliseconds()
         if (::routine.isInitialized)

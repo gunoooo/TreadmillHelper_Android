@@ -5,8 +5,8 @@ import kr.hs.dgsw.data.database.entity.PartEntity
 import kr.hs.dgsw.data.database.entity.RoutineDetailEntity
 import kr.hs.dgsw.data.database.entity.RoutineEntity
 import kr.hs.dgsw.data.database.entity.RelatedVideoEntity
+import kr.hs.dgsw.data.etc.Color
 import kr.hs.dgsw.data.exception.TableEmptyException
-import kr.hs.dgsw.domain.entity.e.ColorEnum
 import kr.hs.dgsw.domain.entity.e.RoutineTypeEnum
 import kr.hs.dgsw.domain.entity.e.VideoCategoryEnum
 import org.junit.Test
@@ -36,7 +36,7 @@ class RoutineCacheTest {
                         routineIdx = 1,
                         title = "Warming up",
                         time = 300,
-                        color = ColorEnum.BLACK.name,
+                        color = Color.BLACK,
                         speed = 6.5,
                         incline = 0
                     ),
@@ -45,7 +45,7 @@ class RoutineCacheTest {
                         routineIdx = 1,
                         title = "Warming up",
                         time = 300,
-                        color = ColorEnum.BLACK.name,
+                        color = Color.BLACK,
                         speed = 6.5,
                         incline = 0
                     )
@@ -93,7 +93,7 @@ class RoutineCacheTest {
                         routineIdx = 2,
                         title = "Warming up",
                         time = 300,
-                        color = ColorEnum.BLACK.name,
+                        color = Color.BLACK,
                         speed = 6.5,
                         incline = 0
                     ),
@@ -102,7 +102,7 @@ class RoutineCacheTest {
                         routineIdx = 2,
                         title = "Warming up",
                         time = 300,
-                        color = ColorEnum.BLACK.name,
+                        color = Color.BLACK,
                         speed = 6.5,
                         incline = 0
                     )
@@ -140,7 +140,7 @@ class RoutineCacheTest {
                         routineIdx = 3,
                         title = "Warming up",
                         time = 300,
-                        color = ColorEnum.BLACK.name,
+                        color = Color.BLACK,
                         speed = 6.5,
                         incline = 0
                     ),
@@ -149,7 +149,7 @@ class RoutineCacheTest {
                         routineIdx = 3,
                         title = "Warming up",
                         time = 300,
-                        color = ColorEnum.BLACK.name,
+                        color = Color.BLACK,
                         speed = 6.5,
                         incline = 0
                     )
@@ -194,7 +194,7 @@ class RoutineCacheTest {
                     routineIdx = 1,
                     title = "Warming up",
                     time = 300,
-                    color = ColorEnum.BLACK.name,
+                    color = Color.BLACK,
                     speed = 6.5,
                     incline = 0
                 ),
@@ -203,7 +203,7 @@ class RoutineCacheTest {
                     routineIdx = 1,
                     title = "Warming up",
                     time = 300,
-                    color = ColorEnum.BLACK.name,
+                    color = Color.BLACK,
                     speed = 6.5,
                     incline = 0
                 )
@@ -245,14 +245,14 @@ class RoutineCacheTest {
                     PartEntity(
                         title = "Warming up",
                         time = 300,
-                        color = ColorEnum.BLACK.name,
+                        color = Color.BLACK,
                         speed = 6.5,
                         incline = 0
                     ),
                     PartEntity(
                         title = "Warming up",
                         time = 300,
-                        color = ColorEnum.BLACK.name,
+                        color = Color.BLACK,
                         speed = 6.5,
                         incline = 0
                     )
@@ -283,14 +283,14 @@ class RoutineCacheTest {
                     PartEntity(
                         title = "Warming up",
                         time = 300,
-                        color = ColorEnum.BLACK.name,
+                        color = Color.BLACK,
                         speed = 6.5,
                         incline = 0
                     ),
                     PartEntity(
                         title = "Warming up",
                         time = 300,
-                        color = ColorEnum.BLACK.name,
+                        color = Color.BLACK,
                         speed = 6.5,
                         incline = 0
                     )
@@ -341,7 +341,7 @@ class RoutineCacheTest {
                         routineIdx = 2,
                         title = "Warming up",
                         time = 300,
-                        color = ColorEnum.BLACK.name,
+                        color = Color.BLACK,
                         speed = 6.5,
                         incline = 0
                     ),
@@ -350,7 +350,7 @@ class RoutineCacheTest {
                         routineIdx = 2,
                         title = "Warming up",
                         time = 300,
-                        color = ColorEnum.BLACK.name,
+                        color = Color.BLACK,
                         speed = 6.5,
                         incline = 0
                     )

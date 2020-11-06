@@ -52,6 +52,8 @@ class RoutineListAdapter(
 
     override fun onBindViewHolder(holder: RoutineListAdapter.RoutineItemViewHolder, position: Int) {
         holder.bind(routineList[position])
+        holder.itemView.setBackgroundColor(
+            holder.itemView.context.getColor(R.color.colorBackground))
         if (routineList[position].idx == focusRoutineIdx) {
             holder.itemView.setBackgroundColor(
                 holder.itemView.context.getColor(R.color.colorRoutineFocus))

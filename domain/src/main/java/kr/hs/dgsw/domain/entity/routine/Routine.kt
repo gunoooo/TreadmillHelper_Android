@@ -8,8 +8,8 @@ data class Routine(
     val idx: Int,
     val title: String,
     val routineType: RoutineTypeEnum,
-    val partList: List<Part>,
-    val relatedVideoList: List<RelatedVideo>
+    var partList: List<Part>,
+    var relatedVideoList: List<RelatedVideo>
 ) : Serializable {
     constructor(idx: Int, title: String, routineType: RoutineTypeEnum, partList: List<Part>):
             this(idx, title, routineType, partList, emptyList())

@@ -1,19 +1,18 @@
 package kr.hs.dgsw.data.datasource
 
 import com.nhaarman.mockito_kotlin.mock
-import io.reactivex.Completable
 import io.reactivex.Single
 import kr.hs.dgsw.data.database.cache.RoutineCache
 import kr.hs.dgsw.data.database.entity.PartEntity
+import kr.hs.dgsw.data.database.entity.RelatedVideoEntity
 import kr.hs.dgsw.data.database.entity.RoutineDetailEntity
 import kr.hs.dgsw.data.database.entity.RoutineEntity
-import kr.hs.dgsw.data.database.entity.RelatedVideoEntity
 import kr.hs.dgsw.data.entity.PartData
 import kr.hs.dgsw.data.entity.RelatedVideoData
 import kr.hs.dgsw.data.entity.RoutineData
+import kr.hs.dgsw.data.etc.Color
 import kr.hs.dgsw.data.etc.Object
 import kr.hs.dgsw.data.mapper.toRoutineDetailEntity
-import kr.hs.dgsw.domain.entity.e.ColorEnum
 import kr.hs.dgsw.domain.entity.e.RoutineTypeEnum
 import kr.hs.dgsw.domain.entity.e.VideoCategoryEnum
 import org.junit.Before
@@ -51,7 +50,7 @@ class RoutineDataSourceTest {
                         routineIdx = 1,
                         title = "Warming up",
                         time = 300,
-                        color = ColorEnum.RED.name,
+                        color = Color.RED,
                         speed = 6.5,
                         incline = 0
                     )
@@ -80,7 +79,7 @@ class RoutineDataSourceTest {
                         routineIdx = 1,
                         title = "Warming up",
                         time = 300,
-                        color = ColorEnum.RED.name,
+                        color = Color.RED,
                         speed = 6.5,
                         incline = 0
                     )
@@ -121,7 +120,7 @@ class RoutineDataSourceTest {
                         routineIdx = 1,
                         title = "Warm up",
                         time = 600,
-                        color = ColorEnum.YELLOW.name,
+                        color = Color.YELLOW,
                         speed = 5.5,
                         incline = 0
                     ),
@@ -130,7 +129,7 @@ class RoutineDataSourceTest {
                         routineIdx = 1,
                         title = "Walking",
                         time = 300,
-                        color = ColorEnum.GREEN.name,
+                        color = Color.GREEN,
                         speed = 7.5,
                         incline = 0
                     )
@@ -161,7 +160,7 @@ class RoutineDataSourceTest {
                         routineIdx = 1,
                         title = "Warm up",
                         time = 600,
-                        color = ColorEnum.YELLOW.name,
+                        color = Color.YELLOW,
                         speed = 5.5,
                         incline = 0
                     ),
@@ -170,7 +169,7 @@ class RoutineDataSourceTest {
                         routineIdx = 1,
                         title = "Walking",
                         time = 300,
-                        color = ColorEnum.GREEN.name,
+                        color = Color.GREEN,
                         speed = 7.5,
                         incline = 0
                     )

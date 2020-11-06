@@ -19,7 +19,9 @@ interface RoutineRepository {
     // Part
     fun getPartList(): Single<List<Part>>
 
-    fun insertPart(routineIdx: Int, part: Part): Completable
+    fun getPresetPartList(): Single<List<Part>>
+
+    fun insertPart(routineIdx: Int, part: Part): Single<Part>
 
     fun deletePart(partIdx: Int): Completable
 
@@ -28,7 +30,7 @@ interface RoutineRepository {
     fun updatePartAll(routineIdx: Int, partList: List<Part>): Completable
 
     // RelatedVideo
-    fun insertRelatedVideo(routineIdx: Int, relatedVideo: RelatedVideo): Completable
+    fun insertRelatedVideo(routineIdx: Int, relatedVideo: RelatedVideo): Single<RelatedVideo>
 
     fun deleteRelatedVideo(relatedVideoIdx: Int): Completable
 

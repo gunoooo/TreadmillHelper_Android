@@ -38,6 +38,7 @@ class RoutineCacheImpl @Inject constructor(application: Application) :
         return routineDao.insertGetIdx(routineDetailEntityList.map { it.routine })
             .map { idxList ->
                 idxList.forEachIndexed { i, idx ->
+                    routineDetailEntityList[i].routine.idx = idx.toInt()
                     routineDetailEntityList[i].partList
                         .forEach { it.routineIdx = idx.toInt() }
                     routineDetailEntityList[i].relatedVideoList
@@ -50,6 +51,7 @@ class RoutineCacheImpl @Inject constructor(application: Application) :
     override fun insertRoutine(routineDetailEntity: RoutineDetailEntity): Single<RoutineDetailEntity> {
         return routineDao.insertGetIdx(routineDetailEntity.routine)
             .map { idx ->
+                routineDetailEntity.routine.idx = idx.toInt()
                 routineDetailEntity.partList
                     .forEach { it.routineIdx = idx.toInt() }
                 routineDetailEntity.relatedVideoList

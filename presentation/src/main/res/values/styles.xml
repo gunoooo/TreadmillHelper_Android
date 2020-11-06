@@ -6,6 +6,43 @@
 
         <item name="android:navigationBarColor">@color/colorPrimaryDark</item>
         <item name="android:statusBarColor">@color/colorPrimaryDark</item>
+
+        <item name="android:popupMenuStyle">@style/PopupMenu</item>
+        <item name="android:textAppearanceLargePopupMenu">@style/popupMenuTextAppearanceLarge</item>
+        <item name="android:textAppearanceSmallPopupMenu">@style/popupMenuTextAppearanceSmall</item>
+    </style>
+
+    <style name="NumberPickerTheme">
+        <item name="android:editTextColor">@color/colorText</item>
+        <item name="colorControlNormal">@color/colorText</item>
+    </style>
+
+    <style name="ColorPickerTheme" parent="Theme.AppCompat.DayNight.Dialog.Alert">
+        <item name="android:background">@color/colorBackground</item>
+        <item name="android:textColor">@color/colorText</item>
+
+        <item name="colorPrimary">@color/colorBackground</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="PopupMenu" parent="@android:style/Widget.PopupMenu">
+        <item name="android:textColor">@color/colorText</item>
+        <item name="android:popupBackground">@color/colorBackgroundTransparent</item>
+        <item name="android:fontFamily">@font/nanum_square_light</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
+    <style name="popupMenuTextAppearanceSmall" parent="@android:style/TextAppearance.DeviceDefault.Widget.PopupMenu.Small">
+        <item name="android:textColor">@color/colorText</item>
+        <item name="android:fontFamily">@font/nanum_square_light</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
+    <style name="popupMenuTextAppearanceLarge" parent="@android:style/TextAppearance.DeviceDefault.Widget.PopupMenu.Large">
+        <item name="android:textColor">@color/colorText</item>
+        <item name="android:fontFamily">@font/nanum_square_light</item>
+        <item name="android:textSize">15sp</item>
     </style>
 
     <style name="TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">

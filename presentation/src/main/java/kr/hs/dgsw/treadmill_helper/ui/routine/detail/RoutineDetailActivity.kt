@@ -55,7 +55,15 @@ class RoutineDetailActivity : BaseActivity<ActivityRoutineDetailBinding, Routine
             finish()
         }
         part_add_btn.setOnClickListener {
-            PartAddDialog().show(supportFragmentManager)
+            val partAddDialog =
+                PartAddDialog(mViewModel.routineData.value!!.idx)
+            partAddDialog.successEvent.observe(this, Observer {
+                (mViewModel.routineData.value!!.partList as ArrayList).add(it)
+                mViewModel.partList.add(it)
+                mViewModel.partModifyListAdapter
+                    .notifyItemInserted(mViewModel.partList.size)
+            })
+            partAddDialog.show(supportFragmentManager)
         }
         related_video_add_btn.setOnClickListener {
 

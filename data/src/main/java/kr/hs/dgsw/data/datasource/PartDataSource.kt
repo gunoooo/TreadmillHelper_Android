@@ -7,9 +7,9 @@ import kr.hs.dgsw.data.entity.PartData
 interface PartDataSource {
     fun getPartList(): Single<List<PartData>>
 
-    fun insertPart(partData: PartData): Completable
+    fun insertPart(partData: PartData): Single<PartData>
 
-    fun insertPartList(partDataList: List<PartData>): Completable
+    fun insertPartList(partDataList: List<PartData>): Single<List<PartData>>
 
     fun deletePart(partIdx: Int): Completable
 

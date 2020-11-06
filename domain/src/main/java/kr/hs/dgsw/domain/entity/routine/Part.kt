@@ -1,6 +1,5 @@
 package kr.hs.dgsw.domain.entity.routine
 
-import kr.hs.dgsw.domain.entity.e.ColorEnum
 import java.io.Serializable
 import kotlin.math.roundToInt
 
@@ -8,7 +7,7 @@ data class Part(
     var idx: Int,
     val title: String,
     var time: Int,
-    val color: ColorEnum,
+    var color: String,
     val speed: Double,
     val incline: Int
 ) : Serializable {

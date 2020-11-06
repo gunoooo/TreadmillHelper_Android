@@ -1,12 +1,14 @@
 package kr.hs.dgsw.data.datasource
 
 import io.reactivex.Completable
+import io.reactivex.Single
 import kr.hs.dgsw.data.entity.RelatedVideoData
+import kr.hs.dgsw.domain.entity.routine.RelatedVideo
 
 interface RelatedVideoDataSource {
-    fun insertRelatedVideo(relatedVideoData: RelatedVideoData): Completable
+    fun insertRelatedVideo(relatedVideoData: RelatedVideoData): Single<RelatedVideoData>
 
-    fun insertRelatedVideoList(relatedVideoDataList: List<RelatedVideoData>): Completable
+    fun insertRelatedVideoList(relatedVideoDataList: List<RelatedVideoData>): Single<List<RelatedVideoData>>
 
     fun deleteRelatedVideo(relatedVideoIdx: Int): Completable
 

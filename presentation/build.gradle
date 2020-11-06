@@ -61,6 +61,9 @@ dependencies {
     implementation "com.mikhaellopez:circularimageview:$rootProject.circularimageviewVersion"
     implementation "kr.co.prnd:youtube-player-view:$rootProject.youtubeViewVersion"
     implementation 'com.pierfrancescosoffritti.androidyoutubeplayer:core:10.0.5'
+    implementation "com.kovachcode:timePickerWithSeconds:$rootProject.timePickerVersion"
+    implementation "com.github.QuadFlask:colorpicker:$rootProject.colorPickerVersion"
+
 
     testImplementation "junit:junit:$rootProject.junitVersion"
     testImplementation "org.jetbrains.kotlin:kotlin-test-junit:$rootProject.kotlinVersion"

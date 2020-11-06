@@ -3,7 +3,6 @@ package kr.hs.dgsw.data.etc
 import kr.hs.dgsw.data.entity.PartData
 import kr.hs.dgsw.data.entity.RelatedVideoData
 import kr.hs.dgsw.data.entity.RoutineData
-import kr.hs.dgsw.domain.entity.e.ColorEnum
 import kr.hs.dgsw.domain.entity.e.RoutineTypeEnum
 import kr.hs.dgsw.domain.entity.e.VideoCategoryEnum
 
@@ -21,7 +20,7 @@ object Object {
                     routineIdx = 1,
                     title = "Warm up",
                     time = 10,
-                    color = ColorEnum.YELLOW.name,
+                    color = Color.YELLOW,
                     speed = 5.5,
                     incline = 0
                 ),
@@ -29,7 +28,7 @@ object Object {
                     routineIdx = 1,
                     title = "Walking",
                     time = 300,
-                    color = ColorEnum.GREEN.name,
+                    color = Color.GREEN,
                     speed = 7.5,
                     incline = 0
                 ),
@@ -37,7 +36,7 @@ object Object {
                     routineIdx = 1,
                     title = "Running",
                     time = 120,
-                    color = ColorEnum.RED.name,
+                    color = Color.RED,
                     speed = 10.5,
                     incline = 0
                 ),
@@ -45,7 +44,7 @@ object Object {
                     routineIdx = 1,
                     title = "Hiking",
                     time = 180,
-                    color = ColorEnum.ORANGE.name,
+                    color = Color.ORANGE,
                     speed = 5.0,
                     incline = 5
                 ),
@@ -53,7 +52,7 @@ object Object {
                     routineIdx = 1,
                     title = "Cool down",
                     time = 300,
-                    color = ColorEnum.BLUE.name,
+                    color = Color.BLUE,
                     speed = 4.5,
                     incline = 0
                 )
@@ -109,7 +108,7 @@ object Object {
                     routineIdx = 2,
                     title = "Warm up",
                     time = 10,
-                    color = ColorEnum.YELLOW.name,
+                    color = Color.YELLOW,
                     speed = 5.5,
                     incline = 0
                 ),
@@ -117,7 +116,7 @@ object Object {
                     routineIdx = 2,
                     title = "Walking",
                     time = 300,
-                    color = ColorEnum.GREEN.name,
+                    color = Color.GREEN,
                     speed = 7.5,
                     incline = 0
                 ),
@@ -125,7 +124,7 @@ object Object {
                     routineIdx = 2,
                     title = "Running",
                     time = 300,
-                    color = ColorEnum.RED.name,
+                    color = Color.RED,
                     speed = 10.5,
                     incline = 0
                 ),
@@ -133,7 +132,7 @@ object Object {
                     routineIdx = 2,
                     title = "Walking",
                     time = 300,
-                    color = ColorEnum.GREEN.name,
+                    color = Color.GREEN,
                     speed = 7.5,
                     incline = 0
                 ),
@@ -141,7 +140,7 @@ object Object {
                     routineIdx = 2,
                     title = "Running",
                     time = 300,
-                    color = ColorEnum.RED.name,
+                    color = Color.RED,
                     speed = 10.5,
                     incline = 0
                 ),
@@ -149,14 +148,14 @@ object Object {
                     routineIdx = 2,
                     title = "Walking",
                     time = 300,
-                    color = ColorEnum.GREEN.name,
+                    color = Color.GREEN,
                     speed = 7.5,
                     incline = 0
                 ),
                 PartData(routineIdx = 2,
                     title = "Running",
                     time = 300,
-                    color = ColorEnum.RED.name,
+                    color = Color.RED,
                     speed = 10.5,
                     incline = 0
                 )
@@ -212,7 +211,7 @@ object Object {
                     routineIdx = 3,
                     title = "Walking",
                     time = 300,
-                    color = ColorEnum.GREEN.name,
+                    color = Color.GREEN,
                     speed = 7.5,
                     incline = 0
                 ),
@@ -220,7 +219,7 @@ object Object {
                     routineIdx = 3,
                     title = "Running",
                     time = 600,
-                    color = ColorEnum.RED.name,
+                    color = Color.RED,
                     speed = 10.5,
                     incline = 0
                 ),
@@ -228,7 +227,7 @@ object Object {
                     routineIdx = 3,
                     title = "Walking",
                     time = 300,
-                    color = ColorEnum.GREEN.name,
+                    color = Color.GREEN,
                     speed = 7.5,
                     incline = 0
                 ),
@@ -236,7 +235,7 @@ object Object {
                     routineIdx = 3,
                     title = "Running",
                     time = 600,
-                    color = ColorEnum.RED.name,
+                    color = Color.RED,
                     speed = 10.5,
                     incline = 0
                 ),
@@ -244,7 +243,7 @@ object Object {
                     routineIdx = 3,
                     title = "Walking",
                     time = 300,
-                    color = ColorEnum.GREEN.name,
+                    color = Color.GREEN,
                     speed = 7.5,
                     incline = 0
                 ),
@@ -252,7 +251,7 @@ object Object {
                     routineIdx = 3,
                     title = "Running",
                     time = 600,
-                    color = ColorEnum.RED.name,
+                    color = Color.RED,
                     speed = 10.5,
                     incline = 0
                 ),
@@ -260,7 +259,7 @@ object Object {
                     routineIdx = 3,
                     title = "Walking",
                     time = 300,
-                    color = ColorEnum.GREEN.name,
+                    color = Color.GREEN,
                     speed = 7.5,
                     incline = 0
                 ),
@@ -268,7 +267,7 @@ object Object {
                     routineIdx = 3,
                     title = "Running",
                     time = 600,
-                    color = ColorEnum.RED.name,
+                    color = Color.RED,
                     speed = 10.5,
                     incline = 0
                 ),
@@ -276,7 +275,7 @@ object Object {
                     routineIdx = 3,
                     title = "Walking",
                     time = 300,
-                    color = ColorEnum.GREEN.name,
+                    color = Color.GREEN,
                     speed = 7.5,
                     incline = 0
                 ),
@@ -284,7 +283,7 @@ object Object {
                     routineIdx = 3,
                     title = "Running",
                     time = 600,
-                    color = ColorEnum.RED.name,
+                    color = Color.RED,
                     speed = 10.5,
                     incline = 0
                 ),
@@ -292,7 +291,7 @@ object Object {
                     routineIdx = 3,
                     title = "Cool down",
                     time = 300,
-                    color = ColorEnum.BLUE.name,
+                    color = Color.BLUE,
                     speed = 4.5,
                     incline = 0
                 )
@@ -348,7 +347,7 @@ object Object {
                     routineIdx = 4,
                     title = "Running",
                     time = 720,
-                    color = ColorEnum.RED.name,
+                    color = Color.RED,
                     speed = 10.5,
                     incline = 0
                 ),
@@ -356,7 +355,7 @@ object Object {
                     routineIdx = 4,
                     title = "Cool down",
                     time = 300,
-                    color = ColorEnum.BLUE.name,
+                    color = Color.BLUE,
                     speed = 4.5,
                     incline = 0
                 )
@@ -412,7 +411,7 @@ object Object {
                     routineIdx = 5,
                     title = "Running",
                     time = 120,
-                    color = ColorEnum.RED.name,
+                    color = Color.RED,
                     speed = 10.5,
                     incline = 0
                 ),
@@ -420,7 +419,7 @@ object Object {
                     routineIdx = 5,
                     title = "Rest",
                     time = 30,
-                    color = ColorEnum.PURPLE.name,
+                    color = Color.PURPLE,
                     speed = 0.0,
                     incline = 0
                 ),
@@ -428,7 +427,7 @@ object Object {
                     routineIdx = 5,
                     title = "Running",
                     time = 150,
-                    color = ColorEnum.RED.name,
+                    color = Color.RED,
                     speed = 10.5,
                     incline = 0
                 ),
@@ -436,7 +435,7 @@ object Object {
                     routineIdx = 5,
                     title = "Rest",
                     time = 30,
-                    color = ColorEnum.PURPLE.name,
+                    color = Color.PURPLE,
                     speed = 0.0,
                     incline = 0
                 ),
@@ -444,7 +443,7 @@ object Object {
                     routineIdx = 5,
                     title = "Running",
                     time = 180,
-                    color = ColorEnum.RED.name,
+                    color = Color.RED,
                     speed = 10.5,
                     incline = 0
                 ),
@@ -452,7 +451,7 @@ object Object {
                     routineIdx = 5,
                     title = "Rest",
                     time = 30,
-                    color = ColorEnum.PURPLE.name,
+                    color = Color.PURPLE,
                     speed = 0.0,
                     incline = 0
                 ),
@@ -460,7 +459,7 @@ object Object {
                     routineIdx = 5,
                     title = "Running",
                     time = 210,
-                    color = ColorEnum.RED.name,
+                    color = Color.RED,
                     speed = 10.5,
                     incline = 0
                 ),
@@ -468,7 +467,7 @@ object Object {
                     routineIdx = 5,
                     title = "Rest",
                     time = 30,
-                    color = ColorEnum.PURPLE.name,
+                    color = Color.PURPLE,
                     speed = 0.0,
                     incline = 0
                 ),
@@ -476,7 +475,7 @@ object Object {
                     routineIdx = 5,
                     title = "Running",
                     time = 240,
-                    color = ColorEnum.RED.name,
+                    color = Color.RED,
                     speed = 10.5,
                     incline = 0
                 ),
@@ -484,7 +483,7 @@ object Object {
                     routineIdx = 5,
                     title = "Rest",
                     time = 30,
-                    color = ColorEnum.PURPLE.name,
+                    color = Color.PURPLE,
                     speed = 0.0,
                     incline = 0
                 ),
@@ -492,7 +491,7 @@ object Object {
                     routineIdx = 5,
                     title = "Running",
                     time = 270,
-                    color = ColorEnum.RED.name,
+                    color = Color.RED,
                     speed = 10.5,
                     incline = 0
                 ),
@@ -500,7 +499,7 @@ object Object {
                     routineIdx = 5,
                     title = "Rest",
                     time = 30,
-                    color = ColorEnum.PURPLE.name,
+                    color = Color.PURPLE,
                     speed = 0.0,
                     incline = 0
                 ),
@@ -508,7 +507,7 @@ object Object {
                     routineIdx = 5,
                     title = "Running",
                     time = 300,
-                    color = ColorEnum.RED.name,
+                    color = Color.RED,
                     speed = 10.5,
                     incline = 0
                 ),
@@ -516,7 +515,7 @@ object Object {
                     routineIdx = 5,
                     title = "Rest",
                     time = 30,
-                    color = ColorEnum.PURPLE.name,
+                    color = Color.PURPLE,
                     speed = 0.0,
                     incline = 0
                 )
@@ -563,6 +562,65 @@ object Object {
                     category = VideoCategoryEnum.VIRTUAL.name
                 )
             )
+        )
+    )
+
+    val presetPartList = listOf(
+        PartData(
+            routineIdx = 0,
+            title = "WARM UP",
+            time = 300,
+            color = Color.GREEN,
+            speed = 5.0,
+            incline = 0
+        ),
+        PartData(
+            routineIdx = 0,
+            title = "WALKING",
+            time = 300,
+            color = Color.BLUE,
+            speed = 6.0,
+            incline = 0
+        ),
+        PartData(
+            routineIdx = 0,
+            title = "JOGGING",
+            time = 300,
+            color = Color.YELLOW,
+            speed = 8.0,
+            incline = 0
+        ),
+        PartData(
+            routineIdx = 0,
+            title = "HIKING",
+            time = 300,
+            color = Color.BLACK,
+            speed = 5.5,
+            incline = 5
+        ),
+        PartData(
+            routineIdx = 0,
+            title = "SPRINT",
+            time = 300,
+            color = Color.RED,
+            speed = 10.5,
+            incline = 0
+        ),
+        PartData(
+            routineIdx = 0,
+            title = "COOL DOWN",
+            time = 300,
+            color = Color.PURPLE,
+            speed = 5.0,
+            incline = 0
+        ),
+        PartData(
+            routineIdx = 0,
+            title = "REST",
+            time = 300,
+            color = Color.ORANGE,
+            speed = 0.0,
+            incline = 0
         )
     )
 }

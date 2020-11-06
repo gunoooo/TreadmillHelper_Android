@@ -20,8 +20,8 @@ class RoutineDetailViewModel(
     private val updateRoutineUseCase: UpdateRoutineUseCase
 ) : BaseViewModel(),
     StartDragListener {
-    private val partList = ArrayList<Part>()
-    private val relatedVideoList = ArrayList<RelatedVideo>()
+    val partList = ArrayList<Part>()
+    val relatedVideoList = ArrayList<RelatedVideo>()
 
     val partModifyListAdapter =
         PartModifyListAdapter(

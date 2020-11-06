@@ -23,6 +23,7 @@
     <color name="colorGrey">#80879C</color>
     <color name="colorDarkGrey">#606575</color>
     <color name="colorBackground">#2B2C35</color>
+    <color name="colorBackgroundTransparent">#E9343540</color>
     <color name="colorText">#FFFFFF</color>
     <color name="colorTransparent">#00FFFFFF</color>
 

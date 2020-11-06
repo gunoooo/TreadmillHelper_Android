@@ -19,7 +19,7 @@ class PartModifyItemViewModel : BaseItemViewModel<PartModifyNavigator>() {
         part = model
 
         titleData.value = part.title
-        colorData.value = part.color.toRGB()
+        colorData.value = part.color
         speedData.value = "speed : ${part.speed}km/h"
         timeData.value = "time : ${part.time.secToTimeFormat()}"
         inclineData.value = "incline : ${part.incline}"

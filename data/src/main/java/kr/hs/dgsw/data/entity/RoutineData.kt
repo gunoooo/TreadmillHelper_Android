@@ -4,8 +4,8 @@ data class RoutineData(
     val idx: Int,
     val title: String,
     val routineType: String,
-    val partList: List<PartData>,
-    val relatedVideoList: List<RelatedVideoData>
+    var partList: List<PartData>,
+    var relatedVideoList: List<RelatedVideoData>
 ) {
     constructor(idx: Int, title: String, routineType: String):
             this(idx, title, routineType, emptyList(), emptyList())

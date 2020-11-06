@@ -15,12 +15,22 @@ class PartCacheImpl @Inject constructor(application: Application) :
         return partDao.getPartList()
     }
 
-    override fun insertPart(partEntity: PartEntity): Completable {
-        return partDao.insert(partEntity)
+    override fun insertPart(partEntity: PartEntity): Single<PartEntity> {
+        return partDao.insertGetIdx(partEntity)
+            .map { idx ->
+                partEntity.idx = idx.toInt()
+                partEntity
+            }
     }
 
-    override fun insertPartList(partEntityList: List<PartEntity>): Completable {
-        return partDao.insert(partEntityList)
+    override fun insertPartList(partEntityList: List<PartEntity>): Single<List<PartEntity>> {
+        return partDao.insertGetIdx(partEntityList)
+            .map { idxList ->
+                idxList.forEachIndexed { i, idx ->
+                    partEntityList[i].idx = idx.toInt()
+                }
+                partEntityList
+            }
     }
 
     override fun deletePart(partIdx: Int): Completable {
