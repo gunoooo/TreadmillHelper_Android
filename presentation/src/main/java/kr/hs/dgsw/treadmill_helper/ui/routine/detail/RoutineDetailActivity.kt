@@ -12,6 +12,7 @@ import kr.hs.dgsw.treadmill_helper.base.BaseActivity
 import kr.hs.dgsw.treadmill_helper.databinding.ActivityRoutineDetailBinding
 import kr.hs.dgsw.treadmill_helper.etc.extension.getViewModel
 import kr.hs.dgsw.treadmill_helper.ui.routine.part.add.PartAddDialog
+import kr.hs.dgsw.treadmill_helper.ui.routine.relatedvideo.RelatedVideoAddDialog
 import kr.hs.dgsw.treadmill_helper.ui.timer.TimerActivity
 import javax.inject.Inject
 
@@ -66,7 +67,15 @@ class RoutineDetailActivity : BaseActivity<ActivityRoutineDetailBinding, Routine
             partAddDialog.show(supportFragmentManager)
         }
         related_video_add_btn.setOnClickListener {
-
+            val relatedVideoAddDialog =
+                RelatedVideoAddDialog(mViewModel.routineData.value!!.idx)
+            relatedVideoAddDialog.successEvent.observe(this, Observer {
+                (mViewModel.routineData.value!!.relatedVideoList as ArrayList).add(it)
+                mViewModel.relatedVideoList.add(it)
+                mViewModel.videoModifyListAdapter
+                    .notifyItemInserted(mViewModel.relatedVideoList.size)
+            })
+            relatedVideoAddDialog.show(supportFragmentManager)
         }
         initRecyclerViewOnClickEvent(
             part_recycler_view,

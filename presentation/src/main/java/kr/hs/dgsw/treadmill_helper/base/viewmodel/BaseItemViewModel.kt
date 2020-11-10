@@ -4,7 +4,6 @@ import androidx.lifecycle.ViewModel
 import java.lang.ref.WeakReference
 
 open class BaseItemViewModel<N> : ViewModel() {
-
     private lateinit var navigator: WeakReference<N>
 
     fun getNavigator(): N {

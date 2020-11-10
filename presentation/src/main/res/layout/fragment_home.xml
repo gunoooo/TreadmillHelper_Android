@@ -309,10 +309,6 @@
                     app:adapter="@{viewModel.videoListAdapter}"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     tools:listitem="@layout/item_video" />
-
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="500dp" />
             </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>

@@ -21,4 +21,8 @@ class VideoItemViewModel : BaseItemViewModel<VideoNavigator>() {
         durationData.value = video.duration.secToTimeFormat()
         categoryData.value = video.category.toString()
     }
+
+    fun onClickItem() {
+        getNavigator().onClickItem(video)
+    }
 }

@@ -8,11 +8,17 @@ import kr.hs.dgsw.domain.entity.video.Video
 import kr.hs.dgsw.treadmill_helper.R
 import kr.hs.dgsw.treadmill_helper.databinding.ItemLoadingBinding
 import kr.hs.dgsw.treadmill_helper.databinding.ItemVideoBinding
+import kr.hs.dgsw.treadmill_helper.etc.SingleLiveEvent
 import kr.hs.dgsw.treadmill_helper.widget.recyclerview.LoadingViewType
 
 class VideoListAdapter(private val videoList: List<Video?>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>(),
     VideoNavigator {
+    val clickItemEvent = SingleLiveEvent<Video>()
+    override fun onClickItem(video: Video) {
+        clickItemEvent.value = video
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return when (viewType) {
             LoadingViewType.ITEM.value ->

@@ -6,6 +6,7 @@ import kr.hs.dgsw.treadmill_helper.di.scope.PerDialog
 import kr.hs.dgsw.treadmill_helper.ui.routine.add.RoutineAddDialog
 import kr.hs.dgsw.treadmill_helper.ui.routine.list.RoutineListDialog
 import kr.hs.dgsw.treadmill_helper.ui.routine.part.add.PartAddDialog
+import kr.hs.dgsw.treadmill_helper.ui.routine.relatedvideo.RelatedVideoAddDialog
 import kr.hs.dgsw.treadmill_helper.ui.video.add.VideoAddDialog
 
 @Module
@@ -25,4 +26,8 @@ abstract class DialogBindingModule {
     @PerDialog
     @ContributesAndroidInjector
     abstract fun bindingPartAddDialog(): PartAddDialog
+
+    @PerDialog
+    @ContributesAndroidInjector
+    abstract fun bindingRelatedVideoAddDialog(): RelatedVideoAddDialog
 }

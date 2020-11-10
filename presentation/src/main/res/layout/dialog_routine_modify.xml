@@ -26,6 +26,7 @@
             android:layout_marginTop="25dp"
             android:layout_marginHorizontal="17dp"
             android:fontFamily="@font/nanum_square_light"
+            android:backgroundTint="@color/colorGrey"
             android:hint="TITLE"
             android:inputType="text"
             android:textColorHint="@color/colorGrey"
