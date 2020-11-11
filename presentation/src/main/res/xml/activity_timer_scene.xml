@@ -35,14 +35,9 @@
     </Transition>
 
     <Transition
-        motion:constraintSetEnd="@id/video_up"
-        motion:constraintSetStart="@id/video_down"
-        motion:duration="100">
-        <OnSwipe
-            motion:touchAnchorId="@id/video_control_btn"
-            motion:touchAnchorSide="bottom"
-            motion:dragDirection="dragUp" />
-    </Transition>
+        motion:constraintSetEnd="@id/drag_up"
+        motion:constraintSetStart="@id/drag_up"
+        motion:duration="0" />
 
     <ConstraintSet android:id="@+id/drag_down">
         <Constraint

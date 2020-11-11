@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import kr.hs.dgsw.treadmill_helper.R
 import kr.hs.dgsw.treadmill_helper.etc.extension.getParentActivity
+import kr.hs.dgsw.treadmill_helper.widget.TimerMotionLayout
 
 @BindingAdapter("adapter")
 fun setAdapter(view: RecyclerView, adapter: RecyclerView.Adapter<*>) {

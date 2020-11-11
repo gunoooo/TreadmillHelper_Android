@@ -8,6 +8,7 @@ import android.view.MotionEvent
 import android.view.View
 import androidx.constraintlayout.motion.widget.MotionLayout
 import kr.hs.dgsw.treadmill_helper.R
+import kr.hs.dgsw.treadmill_helper.etc.FullScreenHelper
 
 /**
  * https://stackoverflow.com/questions/57819969/how-to-handle-onclick-and-onclicklistener-in-motionlayout-similar-to-youtube

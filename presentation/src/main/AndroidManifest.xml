@@ -19,7 +19,9 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ui.timer.TimerActivity" />
+        <activity android:name=".ui.timer.TimerActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden|smallestScreenSize|screenLayout"
+            android:hardwareAccelerated="true" />
 
         <activity android:name=".ui.routine.detail.RoutineDetailActivity" />
     </application>
